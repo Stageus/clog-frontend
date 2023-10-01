@@ -1,6 +1,4 @@
 import React from "react"
-// import { Route, Routes } from 'react-router-dom';
-// import Account_Login from "./components/Page/Account/Account_Login.js";
 
 import Router from "./routes/router.js"
 

@@ -1,7 +1,34 @@
 import { Route, Routes } from 'react-router-dom';
 
+import Account_Login from "../components/Page/Account/Account_Login";
+import Account_Auth from "../components/Page/Account/Account_Auth";
+import Account_Signup from "../components/Page/Account/Account_Signup";
+import Account_FindPW from "../components/Page/Account/Account_FindPW";
+import Account_ResetPW from "../components/Page/Account/Account_ResetPW";
 
-export const Router = () => {
+import Promote_Main from "../components/Page/Promote/Promote_Main";
+import Promote_PrPostView from "../components/Page/Promote/Promote_PrPostView";
+import Promote_CategoryResult from "../components/Page/Promote/Promote_CategoryResult";
+import Promote_SearchResult from "../components/Page/Promote/Promote_SearchResult";
+import Promote_ClubProfile from "../components/Page/Promote/Promote_ClubProfile";
+import Promote_ClubCreate from "../components/Page/Promote/Promote_ClubCreate";
+
+import Club_Main from "../components/Page/Club/Club_Main";
+import Club_PostBoard from "../components/Page/Club/Club_PostBoard";
+import Club_PostWriting from "../components/Page/Club/Club_PostWriting";
+import Club_PostView from "../components/Page/Club/Club_PostView";
+import Club_Members from "../components/Page/Club/Club_Members";
+import Club_SearchResult from "../components/Page/Club/Club_SearchResult";
+import Club_NoticeBoard from "../components/Page/Club/Club_NoticeBoard";
+import Club_NoticeWriting from "../components/Page/Club/Club_NoticeWriting";
+import Club_NoticeView from "../components/Page/Club/Club_NoticeView";
+import Club_PrPostBoard from "../components/Page/Club/Club_PrPostBoard";
+import Club_RequestAccept from "../components/Page/Club/Club_RequestAccept";
+import Club_EditBoardList from "../components/Page/Club/Club_EditBoardList";
+import Club_EditClubProfile from "../components/Page/Club/Club_EditClubProfile";
+import Club_EditPosition from "../components/Page/Club/Club_EditPosition";
+
+const Router = () => {
 
     return(
         <Routes>
@@ -36,3 +63,5 @@ export const Router = () => {
     )
 
 }
+
+export default Router

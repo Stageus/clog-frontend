@@ -3,7 +3,7 @@ import React from "react"
 const Nav_ClubListBox_Club = () => {
 
 
-    const result = 0
+    const hello = 0
 }
 
 

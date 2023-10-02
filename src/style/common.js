@@ -60,8 +60,8 @@ export const Flexinput = styled.input`
     height: ${props => props.height};
     cursor : ${props => props.cursor || "pointer"};
     border-radius: ${props => props.radius || "0px"};
-    margin: ${props => props.margin};
-    padding: ${props => props.padding};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
     background-color: ${props => props.backgroundColor};
     outline: ${props => props.outline};
 `
@@ -88,6 +88,10 @@ export const Span = styled.span`
         align-items: ${setFlex(props.flex)[5]};
         flex-wrap: ${setFlex(props.flex)[6]};
     `}
+    width: ${props => props.width};
+    height: ${props => props.height};
     font-size: ${props => props.fontSize};
     color: ${props => props.color};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
 `

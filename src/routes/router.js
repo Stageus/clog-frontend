@@ -28,7 +28,7 @@ import Club_EditBoardList from "../components/Page/Club/Club_EditBoardList";
 import Club_EditClubProfile from "../components/Page/Club/Club_EditClubProfile";
 import Club_EditPosition from "../components/Page/Club/Club_EditPosition";
 
-import Nav from "../components/Container/Nav/Nav";
+import Nav_Section from "../components/Container/Nav/Nav_Section";
 
 
 const Router = () => {
@@ -64,7 +64,7 @@ const Router = () => {
             <Route path="/Club/Club_EditPosition" element={<Club_EditPosition />} />
 
             {/* 개발 목적 임시 */}
-            <Route path="/Nav" element={<Nav />} />
+            <Route path="/Nav/Section" element={<Nav_Section />} />
         </Routes>
     )
 

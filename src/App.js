@@ -6,8 +6,7 @@ const App = () => {
 
     return (
         <React.Fragment>
-            <h1>Clog</h1>
-            <Router/>
+            <Router />
         </React.Fragment>
     )
 }

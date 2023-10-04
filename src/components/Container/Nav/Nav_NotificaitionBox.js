@@ -23,9 +23,13 @@ const Nav_NotificationBox = () => {
                     <Span flex="0_0_auto" margin="0 0 0 20px">알림</Span>
                     <Flexinput flex="0_0_auto" type="button" value="Delete All" width="82px" height="24px" radius="10px" margin="0 20px 0 0" />
                 </BoxTitle>
+
+
                 <Flexdiv>
                     {alarmList.map((elem) => <Nav_NotificationBox_Notification elem={elem} />)}
                 </Flexdiv>
+
+
             </Flexdiv>
         </React.Fragment>
     )

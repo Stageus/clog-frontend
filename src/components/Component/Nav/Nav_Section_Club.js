@@ -5,7 +5,6 @@ import { Flexdiv, Flexinput, Img, Span } from "../../../style/common"
 
 const Nav_Section_Club = (props) => {
     const { elem } = props
-    console.log(elem.profileImage)
 
     return (
         <React.Fragment>

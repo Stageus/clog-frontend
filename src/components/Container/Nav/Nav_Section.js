@@ -8,7 +8,7 @@ import Nav_ProfileEdit from "./Nav_ProfileEdit"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { accountInfoAtom, alarmNumAtom, clubListAtom } from "../../../recoil/NavAtom"
+import { accountInfoAtom, alarmNumAtom, clubListAtom, contextAtom } from "../../../recoil/NavAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Img, Span } from "../../../style/common"
@@ -31,8 +31,22 @@ const Nav_Section = () => {
     const account = useRecoilValue(accountInfoAtom)
     const arlamNum = useRecoilValue(alarmNumAtom)
     const clubList = useRecoilValue(clubListAtom)
+    const [profileBtn, setProfileBtn] = React.useState(false)
+    const [alarmBtn, setAlarmBtn] = React.useState(false)
 
 
+    const clickEvent = (e) => {
+        let id = e.target.id
+        console.log("id : ", id)
+        if (id == "profileBtn") {
+            setProfileBtn(!profileBtn)
+            console.log("profileBtn 클릭")
+        }
+        else if (id == "alarmBtn") {
+            setAlarmBtn(!alarmBtn)
+            console.log("alarmBtn 클릭")
+        }
+    }
     return (
         <React.Fragment>
             <Flexdiv backgroundColor="#fffff0" width="240px" height="1024px">
@@ -42,7 +56,7 @@ const Nav_Section = () => {
                     <Flexdiv flex="0_0_auto_row_space-between_center" width="240px" height="56px">
                         <Flexinput type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/moon.svg").default} />
                         <AlamdivParent flex="0_0_auto" width="56px" height="56px">
-                            <Flexinput type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/bell.svg").default} />
+                            <Flexinput id="alarmBtn" onClick={clickEvent} type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/bell.svg").default} />
                             <Alamdiv width="20px" height="20px" backgroundColor="red" fontSize="13px" color="white" radius="50%">{arlamNum}</Alamdiv>
                         </AlamdivParent>
                     </Flexdiv>
@@ -52,8 +66,9 @@ const Nav_Section = () => {
                         <Flexdiv flex="0_0_auto" height="40px" fontSize="16px" >{account.major} {account.entryYear}학번</Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_0_auto_row_center_center" height="60px">
-                        <Flexinput type="button" flex="0_0_auto" value="프로필 설정" width="100px" height="30px" radius="10px" margin="0 5px" padding="0 0 0 18px" backgroundColor="white" border="1px solid #dadada" />
+                        <Flexinput id="profileBtn" onClick={clickEvent} type="button" flex="0_0_auto" value="프로필 설정" width="100px" height="30px" radius="10px" margin="0 5px" padding="0 0 0 18px" backgroundColor="white" border="1px solid #dadada" />
                         <Flexinput type="button" flex="0_0_auto" value="로그아웃" width="100px" height="30px" radius="10px" margin="0 5px" padding="0 0 0 26px" backgroundColor="white" border="1px solid #dadada" />
+                        {profileBtn && <Nav_ProfileEdit />}
                     </Flexdiv>
                 </Flexdiv>
 
@@ -64,10 +79,22 @@ const Nav_Section = () => {
                 </Flexdiv>
             </Flexdiv>
 
-            <Nav_NotificationBox />
-            <Nav_ProfileEdit />
+            {alarmBtn && <Nav_NotificationBox />}
         </React.Fragment>
     )
-}
+
+
+
+};
+
 
 export default Nav_Section
+
+
+
+
+
+
+
+
+

@@ -35,36 +35,36 @@ const Router = () => {
 
     return (
         <Routes>
-            <Route path="/Account/Login" element={<Account_Login />} />
-            <Route path="/Account/Auth" element={<Account_Auth />} />
-            <Route path="/Account/Signup" element={<Account_Signup />} />
-            <Route path="/Account/FindPW" element={<Account_FindPW />} />
-            <Route path="/Account_ResetPW" element={<Account_ResetPW />} />
+            <Route path="/account/login" element={<Account_Login />} />
+            <Route path="/account/auth" element={<Account_Auth />} />
+            <Route path="/account/signup" element={<Account_Signup />} />
+            <Route path="/account/find-pw" element={<Account_FindPW />} />
+            <Route path="/account/reset-pw" element={<Account_ResetPW />} />
 
-            <Route path="/Promote/Main" element={<Promote_Main />} />
-            <Route path="/Promote/PrPostView" element={<Promote_PrPostView />} />
-            <Route path="/Promote/CategoryResult" element={<Promote_CategoryResult />} />
-            <Route path="/Promote/SearchResult" element={<Promote_SearchResult />} />
-            <Route path="/Promote/ClubProfile" element={<Promote_ClubProfile />} />
-            <Route path="/Promote/ClubCreate" element={<Promote_ClubCreate />} />
+            <Route path="/promote/main" element={<Promote_Main />} />
+            <Route path="/promote/pr-post-view" element={<Promote_PrPostView />} />
+            <Route path="/promote/category-result" element={<Promote_CategoryResult />} />
+            <Route path="/promote/search-result" element={<Promote_SearchResult />} />
+            <Route path="/promote/club-profile" element={<Promote_ClubProfile />} />
+            <Route path="/promote/club-create" element={<Promote_ClubCreate />} />
 
-            <Route path="/Club/Main" element={<Club_Main />} />
-            <Route path="/Club/PostBoard" element={<Club_PostBoard />} />
-            <Route path="/Club/PostWriting" element={<Club_PostWriting />} />
-            <Route path="/Club/PostView" element={<Club_PostView />} />
-            <Route path="/Club/Members" element={<Club_Members />} />
-            <Route path="/Club/SearchResult" element={<Club_SearchResult />} />
-            <Route path="/Club/NoticeBoard" element={<Club_NoticeBoard />} />
-            <Route path="/Club/NoticeWriting" element={<Club_NoticeWriting />} />
-            <Route path="/Club/NoticeView" element={<Club_NoticeView />} />
-            <Route path="/Club/PrPostBoard" element={<Club_PrPostBoard />} />
-            <Route path="/Club/RequestAccept" element={<Club_RequestAccept />} />
-            <Route path="/Club/EditBoardList" element={<Club_EditBoardList />} />
-            <Route path="/Club/EditClubProfile" element={<Club_EditClubProfile />} />
-            <Route path="/Club/Club_EditPosition" element={<Club_EditPosition />} />
+            <Route path="/club/main" element={<Club_Main />} />
+            <Route path="/club/post-board" element={<Club_PostBoard />} />
+            <Route path="/club/post-writing" element={<Club_PostWriting />} />
+            <Route path="/club/post-view" element={<Club_PostView />} />
+            <Route path="/club/members" element={<Club_Members />} />
+            <Route path="/club/search-result" element={<Club_SearchResult />} />
+            <Route path="/club/notice-board" element={<Club_NoticeBoard />} />
+            <Route path="/club/notice-writing" element={<Club_NoticeWriting />} />
+            <Route path="/club/notice-view" element={<Club_NoticeView />} />
+            <Route path="/club/pr-post-board" element={<Club_PrPostBoard />} />
+            <Route path="/club/request-accept" element={<Club_RequestAccept />} />
+            <Route path="/club/edit-board-list" element={<Club_EditBoardList />} />
+            <Route path="/club/edit-club-profile" element={<Club_EditClubProfile />} />
+            <Route path="/club/edit-position" element={<Club_EditPosition />} />
 
             {/* 개발 목적 임시 */}
-            <Route path="/Nav/Section" element={<Nav_Section />} />
+            <Route path="/nav/section" element={<Nav_Section />} />
         </Routes>
     )
 

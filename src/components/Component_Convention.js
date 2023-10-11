@@ -1,8 +1,6 @@
 import React from "react"
 
-import Club_Main_Section from "../../Container/Club/Club_Main_Section"
-
-const Club_Main = () => {
+const Component_Convention = () => {
     // props ============================================================
 
     // state ============================================================
@@ -12,9 +10,9 @@ const Club_Main = () => {
 
     return(
         <React.Fragment>
-            <Club_Main_Section/>
+
         </React.Fragment>
     )
 }
 
-export default Club_Main
+export default Component_Convention

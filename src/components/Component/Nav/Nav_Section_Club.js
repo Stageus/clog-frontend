@@ -4,7 +4,12 @@ import React from "react"
 import { Flexdiv, Flexinput, Img, Span } from "../../../style/common"
 
 const Nav_Section_Club = (props) => {
+    // props ======================================================
     const { elem } = props
+
+    // state ======================================================
+
+    // event ======================================================
 
     return (
         <React.Fragment>

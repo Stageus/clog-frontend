@@ -1,6 +1,6 @@
 import React from "react"
 
-const Club_Main_Section = () => {
+const Component_Convention = () => {
     // props ============================================================
 
     // state ============================================================
@@ -10,9 +10,9 @@ const Club_Main_Section = () => {
 
     return(
         <React.Fragment>
-            
+
         </React.Fragment>
     )
 }
 
-export default Club_Main_Section
+export default Component_Convention

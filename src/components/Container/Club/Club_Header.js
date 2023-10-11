@@ -8,17 +8,23 @@ import { clubInfoAtom } from "../../../recoil/ClubAtom"
 
 // import styled
 import styled from "styled-components"
-import { Flexdiv } from "../../../style/common"
+import { Flexdiv, Img } from "../../../style/common"
+
+// import image
+import { ReactComponent as Menu} from "../../../image/menu-burger.svg"
+import { ReactComponent as Chat} from "../../../image/messages.svg"
 
 const Header = styled.header`
+    width : 100%;
     display : flex;
     justify-content : space-between;
+    position : fixed;
 `
 
 const HeaderButton = styled(Flexdiv)`
     border: 1px solid #C4C4C4;
-    width: 50px;
-    height: 50px;
+    width: 48px;
+    height: 48px;
     border-radius: 10px;
     margin: 10px;
     background-color: #FFFFFF;
@@ -26,7 +32,7 @@ const HeaderButton = styled(Flexdiv)`
 `
 
 
-const Component_Convention = () => {
+const Club_Header = () => {
     // props ============================================================
 
     // state ============================================================
@@ -34,16 +40,21 @@ const Component_Convention = () => {
 
     // event ============================================================
 
+    console.log(club[0].theme_color)
 
     return(
         <React.Fragment>
             <Header>
-                <HeaderButton type="button" color={"#" + club.theme_color}>
-                    
+                <HeaderButton type="button" flex="0_0_auto_row_center_center" >
+                    <Menu width="24px" heigh="24px" fill={"#" + club[0].theme_color}/>
+                </HeaderButton>
+
+                <HeaderButton type="button" flex="0_0_auto_row_center_center" color={"#" + club.theme_color}>
+                    <Chat width="24px" heigh="24px" fill={"#" + club[0].theme_color}/>
                 </HeaderButton>
             </Header>
         </React.Fragment>
     )
 }
 
-export default Component_Convention
+export default Club_Header

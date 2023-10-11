@@ -85,6 +85,18 @@ export const contextAtom = atom({
         {
             "isNew": false,
             "type": "clubkey",
+            "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
+            "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
             "sentence": "[MRA] END.",
             "key": 0
         }
@@ -153,6 +165,18 @@ export const contextAtom = atom({
         {
             "isNew": false,
             "type": "clubkey",
+            "sentence": "[2] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
+            "sentence": "[2] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
             "sentence": "[2] END.",
             "key": 0
         }
@@ -216,6 +240,18 @@ export const contextAtom = atom({
             "isNew": false,
             "type": "clubkey",
             "sentence": "[3] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
+            "sentence": "[3] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isNew": false,
+            "type": "clubkey",
+            "sentence": "[3] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {

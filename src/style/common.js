@@ -25,6 +25,7 @@ export const Flexdiv = styled.div`
     height: ${props => props.height};
     cursor : ${props => props.cursor || "pointer"};
     border-radius: ${props => props.radius || "0px"};
+    border: ${props => props.border};
     outline: ${props => props.outline};
     margin: ${props => props.margin};
     padding: ${props => props.padding};
@@ -37,7 +38,7 @@ export const Flexdiv = styled.div`
 `
 
 //button
-export const FlexButton = styled.button`
+export const Flexbutton = styled.button`
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -95,6 +96,8 @@ export const Flexinput = styled.input`
     cursor : ${props => props.cursor || "pointer"};
     border-radius: ${props => props.radius || "0px"};
     font-size: ${props => props.fontSize};
+    font-family: ${props => props.fontFamily};
+    font-weight: ${props => props.fontBold || "400"};
     color: ${props => props.color};
     margin: ${props => props.margin || "none"};
     padding: ${props => props.padding || "none"};
@@ -139,6 +142,8 @@ export const Span = styled.span`
     height: ${props => props.height};
     background-color: ${props => props.backgroundColor};
     font-size: ${props => props.fontSize};
+    font-family: ${props => props.fontFamily};
+    font-weight: ${props => props.fontBold || "400"};
     color: ${props => props.color};
     margin: ${props => props.margin || "none"};
     padding: ${props => props.padding || "none"};

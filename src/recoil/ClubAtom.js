@@ -4,9 +4,13 @@ import { atom } from "recoil";
 export const clubInfoAtom = atom({
     "key": "clubInfoAtom",
     "default": {
-        "name" : "동아리이름", 
+        "name" : "스테이지어스", 
+        "belong" : "중앙 동아리",
+        "big_category" : "학술 동아리",
+        "small_category" : "SW/IT",
         // "profile_img" : "" ,
         // "banner_img" : "" ,
+        // "create_at" : "",
         "theme_color" : "3EC054"
     }
 })

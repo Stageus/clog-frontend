@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-//nav에 뜨는 나의 계정정보
+//nav에 뜨는 나의 계정정보, AroundAtom에서 관리 필요 => ?
 export const accountInfoAtom = atom({
     "key": "accountInfoAtom",
     "default": {
@@ -18,252 +18,382 @@ export const alarmNumAtom = atom({
     "default": 30
 })
 
-//useContext 대체 
-export const contextAtom = atom({
-    "key": "contextAtom",
-    "default": [[
+//알림 내용
+export const zeroAlarmAtom = atom({
+    "key": "zeroAlarmAtom",
+    "default": []
+})
+export const alarmAtom = atom({
+    "key": "alarmAtom",
+    "default": [
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[홈] 내가 쓴 글에 댓글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[홈] 내가 쓴 댓글에 답글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[MRA] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 회장으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": '[테니스부] "유동선"님이 댓글을 달았습니다.',
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 일반 동아리원이 되었습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": '[테니스부] "유동선"님이 댓글을 달았습니다.',
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[테니스부] 일반 동아리원이 되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[홈] 내가 쓴 글에 댓글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[홈] 내가 쓴 댓글에 답글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[MRA] 일반 동아리원이 되었습니다",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[테니스부] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[MRA] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[테니스부] 회장으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[MRA] END.",
             "key": 0
-        }
-    ],
-    [
+        },//
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[2] 내가 쓴 글에 댓글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[2] 내가 쓴 댓글에 답글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[2] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[2] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[2] 회장으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
-            "type": "clubkey",
-            "sentence": '[2] "유동선"님이 댓글을 달았습니다.',
-            "key": 0
-        },
-        {
-            "isNew": false,
-            "type": "clubkey",
-            "sentence": "[2] 일반 동아리원이 되었습니다.",
-            "key": 0
-        },
-        {
-            "isNew": true,
-            "type": "clubkey",
-            "sentence": "[2] 내가 쓴 글에 댓글이 달렸습니다.",
-            "key": 0
-        },
-        {
-            "isNew": true,
-            "type": "clubkey",
-            "sentence": "[2] 내가 쓴 댓글에 답글이 달렸습니다.",
-            "key": 0
-        },
-        {
-            "isNew": false,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[2] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[2] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": '[2] "유동선"님이 댓글을 달았습니다.',
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 일반 동아리원이 되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[2] 내가 쓴 글에 댓글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[2] 내가 쓴 댓글에 답글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 새로운 동아리에 가입되었습니다",
+            "key": 0
+        },
+        {
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[2] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 운영진으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[2] 일반 동아리원이 되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[2] 내가 쓴 글에 댓글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[2] 내가 쓴 댓글에 답글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[2] END.",
             "key": 0
-        }
-    ],
-    [
+        },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[3] 내가 쓴 글에 댓글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[3] 내가 쓴 댓글에 답글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 회장으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": '[3] "유동선"님이 댓글을 달았습니다.',
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 일반 동아리원이 되었습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[3] 내가 쓴 글에 댓글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": true,
+            "isRead": true,
             "type": "clubkey",
             "sentence": "[3] 내가 쓴 댓글에 답글이 달렸습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[3] 내가 쓴 글에 댓글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[3] 내가 쓴 댓글에 답글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 새로운 동아리에 가입되었습니다",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] 운영진으로 임명되었습니다.",
             "key": 0
         },
         {
-            "isNew": false,
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[3] 회장으로 임명되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": '[3] "유동선"님이 댓글을 달았습니다.',
+            "key": 0
+        },
+        {
+            "isRead": false,
+            "type": "clubkey",
+            "sentence": "[3] 일반 동아리원이 되었습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[3] 내가 쓴 글에 댓글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": true,
+            "type": "clubkey",
+            "sentence": "[3] 내가 쓴 댓글에 답글이 달렸습니다.",
+            "key": 0
+        },
+        {
+            "isRead": false,
             "type": "clubkey",
             "sentence": "[3] END",
             "key": 0
         }
-    ]]
+    ]
 })
 
 //가입한 동아리 목록
+export const zeroClubListAtom = atom({
+    "key": "zeroClubListAtom",
+    default: []
+})
 export const clubListAtom = atom({
     "key": "clubListAtom",
     "default": [

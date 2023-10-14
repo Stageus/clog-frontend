@@ -1,10 +1,9 @@
 import React from "react"
 
 import Club_Header from "../../Container/Club/Club_Header"
-import Club_Search from "../../Container/Club/Club_Search"
 import Club_Banner from "../../Container/Club/Club_Banner"
-import Club_ClubProfileBox from "../../Container/Club/Club_ClubProfileBox"
-import Club_BoardList from "../../Container/Club/Club_BoardList"
+// import Club_ClubProfileBox from "../../Container/Club/Club_ClubProfileBox"
+// import Club_BoardList from "../../Container/Club/Club_BoardList"
 import Club_Main_Section from "../../Container/Club/Club_Main_Section"
 
 const Club_Main = () => {
@@ -18,10 +17,7 @@ const Club_Main = () => {
     return(
         <React.Fragment>
             <Club_Header/>
-            {/* <Club_Search/> */}
             <Club_Banner/>
-            <Club_ClubProfileBox/>
-            <Club_BoardList/>
             <Club_Main_Section/>
         </React.Fragment>
     )

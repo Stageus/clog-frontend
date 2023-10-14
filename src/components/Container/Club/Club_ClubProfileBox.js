@@ -43,7 +43,7 @@ const Club_ClubProfileBox = () => {
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
                             <Category width="10px" height="10px" fill="#C4C4C4"/>
                         </Flexdiv>
-                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#C4C4C4">{club[0].big_category} 분과 > {club[0].small_category}</Span>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#C4C4C4">{club[0].big_category} 분과 {'>'} {club[0].small_category}</Span>
                     </Flexdiv>
                     <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">

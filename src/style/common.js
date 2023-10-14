@@ -21,11 +21,6 @@ const setTextColorByBackgroundColor = (hexColor) => {
     return luma < 127.5 ? "#ffffff" : "#000000" // 글자색이
 }
 
-const setPosition = (position) => {
-    let positionList = position.split("_")
-    return positionList
-}
-
 //div
 export const Flexdiv = styled.div`
     ${props => props.flex && css`

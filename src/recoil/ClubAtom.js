@@ -10,7 +10,16 @@ export const clubInfoAtom = atom({
         "small_category" : "SW/IT",
         // "profile_img" : "" ,
         // "banner_img" : "" ,
-        // "create_at" : "",
+        "create_at" : 1696899939914,
         "theme_color" : "3EC054"
+    }
+})
+
+// 동아리에 대한 내 프로필
+export const userClubProfileAtom = atom({
+    "key": "userClubProfileAtom",
+    "default": {
+        "name" : "스테이지어스", 
+        "position" : "leader"
     }
 })

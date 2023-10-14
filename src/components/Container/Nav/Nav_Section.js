@@ -106,7 +106,7 @@ const Nav_Section = () => {
                         </Flexdiv>
                         {/* 개인프로필(퍼컬반영된 프로필,이름,학과,학번2자리) */}
                         <Flexdiv flex="0_0_auto_column_flex-end_center" height="224px">
-                            <Flexbutton type="button" flex="0_0_auto_row_center_center" width="130px" height="124px" margin="0 0 20px 0" radius="50%" outline="1px solid black" backgroundColor={"#" + account.personalColor} fontSize="24px" color="white">{account.entryYear + account.name}</Flexbutton>
+                            <Flexbutton type="button" flex="0_0_auto_row_center_center" width="130px" height="124px" margin="0 0 20px 0" radius="50%" outline="1px solid black" backgroundColor={"#" + account.personalColor} fontSize="24px" colorBytBack={account.personalColor}>{account.entryYear + account.name}</Flexbutton>
                             <Flexdiv flex="0_0_auto" height="40px" fontSize="24px" >{account.name}</Flexdiv>
                             <Flexdiv flex="0_0_auto" height="40px" fontSize="16px" >{account.major} {account.entryYear}학번</Flexdiv>
                         </Flexdiv>

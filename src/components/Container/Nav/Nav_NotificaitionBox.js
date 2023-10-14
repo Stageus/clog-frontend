@@ -87,7 +87,6 @@ const Nav_NotificationBox = () => {
         }
     };
 
-
     //마운트시 fetch
     React.useEffect(() => {
         fetchData();
@@ -97,10 +96,10 @@ const Nav_NotificationBox = () => {
     const [_, setRef] = useIntersect(async (entry, observer) => {
         //데이터 패칭이 완료되기 전에 교차 상태를 여러번 변화시키는 상황이 발생하지 않도록 관찰을 중단했다가 다시 observe한다.
         observer.unobserve(entry.target);
-        await fetchData();
+        await fetchData();//데이터 불러오는 함수
         observer.observe(entry.target);
     }, {
-        root: document.getElementById('notification'),
+        root: document.getElementById('notification'),//부모로 설정할 요소
         threshold: 1,
         rootMargin: '0px',
     });

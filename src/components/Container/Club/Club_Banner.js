@@ -1,8 +1,15 @@
 import React from "react"
 
 // import components
+
 // import recoil
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
+import { clubInfoAtom } from "../../../recoil/ClubAtom"
+
 // import styled
+import styled from "styled-components"
+import { Flexdiv, Img } from "../../../style/common"
+
 // import image
 
 const Club_Banner = () => {
@@ -11,13 +18,18 @@ const Club_Banner = () => {
     // props ============================================================
 
     // state ============================================================
+    const club = useRecoilState(clubInfoAtom)   // 동아리에 대한 정보 가져오는 Atom
 
     // event ============================================================
 
 
     return(
         <React.Fragment>
-            
+            <Flexdiv flex="0_0_auto_row_center_flex-start">
+                <Flexdiv width="1080px" height="240px" margin="0 0 20px 0" position="relative_70px" backgroundColor="#F0F0F0">
+                    {/* <Img width="1080px" height="240px" src={club[0].banner_img}/> */}
+                </Flexdiv>
+            </Flexdiv>
         </React.Fragment>
     )
 }

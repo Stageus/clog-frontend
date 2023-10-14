@@ -6,6 +6,11 @@ const setFlex = (flex) => {
     return flexList
 }
 
+const setPosition = (position) => {
+    let positionList = position.split("_")
+    return positionList
+}
+
 //div
 export const Flexdiv = styled.div`
     ${props => props.flex && css`
@@ -19,6 +24,14 @@ export const Flexdiv = styled.div`
             align-items: ${setFlex(props.flex)[5]};
             flex-wrap: ${setFlex(props.flex)[6]};
         `}
+    ${props => props.position && css`
+        ${setPosition(props.position)};
+        position : ${setPosition(props.position)[0]};
+        top : ${setPosition(props.position)[1]};
+        right : ${setPosition(props.position)[2]};
+        bottom : ${setPosition(props.position)[3]};
+        left : ${setPosition(props.position)[4]};
+    `}
 
     text-align:${props => props.textAlign || "center"}; 
     width: ${props => props.width};
@@ -26,6 +39,7 @@ export const Flexdiv = styled.div`
     cursor : ${props => props.cursor || "pointer"};
     border-radius: ${props => props.radius || "0px"};
     border: ${props => props.border};
+    border-top: ${props => props.borderTop};
     outline: ${props => props.outline};
     margin: ${props => props.margin};
     padding: ${props => props.padding};

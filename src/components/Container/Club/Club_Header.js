@@ -67,7 +67,7 @@ const Club_Header = () => {
                 </HeaderButton>
 
                 {/* 가운데 부분 */}
-                <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default">
+                <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default" backgroundColor="#FFFFFF">
                     {/* 가운데 좌측, 동아리로고 부분 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute}>
                         <Flexdiv flex="0_0_auto_center_center" width="75px" height="70px">
@@ -85,14 +85,14 @@ const Club_Header = () => {
                                 <Flexbutton onClick={clickEvent} type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="default">
                                     <Title id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
                                 </Flexbutton>
-                                <Flexinput width="428px" height="50px" placeholder="게시물 제목으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
+                                <Flexinput width="429px" height="50px" placeholder="게시물 제목으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
                             </Flexdiv>
                             :
                             <Flexdiv flex="0_0_auto_row_flex-start_center" width="486px">
                                 <Flexbutton onClick={clickEvent} type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="default">
                                     <Writer id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
                                 </Flexbutton>
-                                <Flexinput width="428px" height="50px" placeholder="작성자 이름으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
+                                <Flexinput width="429px" height="50px" placeholder="작성자 이름으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
                             </Flexdiv>
                         }
 

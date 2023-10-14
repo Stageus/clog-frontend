@@ -1,6 +1,6 @@
 import React from "react"
 // Container,Component
-import useIntersect from "./InfiniteScroll"
+import useIntersect from "../../../module/InfiniteScroll"
 import Nav_NotificationBox_Notification from "../../Component/Nav/Nav_NotificationBox_Notification"
 
 //styled-components 

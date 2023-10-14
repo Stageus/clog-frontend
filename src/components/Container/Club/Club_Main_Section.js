@@ -6,8 +6,12 @@ import React from "react"
 
 // import styled
 
+// import image
+
 
 const Club_Main_Section = () => {
+	// route ============================================================
+
     // props ============================================================
 
     // state ============================================================
@@ -17,7 +21,7 @@ const Club_Main_Section = () => {
 
     return(
         <React.Fragment>
-            
+
         </React.Fragment>
     )
 }

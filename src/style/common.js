@@ -55,7 +55,6 @@ export const Flexdiv = styled.div`
     padding: ${props => props.padding};
     background-color: ${props => props.backgroundColor};
     font-size: ${props => props.fontSize};
-    align-items: center;
     justify-content: ${props => props.justifyContent};
     color: ${props => props.color};
     opacity: ${props => props.opacity};

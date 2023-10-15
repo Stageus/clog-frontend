@@ -24,6 +24,7 @@ const Header = styled.header`
     display : flex;
     justify-content : space-between;
     position : fixed;
+    z-index: 1;
 `
 
 const HeaderButton = styled(Flexbutton)`
@@ -53,7 +54,6 @@ const Club_Header = () => {
         let id = e.target.id
         if (id == "search_filter") {
             setSearchState(!searchState)
-            console.log(searchState)
         }
     }
     
@@ -63,21 +63,21 @@ const Club_Header = () => {
             <Header>
                 {/* nav 버튼 */}
                 <HeaderButton type="button" flex="0_0_auto_row_center_center" >
-                    <Menu width="24px" height="24px" fill={"#" + club[0].theme_color}/>
+                    <Menu width="24px" height="24px" fill={"#" + club[0].themeColor}/>
                 </HeaderButton>
 
                 {/* 가운데 부분 */}
                 <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default" backgroundColor="#FFFFFF">
                     {/* 가운데 좌측, 동아리로고 부분 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute}>
-                        <Flexdiv flex="0_0_auto_center_center" width="75px" height="70px">
-                            <Clog height="40px" fill={"#" + club[0].theme_color}/>
+                        <Flexdiv flex="0_0_auto_row_center_center" width="75px" height="70px">
+                            <Clog height="40px" fill={"#" + club[0].themeColor}/>
                         </Flexdiv>
-                        <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="36px" fontBold="800" color={"#" + club[0].theme_color}>{club[0].name}</Span>
+                        <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="36px" fontBold="800" color={"#" + club[0].themeColor}>{club[0].name}</Span>
                     </Flexdiv>
                     
                     {/* 가운데 우측, 동아리 내 검색바 */}
-                    <Flexdiv flex="0_0_auto_row_flex-end_center" width="538px" height="52px" radius="27px" border={"1px solid #" + club[0].theme_color} cursor="default">
+                    <Flexdiv flex="0_0_auto_row_flex-end_center" width="538px" height="52px" radius="27px" border={"1px solid #" + club[0].themeColor} cursor="default">
                         
                         {/* 검색 필터 */}
                         { searchState ?
@@ -98,14 +98,14 @@ const Club_Header = () => {
 
                         {/* 검색 버튼 */}
                         <Flexbutton type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF">
-                            <Search width="24px" height="24px" fill={"#" + club[0].theme_color}/>
+                            <Search width="24px" height="24px" fill={"#" + club[0].themeColor}/>
                         </Flexbutton>
                     </Flexdiv>
                 </Flexdiv>
 
                 {/* chat 버튼 */}
-                <HeaderButton type="button" flex="0_0_auto_row_center_center" color={"#" + club.theme_color}>
-                    <Chat width="24px" height="24px" fill={"#" + club[0].theme_color}/>
+                <HeaderButton type="button" flex="0_0_auto_row_center_center" color={"#" + club.themeColor}>
+                    <Chat width="24px" height="24px" fill={"#" + club[0].themeColor}/>
                 </HeaderButton>
             </Header>
         </React.Fragment>

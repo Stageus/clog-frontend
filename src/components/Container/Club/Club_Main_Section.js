@@ -69,8 +69,11 @@ const Club_Main_Section = () => {
                         </Flexdiv>
 
                         <Flexdiv width="860px" margin="0 0 50px 0" flex="0_0_auto_column_center_center">
-                            <Flexdiv width="860px" height="50px" borderTop={"1px solid #" + club[0].themeColor}>
-
+                            <Flexdiv width="860px" height="50px" flex="0_0_auto_raw_flex-start_center" borderTop={"1px solid #" + club[0].themeColor}>
+                                <Flexdiv width="550px" height="50px" flex="0_0_auto_raw_center_center">제목</Flexdiv>
+                                <Flexdiv width="130px" height="50px" flex="0_0_auto_raw_center_center">작성자</Flexdiv>
+                                <Flexdiv width="110px" height="50px" flex="0_0_auto_raw_center_center">작성일</Flexdiv>
+                                <Flexdiv width="70px" height="50px" flex="0_0_auto_raw_center_center">댓글</Flexdiv>
                             </Flexdiv>
                         </Flexdiv>
                     </Section>

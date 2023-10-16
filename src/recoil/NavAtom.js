@@ -451,4 +451,10 @@ export const clubListAtom = atom({
 })
 
 
+//nav 열고닫기
+export const navOpenAtom = atom({
+    "key": "navOpenAtom",
+    "default": false
+})
+
 

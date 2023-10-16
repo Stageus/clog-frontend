@@ -18,6 +18,7 @@ const NotificatiionBoxBody = styled(Flexdiv)`
     position : absolute;
     top: 0px;
     left: 70px;
+    
 `
 const BoxTitle = styled(Flexdiv)`
     border-bottom: 1px solid #dadada;
@@ -62,6 +63,8 @@ const Nav_NotificationBox = () => {
         //alarmNum을 0 으로 변경(ui 반영이 늦어도 되는 부분이라고 생각해 그냥 하위 컴포넌트에 넣음)
     }
 
+
+    ///////////////////////////////////무한 스크롤 관련 함수///////////////////
     //넘어온 알람을 20개씩 파싱(임시)
     const cutData = () => {
         let newDataList = []
@@ -103,6 +106,7 @@ const Nav_NotificationBox = () => {
         threshold: 1,
         rootMargin: '0px',
     });
+    ///////////////////////////////////무한 스크롤 관련 함수///////////////////
 
 
 

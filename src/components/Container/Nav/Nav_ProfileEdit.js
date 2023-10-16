@@ -18,9 +18,7 @@ const BoxTitle = styled(Flexdiv)`
 `
 
 const ProfileBox = styled(Flexdiv)`
-    position: absolute;
-    top: 0px;
-    left: 250px;
+
 `
 
 
@@ -54,7 +52,7 @@ const Nav_ProfileEdit = () => {
 
     return (
         <React.Fragment>
-            <ProfileBox id="profileBox" onClick={clickEvent} width="460px" height="270px" radius="10px" outline="1px solid #dadada" backgroundColor='#ffffff'>
+            <ProfileBox id="profileBox" onClick={clickEvent} position="absolute_0px_0_0_250px" width="460px" height="270px" radius="10px" outline="1px solid #dadada" backgroundColor='#ffffff'>
                 {/* 프로필 설정 제목 */}
                 <BoxTitle flex="0_0_auto_row_space-between_center" width="100%" height="40px" margin="10px 0">
                     <Span flex="0_0_auto" margin="0 0 0 20px">프로필 설정</Span>

@@ -54,7 +54,6 @@ export const Flexdiv = styled.div`
     padding: ${props => props.padding};
     background-color: ${props => props.backgroundColor};
     font-size: ${props => props.fontSize};
-    align-items: center;
     justify-content: ${props => props.justifyContent};
     color: ${props => props.color};
     opacity: ${props => props.opacity};
@@ -170,7 +169,6 @@ export const Img = styled.img`
     box-sizing: border - box;
     margin: ${props => props.margin};
     border-radius: ${props => props.radius || "0px"};
-    cursor: pointer;
 `
 
 export const Span = styled.span`
@@ -199,7 +197,41 @@ export const Span = styled.span`
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
     font-weight: ${props => props.fontBold || "400"};
+    text-align:${props => props.textAlign};
     color: ${props => props.color};
     margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+`
+
+
+export const P = styled.p`
+    ${props => props.flex && css`
+        ${setFlex(props.flex)};
+        display: flex;
+        flex-grow : ${setFlex(props.flex)[0]};
+        flex-shrink: ${setFlex(props.flex)[1]};
+        flex-basis: ${setFlex(props.flex)[2]};
+        flex-direction: ${setFlex(props.flex)[3]};
+        justify-content: ${setFlex(props.flex)[4]};
+        align-items: ${setFlex(props.flex)[5]};
+        flex-wrap: ${setFlex(props.flex)[6]};
+    `}
+    ${props => props.position && css`
+        ${setPosition(props.position)};
+        position : ${setPosition(props.position)[0]};
+        top : ${setPosition(props.position)[1]};
+        right : ${setPosition(props.position)[2]};
+        bottom : ${setPosition(props.position)[3]};
+        left : ${setPosition(props.position)[4]};
+    `}
+    width: ${props => props.width};
+    height: ${props => props.height};
+    background-color: ${props => props.backgroundColor};
+    font-size: ${props => props.fontSize};
+    font-family: ${props => props.fontFamily};
+    font-weight: ${props => props.fontBold || "400"};
+    text-align:${props => props.textAlign};
+    color: ${props => props.color};
+    margin: ${props => props.margin || "0"};
     padding: ${props => props.padding || "none"};
 `

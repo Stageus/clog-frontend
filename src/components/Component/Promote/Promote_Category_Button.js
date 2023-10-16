@@ -9,10 +9,18 @@ import styled from "styled-components"
 import { Link, useNavigate } from 'react-router-dom'
 
 const Promote_Category_Button = (props) => {
+    // props ======================================================
     const { elem } = props
+
+    // state ======================================================
+
+    // event ======================================================
+
+
+
     return (
         <React.Fragment>
-            <Flexbutton flex="0_1_auto_row_center_center" backgroundColor="#f0f0f0" width="50px" height="30px" radius="10px" margin="0 6px">{elem.bigCategory}</Flexbutton>
+            <Flexbutton id={"categoryBtn" + elem.num} flex="0_1_auto_row_center_center" backgroundColor="#f0f0f0" width="fit-content" height="30px" radius="10px" margin="0 6px" padding="0 10px">{elem.content}</Flexbutton>
         </React.Fragment>
     )
 }

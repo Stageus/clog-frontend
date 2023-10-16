@@ -5,7 +5,7 @@ import Nav_Header from "../../Component/Nav/Nav_Header"
 //recoil
 
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom } from "../../../recoil/NavAtom"
+import { navOpenAtom } from "../../../recoil/NavAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -17,6 +17,9 @@ import { ReactComponent as Svgplus } from "../../../image/square-plus.svg"
 import { Link, useNavigate } from 'react-router-dom'
 
 
+const PromoteHeaderdiv = styled(Flexdiv)`
+    
+`
 const SearchLeft = styled(Flexdiv)`
     border-top-left-radius: 30px;
     border-bottom-left-radius: 30px;
@@ -27,11 +30,26 @@ const SearchRight = styled(Flexbutton)`
     border-bottom-right-radius: 30px;
 `
 const Promote_Header = () => {
+    // props ======================================================
+
+    // state ======================================================
+    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);
+
+    // event ======================================================
+    const clickEvent = (e) => {
+        let id = e.target.id
+        console.log(id)
+        if (id == "navbutton") {
+            setNavOpen(!navOpen)
+            console.log(navOpen)
+        }
+    }
+
     return (
         <React.Fragment>
-            <Flexdiv flex="0_1_auto_row_space-between_center" width="100%" height="56px" backgroundColor="#ffffff">
+            <PromoteHeaderdiv onClick={clickEvent} flex="0_1_auto_row_space-between_center" position="fixed_0px_0_0_0px" width="100%" height="56px" backgroundColor="#ffffff">
                 {/* 왼쪽 헤더 */}
-                <Nav_Header />
+                <Nav_Header navOpen={navOpen} />
 
                 {/* 헤더 중앙 */}
                 <Flexdiv flex="0_0_auto_row_center_center" width="770px">
@@ -45,7 +63,7 @@ const Promote_Header = () => {
 
                 {/* 오른쪽 헤더 */}
                 <Flexbutton flex="0_1_56px_row_center_center" width="56px" backgroundColor="#ffffff"><Svgplus height="24px" /></Flexbutton>
-            </Flexdiv>
+            </PromoteHeaderdiv>
 
         </React.Fragment>
     )

@@ -8,7 +8,7 @@ import Nav_ProfileEdit from "./Nav_ProfileEdit"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom } from "../../../recoil/NavAtom"
+import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom, navOpenAtom } from "../../../recoil/NavAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -18,24 +18,18 @@ import { ReactComponent as Svgempty } from ".././../../image/box-open.svg"
 
 //router
 import { Link, useNavigate } from 'react-router-dom'
+import { click } from "@testing-library/user-event/dist/click"
 
 
-const PositionDiv = styled(Flexdiv)`
-    position: relative;
+const OpacityDiv = styled(Flexdiv)`
+    opacity: 0.7;
 `
-const AlamdivParent = styled(Flexdiv)`
-    position: relative;
-`
+
 const Alamdiv = styled(Flexdiv)`
     display: flex;
-    position: absolute;
-    right:7px;
-    top: 8px;
     z-index: 1;
 `
-const ProfileLogout = styled(Flexdiv)`
-    position: relative;
-`
+
 const Line = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
@@ -53,6 +47,7 @@ const Nav_Section = () => {
     const [profileBtn, setProfileBtn] = React.useState(false);//프로필 설정 열고닫기
     const [alarmBtn, setAlarmBtn] = React.useState(false);//알람창 열고닫기
     const zeroClubList = useRecoilValue(zeroClubListAtom);//임시로 가입된 동아리가 0개일때
+    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);//nav 여닫기
     // event ======================================================
     const navigate = useNavigate();
 
@@ -73,6 +68,7 @@ const Nav_Section = () => {
         //클로그 로고 클릭시 promote/main페이지로 이동
         else if (id == "navClogLogo") {
             navigate("/promote/main")
+            setNavOpen(false)
         }
         //클럽의 메인페이지로 이동
         else if (id == "navClub") {
@@ -82,60 +78,62 @@ const Nav_Section = () => {
         else if (id == "logoutBtn") {
             navigate("/account/login")
         }
+        else if (id == "navEmptySpot") {
+            setNavOpen(false)
+        }
     }
 
 
     return (
         <React.Fragment>
-            {/* 네브 외의 부분은 회색처리, 나중에 투명도 반영 필요 */}
-            <PositionDiv width="100%" height="100vh" backgroundColor="#f2f2f2">
-                <Flexdiv onClick={clickEvent} flex="0_0_auto_column_flex-start_center" width="240px" height="100vh" backgroundColor="#ffffff">
-                    {/* 네브 여닫이 버튼,클로그 로고 */}
-                    <Nav_Header />
+            {/* 네브 외의 부분은 투명하게 */}
+            <OpacityDiv onClick={clickEvent} id="navEmptySpot" flex="0_1_auto" position="fixed_0px_0_0_240px" width="100vw" height="100%" backgroundColor="#f0f0f0"></OpacityDiv>
+            <Flexdiv onClick={clickEvent} flex="0_1_auto_column_flex-start_center" position="fixed_0px_0_0_0px" width="240px" height="100vh" backgroundColor="#ffffff">
+                {/* 네브 여닫이 버튼,클로그 로고 */}
+                <Nav_Header />
 
-                    {/* 알림버튼,개인프로필,프로필설정과 로그인페이지 이동버튼 */}
-                    <Flexdiv width="240px" height="340px">
-                        {/* 알림버튼 */}
-                        <Flexdiv flex="0_0_auto_row_flex-end_center" width="240px" height="56px">
-                            <AlamdivParent flex="0_0_auto" width="56px" height="56px">
-                                <Flexbutton id="alarmBtn" type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/bell.svg").default}></Flexbutton>
-                                <Alamdiv id="alarmBtn" flex="0_1_auto_row_center_center" width="20px" height="20px" backgroundColor="#ff0000" fontSize="13px" color="#ffffff" radius="50%">{uncheckAlarmNum}</Alamdiv>
-                                {/* 알림창 박스 */}
-                                {alarmBtn && <Nav_NotificationBox />}
-                            </AlamdivParent>
+                {/* 알림버튼,개인프로필,프로필설정과 로그인페이지 이동버튼 */}
+                <Flexdiv width="240px" height="340px">
+                    {/* 알림버튼 */}
+                    <Flexdiv flex="0_0_auto_row_flex-end_center" width="240px" height="56px">
+                        <Flexdiv flex="0_0_auto" position="relative" width="56px" height="56px">
+                            <Flexbutton id="alarmBtn" type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/bell.svg").default}></Flexbutton>
+                            <Alamdiv id="alarmBtn" flex="0_1_auto_row_center_center" position="absolute_8px_7px_0_0" width="20px" height="20px" backgroundColor="#ff0000" fontSize="13px" color="#ffffff" radius="50%">{uncheckAlarmNum}</Alamdiv>
+                            {/* 알림창 박스 */}
+                            {alarmBtn && <Nav_NotificationBox />}
                         </Flexdiv>
-                        {/* 개인프로필(퍼컬반영된 프로필,이름,학과,학번2자리) */}
-                        <Flexdiv flex="0_0_auto_column_flex-end_center" height="224px">
-                            <Flexbutton type="button" flex="0_0_auto_row_center_center" width="130px" height="124px" margin="0 0 20px 0" radius="50%" outline="1px solid black" backgroundColor={"#" + account.personalColor} fontSize="24px" colorBytBack={account.personalColor}>{account.entryYear + account.name}</Flexbutton>
-                            <Flexdiv flex="0_0_auto" height="40px" fontSize="24px" >{account.name}</Flexdiv>
-                            <Flexdiv flex="0_0_auto" height="40px" fontSize="16px" >{account.major} {account.entryYear}학번</Flexdiv>
-                        </Flexdiv>
-                        {/* 프로필설정,로그아웃 버튼 */}
-                        <ProfileLogout flex="0_0_auto_row_space-evenly_center" height="60px">
-                            <Flexbutton id="profileBtn" type="button" flex="0_0_auto_row_center_center" width="100px" height="30px" radius="10px" backgroundColor="white" border="1px solid #dadada">프로필 설정</Flexbutton>
-                            <Flexbutton id="logoutBtn" type="button" flex="0_0_auto_row_center_center" width="100px" height="30px" radius="10px" backgroundColor="white" border="1px solid #dadada">로그아웃</Flexbutton>
-                            {/* 프로필 설정 박스 */}
-                            {profileBtn && <Nav_ProfileEdit />}
-                        </ProfileLogout>
                     </Flexdiv>
-
-                    {/* 구분선 */}
-                    <Line width="220px" height="15px" margin="0 0 0 10px"></Line>
-
-                    {/* 가입한 동아리 목록 */}
-                    <ClubListBox width="240px" height="fit-content">
-                        {/* 가입한 동아리가 0이면 ~, 아니면 ~ */}
-                        {(clubList.length == 0) ?
-                            //empty 상자, 윗줄의 clubList를 zeroClubList로 변경시 볼 수 있음
-                            <Flexdiv flex="0_1_auto_column_flex-start_center" width="240px">
-                                <Flexdiv flex="0_1_auto" width="60px" margin="20px 0"><Svgempty fill="#c4c4c4" height="60px" /></Flexdiv>
-                                <Span flex="0_1_auto" fontSize="16px" color="#c4c4c4" margin="5px 0">가입된 동아리가 없습니다</Span>
-                                <Span flex="0_1_auto" fontSize="12px" color="#c4c4c4" >클로그에서 새로운 동아리를 찾아보세요</Span>
-                            </Flexdiv> :
-                            clubList.map((elem) => <Nav_Section_Club elem={elem} />)}
-                    </ClubListBox>
+                    {/* 개인프로필(퍼컬반영된 프로필,이름,학과,학번2자리) */}
+                    <Flexdiv flex="0_0_auto_column_flex-end_center" height="224px">
+                        <Flexbutton type="button" flex="0_0_auto_row_center_center" width="130px" height="124px" margin="0 0 20px 0" radius="50%" outline="1px solid black" backgroundColor={"#" + account.personalColor} fontSize="24px" colorBytBack={account.personalColor}>{account.entryYear + account.name}</Flexbutton>
+                        <Flexdiv flex="0_0_auto" height="40px" fontSize="24px" >{account.name}</Flexdiv>
+                        <Flexdiv flex="0_0_auto" height="40px" fontSize="16px" >{account.major} {account.entryYear}학번</Flexdiv>
+                    </Flexdiv>
+                    {/* 프로필설정,로그아웃 버튼 */}
+                    <Flexdiv flex="0_0_auto_row_space-evenly_center" positon="relative" height="60px">
+                        <Flexbutton id="profileBtn" type="button" flex="0_0_auto_row_center_center" width="100px" height="30px" radius="10px" backgroundColor="white" border="1px solid #dadada">프로필 설정</Flexbutton>
+                        <Flexbutton id="logoutBtn" type="button" flex="0_0_auto_row_center_center" width="100px" height="30px" radius="10px" backgroundColor="white" border="1px solid #dadada">로그아웃</Flexbutton>
+                        {/* 프로필 설정 박스 */}
+                        {profileBtn && <Nav_ProfileEdit />}
+                    </Flexdiv>
                 </Flexdiv>
-            </PositionDiv>
+
+                {/* 구분선 */}
+                <Line width="220px" height="15px" margin="0 0 0 10px"></Line>
+
+                {/* 가입한 동아리 목록 */}
+                <ClubListBox width="240px" height="fit-content">
+                    {/* 가입한 동아리가 0이면 ~, 아니면 ~ */}
+                    {(clubList.length == 0) ?
+                        //empty 상자, 윗줄의 clubList를 zeroClubList로 변경시 볼 수 있음
+                        <Flexdiv flex="0_1_auto_column_flex-start_center" width="240px">
+                            <Flexdiv flex="0_1_auto" width="60px" margin="20px 0"><Svgempty fill="#c4c4c4" height="60px" /></Flexdiv>
+                            <Span flex="0_1_auto" fontSize="16px" color="#c4c4c4" margin="5px 0">가입된 동아리가 없습니다</Span>
+                            <Span flex="0_1_auto" fontSize="12px" color="#c4c4c4" >클로그에서 새로운 동아리를 찾아보세요</Span>
+                        </Flexdiv> :
+                        clubList.map((elem) => <Nav_Section_Club elem={elem} />)}
+                </ClubListBox>
+            </Flexdiv>
         </React.Fragment>
     )
 

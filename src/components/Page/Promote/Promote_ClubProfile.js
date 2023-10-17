@@ -13,8 +13,8 @@ import styled from "styled-components"
 const Promote_ClubProfile = () => {
     return (
         <React.Fragment>
-            <Promote_Header />
             <Promote_ClubProfile_Section />
+            <Promote_Header />
         </React.Fragment>
     )
 }

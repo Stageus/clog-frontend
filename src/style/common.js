@@ -9,6 +9,18 @@ const setPosition = (position) => {
     let positionList = position.split("_")
     return positionList
 }
+const setFont = (font) => {
+    let fontList = font.split("_")
+    return fontList
+}
+const setBorder = (customBorder) => {
+    let customBorderList = customBorder.split("_")
+    return customBorderList
+}
+const setTextOver = (textOver) => {
+    let textOverList = textOver.split("_")
+    return textOverList
+}
 
 const setTextColorByBackgroundColor = (hexColor) => {
     // const c = hexColor.substring(1)      // 색상 앞의 # 제거
@@ -23,17 +35,34 @@ const setTextColorByBackgroundColor = (hexColor) => {
 
 //div
 export const Flexdiv = styled.div`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "none"};
+
+    border: ${props => props.border};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    text-align:${props => props.textAlign || "center"};
+    cursor: ${props => props.cursor};
+
     ${props => props.flex && css`
-            ${setFlex(props.flex)};
-            display: flex;
-            flex-grow : ${setFlex(props.flex)[0]};
-            flex-shrink: ${setFlex(props.flex)[1]};
-            flex-basis: ${setFlex(props.flex)[2]};
-            flex-direction: ${setFlex(props.flex)[3]};
-            justify-content: ${setFlex(props.flex)[4]};
-            align-items: ${setFlex(props.flex)[5]};
-            flex-wrap: ${setFlex(props.flex)[6]};
-        `}
+        ${setFlex(props.flex)};
+        display: flex;
+        flex-grow : ${setFlex(props.flex)[0]};
+        flex-shrink: ${setFlex(props.flex)[1]};
+        flex-basis: ${setFlex(props.flex)[2]};
+        flex-direction: ${setFlex(props.flex)[3]};
+        justify-content: ${setFlex(props.flex)[4]};
+        align-items: ${setFlex(props.flex)[5]};
+        flex-wrap: ${setFlex(props.flex)[6]};
+    `}
     ${props => props.position && css`
         ${setPosition(props.position)};
         position : ${setPosition(props.position)[0]};
@@ -42,26 +71,53 @@ export const Flexdiv = styled.div`
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
     `}
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
+    `}
 
-    text-align:${props => props.textAlign || "center"};
-    width: ${props => props.width};
-    height: ${props => props.height};
-    cursor: ${props => props.cursor || "pointer"};
-    border-radius: ${props => props.radius || "0px"};
-    border: ${props => props.border};
-    border-top: ${props => props.borderTop};
-    outline: ${props => props.outline};
-    margin: ${props => props.margin};
-    padding: ${props => props.padding};
-    background-color: ${props => props.backgroundColor};
     font-size: ${props => props.fontSize};
-    justify-content: ${props => props.justifyContent};
-    color: ${props => props.color};
-    opacity: ${props => props.opacity};
+    border-top: ${props => props.borderTop};
+    
 `
 
 //button
 export const Flexbutton = styled.button`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "none"};
+
+    border:${props => props.border || "none"};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    text-align:${props => props.textAlign};
+    cursor: ${props => props.cursor || "pointer"};
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -81,29 +137,58 @@ export const Flexbutton = styled.button`
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
     `}
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        white-space : ${setTextOver(props.textOver)[0]};
+        overflow : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
+    `}
     ${props => props.url &&
         css`
         background: url( "${props => props.url}" ) no-repeat;
         background-size: contain;
     `}
-    border:${props => props.border || "none"};
-    text-align:${props => props.textAlign};
-    width: ${props => props.width};
-    height: ${props => props.height};
-    cursor: ${props => props.cursor || "pointer"};
-    border-radius: ${props => props.radius || "0px"};
+    
     font-size: ${props => props.fontSize};
-    color: ${props => props.color};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    background-color: ${props => props.backgroundColor};
-    outline: ${props => props.outline};
+    
 `
-
 
 
 //input
 export const Flexinput = styled.input`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "0px"};
+
+    border:${props => props.border || "none"};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    text-align:${props => props.textAlign};
+    cursor: ${props => props.cursor};
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -122,29 +207,58 @@ export const Flexinput = styled.input`
         right : ${setPosition(props.position)[2]};
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
+    `}
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        white-space : ${setTextOver(props.textOver)[0]};
+        overflow : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
     `}
     ${props => props.url &&
         css`
         background: url( "${props => props.url}" ) no-repeat;
         background-size: contain;
     `}
-    border:${props => props.border || "none"};
-    text-align:${props => props.textAlign};
-    width: ${props => props.width};
-    height: ${props => props.height};
-    cursor: ${props => props.cursor || "pointer"};
-    border-radius: ${props => props.radius || "0px"};
+
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
     font-weight: ${props => props.fontBold || "400"};
-    color: ${props => props.color};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    background-color: ${props => props.backgroundColor};
-    outline: ${props => props.outline};
+    
 `
 
 export const Img = styled.img`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "0px"};
+
+    border:${props => props.border || "none"};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    cursor: ${props => props.cursor};
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -164,15 +278,51 @@ export const Img = styled.img`
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
     `}
-    width: ${props => props.width};
-    height: ${props => props.height};
-    border: ${props => props.border || "none"};
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        white-space : ${setTextOver(props.textOver)[0]};
+        overflow : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
+    `}
+
     box-sizing: border - box;
-    margin: ${props => props.margin};
-    border-radius: ${props => props.radius || "0px"};
+
 `
 
 export const Span = styled.span`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "0px"};
+
+    border:${props => props.border};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    text-align:${props => props.textAlign};
+    cursor: ${props => props.cursor || "text"};
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -192,20 +342,54 @@ export const Span = styled.span`
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
     `}
-    width: ${props => props.width};
-    height: ${props => props.height};
-    background-color: ${props => props.backgroundColor};
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        white-space : ${setTextOver(props.textOver)[0]};
+        overflow : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
+    `}
+
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
     font-weight: ${props => props.fontBold || "400"};
-    text-align:${props => props.textAlign};
-    color: ${props => props.color};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+
 `
 
 
 export const P = styled.p`
+
+    width: ${props => props.width};
+    height: ${props => props.height};
+    margin: ${props => props.margin || "none"};
+    padding: ${props => props.padding || "none"};
+    border-radius: ${props => props.radius || "0px"};
+
+    border:${props => props.border};
+    outline: ${props => props.outline};
+
+    color: ${props => props.color};
+    background-color: ${props => props.backgroundColor};
+    opacity: ${props => props.opacity};
+
+    text-align:${props => props.textAlign};
+    cursor: ${props => props.cursor || "text"};
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;
@@ -225,14 +409,31 @@ export const P = styled.p`
         bottom : ${setPosition(props.position)[3]};
         left : ${setPosition(props.position)[4]};
     `}
-    width: ${props => props.width};
-    height: ${props => props.height};
-    background-color: ${props => props.backgroundColor};
+    ${props => props.font && css`
+        ${setFont(props.font)};
+        font-size : ${setFont(props.font)[0]};
+        font-weight : ${setFont(props.font)[1]};
+        font-family : ${setFont(props.font)[2]};
+        font-style : ${setFont(props.font)[3]};
+        line-height : ${setFont(props.font)[4]};
+    `}
+    ${props => props.customBorder && css`
+        ${setBorder(props.customBorder)};
+        border-top-width : ${setBorder(props.customBorder)[0]};
+        border-right-width : ${setBorder(props.customBorder)[1]};
+        border-bottom-width : ${setBorder(props.customBorder)[2]};
+        border-left-width : ${setBorder(props.customBorder)[3]};
+        border-color : ${setBorder(props.customBorder)[4]};
+    `}
+    ${props => props.textOver && css`
+        ${setTextOver(props.textOver)};
+        white-space : ${setTextOver(props.textOver)[0]};
+        overflow : ${setTextOver(props.textOver)[1]};
+        text-overflow : ${setTextOver(props.textOver)[2]};
+    `}
+
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
     font-weight: ${props => props.fontBold || "400"};
-    text-align:${props => props.textAlign};
-    color: ${props => props.color};
-    margin: ${props => props.margin || "0"};
-    padding: ${props => props.padding || "none"};
+
 `

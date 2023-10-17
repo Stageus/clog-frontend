@@ -113,7 +113,7 @@ const Club_BoardList = () => {
             </Flexdiv>
 
             {/* 게시판 하단 마무리 디자인 */}
-            <Flexdiv height="200px" borderTop={"2px solid #" + club[0].themeColor}></Flexdiv>
+            <Flexdiv height="200px" width="200px" borderTop={"2px solid #" + club[0].themeColor}></Flexdiv>
 
         </React.Fragment>
     )

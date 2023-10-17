@@ -10,17 +10,16 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const Promote_Category_Button = (props) => {
     // props ======================================================
-    const { elem } = props
+    const { elem, btncolor } = props
 
     // state ======================================================
 
     // event ======================================================
 
 
-
     return (
         <React.Fragment>
-            <Flexbutton id={"categoryBtn" + elem.num} flex="0_1_auto_row_center_center" backgroundColor="#f0f0f0" width="fit-content" height="30px" radius="10px" margin="0 6px" padding="0 10px">{elem.content}</Flexbutton>
+            <Flexbutton id={"categoryBtn" + elem.num} flex="0_1_auto_row_center_center" width="fit-content" height="30px" backgroundColor="#f0f0f0" radius="10px" margin="0 6px" padding="0 10px">{elem.content}</Flexbutton>
         </React.Fragment>
     )
 }

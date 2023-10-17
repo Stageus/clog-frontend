@@ -14,9 +14,10 @@ import styled from "styled-components"
 const Promote_CategoryResult = () => {
     return (
         <React.Fragment>
+            <Promote_CategoryResult_Section />
             <Promote_Category />
             <Promote_Header />
-            <Promote_CategoryResult_Section />
+
         </React.Fragment>
     )
 }

@@ -31,7 +31,7 @@ const SearchRight = styled(Flexbutton)`
 `
 const Promote_Header = () => {
     // props ======================================================
-
+    const navigate = useNavigate()
     // state ======================================================
     const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);
 
@@ -43,6 +43,14 @@ const Promote_Header = () => {
             setNavOpen(!navOpen)
             console.log(navOpen)
         }
+        //클로그 로고 클릭시 promote/main페이지로 이동
+        else if (id == "navClogLogo") {
+            navigate("/promote/main")
+            setNavOpen(false)
+        }
+        else if (id == "gosearch") {
+            navigate("/promote/search-result")
+        }
     }
 
     return (
@@ -53,11 +61,11 @@ const Promote_Header = () => {
 
                 {/* 헤더 중앙 */}
                 <Flexdiv flex="0_0_auto_row_center_center" width="770px">
-                    <SearchLeft flex="0_0_auto" width="700px" height="38px" backgroundColor="#ffffff" outline="1px solid #dadada">
+                    <SearchLeft flex="0_0" width="700px" height="38px" backgroundColor="#ffffff" outline="1px solid #dadada">
                         <Flexinput width="650px" />
                     </SearchLeft>
-                    <SearchRight type="button" flex="0_0_auto_row_center_center" width="68px" height="38px" backgroundColor="#f0f0f0" outline="1px solid #dadada">
-                        <Svgsearch height="24px" />
+                    <SearchRight id="gosearch" type="button" flex="0_0_auto_row_center_center" width="68px" height="38px" backgroundColor="#f0f0f0" outline="1px solid #dadada">
+                        <Svgsearch id="gosearch" height="24px" />
                     </SearchRight>
                 </Flexdiv>
 

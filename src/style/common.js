@@ -85,7 +85,8 @@ export const Flexdiv = styled.div`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
@@ -151,7 +152,8 @@ export const Flexbutton = styled.button`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
@@ -222,7 +224,8 @@ export const Flexinput = styled.input`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
@@ -292,7 +295,8 @@ export const Img = styled.img`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
@@ -356,7 +360,8 @@ export const Span = styled.span`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
@@ -423,7 +428,8 @@ export const P = styled.p`
         border-right-width : ${setBorder(props.customBorder)[1]};
         border-bottom-width : ${setBorder(props.customBorder)[2]};
         border-left-width : ${setBorder(props.customBorder)[3]};
-        border-color : ${setBorder(props.customBorder)[4]};
+        border-style : ${setBorder(props.customBorder)[4]};
+        border-color : ${setBorder(props.customBorder)[5]};
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};

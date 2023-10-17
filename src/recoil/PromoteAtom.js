@@ -453,12 +453,12 @@ export const categoryResultClubAtom = atom({
             "profileImg": "../../../image/race.png", // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
-            아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이 존재합니다.\
-            이 중 웹, 앱, 게임은 디자이너와 협업이 필요합니다. 소모임 설립 목적은 \
-            다른 소모임(웹, 앱, 게임)과 디자이너 간 협업 환경 구축이지만, 디자인 \
-            소모임 자체적으로 진행하는 활동을 통해 다양한 분야의 디자이너들이 소통하고 \
-            활동하는 환경을 만들어 인하대 내 최고의 디자인 동아리로 입지를 다지는 것이\
-             최종 목표입니다.", // 동아리 소개글
+             아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이\
+              존재합니다. 이 중 웹, 앱, 게임은 디자이너와 협업이 필요합니다. 소모임 설립\
+               목적은 다른 소모임(웹, 앱, 게임)과 디자이너 간 협업 환경 구축이지만, \
+               디자인 소모임 자체적으로 진행하는 활동을 통해 다양한 분야의 디자이너들이 소통하고 \
+               활동하는 환경을 만들어 인하대 내 최고의 디자인 동아리로 입지를 다지는 것이 최종 \
+               목표입니다. 들어 인하대 내 최고의 디자인 동아리로 입니다.", // 동아리 소개글
             "isMember": false, // 해당 동아리에 가입 되어있는 상태인지
             "isRecruit": false, // 해당 동아리의 가입 신청 오픈 유무
         },
@@ -652,6 +652,171 @@ export const categoryResultClubAtom = atom({
             아이런과 함께 달려봐요!!🔥.", // 동아리 소개글
             "isMember": true, // 해당 동아리에 가입 되어있는 상태인지
             "isRecruit": false, // 해당 동아리의 가입 신청 오픈 유무
+        }
+    ]
+})
+
+
+export const smallCategoryAtom = atom({
+    "key": "",
+    "default": [
+        {
+            "id": 0,
+            "name": "기악"
+        },
+        {
+            "id": 1,
+            "name": "밴드"
+        },
+        {
+            "id": 2,
+            "name": "연극/뮤지컬"
+        },
+        {
+            "id": 3,
+            "name": "무용"
+        },
+        {
+            "id": 4,
+            "name": "노래/합창"
+        },
+        {
+            "id": 5,
+            "name": "기타"//
+        },
+        {
+            "id": 6,
+            "name": "어학"//
+        },
+        {
+            "id": 7,
+            "name": "경제/사회"
+        },
+        {
+            "id": 8,
+            "name": "순수과학"
+        },
+        {
+            "id": 9,
+            "name": "기계/설비"
+        },
+        {
+            "id": 10,
+            "name": "SW/IT"
+        },
+        {
+            "id": 11,
+            "name": "역사/문화"
+        }
+        ,
+        {
+            "id": 12,
+            "name": "기타"//
+        },
+        {
+            "id": 13,
+            "name": "사회"//
+        },
+        {
+            "id": 14,
+            "name": "종교"//
+        },
+        {
+            "id": 15,
+            "name": "예술/공예"
+        },
+        {
+            "id": 16,
+            "name": "미디어"
+        },
+        {
+            "id": 17,
+            "name": "문학"
+        },
+        {
+            "id": 18,
+            "name": "기타"//
+        },
+        {
+            "id": 19,
+            "name": "무예"//
+        },
+        {
+            "id": 20,
+            "name": "구기"//
+        },
+        {
+            "id": 21,
+            "name": "레저"//
+        },
+        {
+            "id": 22,
+            "name": "동물"
+        },
+        {
+            "id": 21,
+            "name": "아동/학생"
+        },
+        {
+            "id": 22,
+            "name": "기타"//
+        }
+    ]
+})
+
+
+export const searchResultClubAtom = atom({
+    "key": "searchResultClubAtom",
+    "default": [
+        {
+            "id": "1",
+            "club": "MRA",
+            "profileImage": "../../../image/mra.png"
+        },
+        {
+            "id": "2",
+            "club": "테니스부",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "3",
+            "club": "동아리3",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "4",
+            "club": "동아리4",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "5",
+            "club": "동아리5",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "6",
+            "club": "동아리6",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "7",
+            "club": "동아리7",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "8",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "9",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "10",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
         }
     ]
 })

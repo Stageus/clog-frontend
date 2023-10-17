@@ -22,9 +22,12 @@ const Promote_Category = () => {
 
     // state ======================================================
     const navigate = useNavigate();
+    const [clicked, setClicked] = React.useState(false);
     const bigCategory = useRecoilValue(bigCategoryAtom);//카테고리 대분류
     const belong = useRecoilValue(belongAtom)// 동아리 소속 / 중앙동아리,일반동아리 제외(대분류 포함)
     const belongList = []
+    // let color = "#333333"
+    // let btncolor = "#f0f0f0"
 
     // belong에서 중앙동아리, 일반동아리 제외
     for (let index = 0; index < belong.length - 2; index++) {
@@ -37,9 +40,12 @@ const Promote_Category = () => {
 
         if (id.includes("categoryBtn")) {
             console.log(id)
+            // setClicked((clicked) => !clicked)
+            // btncolor = "#333333"
             navigate("/promote/category-result")
         }
     }
+
 
 
     return (

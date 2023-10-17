@@ -49,7 +49,7 @@ export const Flexdiv = styled.div`
     background-color: ${props => props.backgroundColor};
     opacity: ${props => props.opacity};
 
-    text-align:${props => props.textAlign || "center"};
+    text-align:${props => props.textAlign};
     cursor: ${props => props.cursor};
 
     ${props => props.flex && css`
@@ -93,6 +93,10 @@ export const Flexdiv = styled.div`
         overflow : ${setTextOver(props.textOver)[0]};
         white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};
@@ -113,7 +117,7 @@ export const Flexbutton = styled.button`
     outline: ${props => props.outline};
 
     color: ${props => props.color};
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.backgroundColor || "#ffffff"};
     opacity: ${props => props.opacity};
 
     text-align:${props => props.textAlign};
@@ -157,9 +161,13 @@ export const Flexbutton = styled.button`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
     ${props => props.url &&
         css`
@@ -229,9 +237,13 @@ export const Flexinput = styled.input`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
     ${props => props.url &&
         css`
@@ -300,9 +312,13 @@ export const Img = styled.img`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     box-sizing: border - box;
@@ -365,9 +381,13 @@ export const Span = styled.span`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};
@@ -433,9 +453,13 @@ export const P = styled.p`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};

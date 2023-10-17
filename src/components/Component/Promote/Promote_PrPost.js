@@ -24,14 +24,14 @@ const Promote_PrPost = (props) => {
 
     return (
         <React.Fragment>
-            <Flexdiv flex="0_1_auto_column_center_center" width="240px" height="400px" margin="0 0 30px 0">
+            <Flexdiv flex="0_1_auto_column_center_center" width="240px" height="390px" margin="10px 0 20px 0">
                 <Flexdiv id="prpost" flex="0_1_auto_column_center" width="fit-content" height="fit-content" >
                     <Flexhidden id="prpost" flex="0_1_auto_row_center_center" width="210px" height="297px" backgroundColor="#f2f2f2" radius="10px" margin="0 0 5px 0">
                         <Img id="prpost" flex="0_1_auto" src={require("../../../image/prmain1.jpg")} width="210px" />
                     </Flexhidden>
 
                     {/* 홍보물 제목 */}
-                    <Flexdiv id="prpost" flex="0_1_auto" width="210px" height="42px" backgroundColor="#ffffff" fontSize="14px" textAlign="start">
+                    <Flexdiv id="prpost" textOver="hidden_normal_ellipsis_2" width="210px" height="40px" backgroundColor="#ffffff" font="14px_0_0_0_20px" textAlign="start">
                         {elem.title}
                     </Flexdiv>
                 </Flexdiv>

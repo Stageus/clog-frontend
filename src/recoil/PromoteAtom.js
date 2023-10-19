@@ -820,3 +820,92 @@ export const searchResultClubAtom = atom({
         }
     ]
 })
+
+
+export const clubProfileAtom = atom({
+    "key": "clubProfileAtom",
+    "default": {
+        "name": "MRA", // 동아리 이름
+        "belong": "중앙동아리", // 동아리 소속
+        "bigCategory": "봉사", // 동아리 대분류
+        "smallCategory": "아동/학생", // 동아리 소분류
+        "profileImage": "../../../image/mra.png", // 동아리 프로필 이미지
+        "bannerImage": "?", // 동아리 배너 이미지
+        "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 개발하고\
+         이에 필요한 지식을 연구하는 소모임입니다. 게임 개발에 관심 있는 사람들이 프로젝트를 \
+         통해 게임을 개발하고 출시할 수 있습니다.게임 개발 경험이 없더라도, 입문 프로젝트를 \
+         통해 Unity 활용 능력을 기르거나, 프로젝트를 통해 게임을 출시해 볼 수 있습니다. \
+         IGDC는 게임 개발에 관심 있으신 분들이라면 누구든 환영합니다!", // 동아리 간단 소개글
+        "themeColor": "B466D4", // 동아리 테마 색상
+        "memberCount": 101, // 동아리원 수
+        "createdAt": "2023.05.21", // 동아리 생성 날짜 (YYYY.MM.DD)
+        "manageState": true, // manage여부 (여기선 회장만?)
+    }
+})
+
+
+export const themaColorAtom = atom({
+    "key": "themaColorAtom",
+    "default": [
+        {
+            "num": 0,
+            "name": "Club Red",
+            "code": "E94832",
+        },
+        {
+            "num": 1,
+            "name": "Club Orange",
+            "code": "EC9323",
+        },
+        {
+            "num": 2,
+            "name": "Club Yellow",
+            "code": "EFCD2A",
+        },
+        {
+            "num": 3,
+            "name": "Club Lime",
+            "code": "3EC054",
+        },
+        {
+            "num": 4,
+            "name": "Club Green",
+            "code": "22851B",
+        },
+        {
+            "num": 5,
+            "name": "Club Mint",
+            "code": "2FEDCA",
+        },
+        {
+            "num": 6,
+            "name": "Club SkyBlue",
+            "code": "669AEE",
+        },
+        {
+            "num": 7,
+            "name": "Club Blue",
+            "code": "495FF8",
+        },
+        {
+            "num": 8,
+            "name": "Club Violet",
+            "code": "B466D4",
+        },
+        {
+            "num": 9,
+            "name": "Club Pink",
+            "code": "F03579",
+        },
+        {
+            "num": 10,
+            "name": "Club Brown",
+            "code": "A15930",
+        },
+        {
+            "num": 11,
+            "name": "Club Gray",
+            "code": "535353",
+        }
+    ]
+})

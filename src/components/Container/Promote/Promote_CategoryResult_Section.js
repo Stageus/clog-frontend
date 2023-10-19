@@ -58,7 +58,7 @@ const Promote_CategoryResult_Section = () => {
                     <Flexdiv flex="0_1_auto" width="1150px" height="50px" fontSize="36px">{bigCategory[0].content} 동아리</Flexdiv>
                     {/* 드롭다운 박스 */}
                     <Flexdiv flex="0_1_auto_column_center_flex-start" position="relative" width="1150px" margin="20px 10px 40px 0">
-                        <Promote_Category_DropBox smallList={smallList} width={"200px"} />
+                        <Promote_Category_DropBox base={"전체"} list={smallList} width={"200px"} height={"36px"} />
                     </Flexdiv>
                 </Flexdiv>
 

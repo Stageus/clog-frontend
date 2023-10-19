@@ -1,0 +1,64 @@
+import React from "react"
+
+//recoil
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
+import { belongAtom, bigCategoryAtom, smallCategoryAtom } from "../../../recoil/PromoteAtom"
+
+//styled-components 
+import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
+import styled from "styled-components"
+//svg
+
+//router
+import { Link, useNavigate } from 'react-router-dom'
+import Promote_Category_DropBox from "./Promote_Category_DropBox"
+
+const ZindexDiv = styled(Flexdiv)`
+    
+`
+const Promote_ClubCreate_InflexInfo = () => {
+    // props ======================================================
+    // state ======================================================
+    const belong = useRecoilValue(belongAtom)
+    const smallCategory = useRecoilValue(smallCategoryAtom)
+    const bigCategory = useRecoilValue(bigCategoryAtom)
+    const belongList = []
+    const bigList = []
+
+    // event ======================================================
+    for (let index = 0; index < belong.length; index++) {
+        belongList[index] = belong[index].content
+    }
+    for (let index = 0; index < bigCategory.length; index++) {
+        bigList[index] = bigCategory[index].content
+    }
+    console.log(belongList)
+    console.log(bigList)
+    return (
+        <React.Fragment>
+            <Flexdiv flex="0_1_auto_row_center_center" width="900px" margin="0 0 50px 0">
+                {/* 동아리이름 */}
+                <Flexdiv flex="0_1_auto_column_flex-start_flex-start" width="450px" height="100%" >
+                    <Flexdiv flex="0_1_auto_row_center_center" font="20px_600" height='40px'>동아리 이름</Flexdiv>
+                    <Flexinput flex="0_1_auto" width="400px" height="50px" radius="10px" border="1px solid #c4c4c4" placeholder="한글 영어 혼용 가능, 최소 1자~최대 10자" padding="0px" />
+                    <Flexdiv flex="0_1_auto_row_flex-end_center" width="400px" height="50px" margin="10px 0">
+                        <Flexbutton flex="0_1_auto_row_center_center" width="120px" height="50px" radius="10px" font="16px" backgroundColor="#333333" color="#ffffff">중복 체크</Flexbutton>
+                    </Flexdiv>
+                </Flexdiv>
+
+                {/* 동아리 분류 */}
+                <Flexdiv flex="0_1_auto_column_flex-start_flex-end" width="450px" height="100%">
+                    <Flexdiv flex="0_1_auto_row_flex-start_center" width="400px" font="20px_600" margin="10px 0">동아리 분류</Flexdiv>
+                    <Flexdiv position="relative_50px" width="400px" height="50px" flex="0_1_auto_row_center_center">
+                        <Promote_Category_DropBox base={"소속"} list={bigList} width="400px" height={"50px"} />
+                    </Flexdiv>
+                    <ZindexDiv position="relative_-50px" width="400px" height="50px" flex="0_1_auto_row_center_center">
+                        <Promote_Category_DropBox base={"분류"} list={belongList} width="400px" height={"50px"} />
+                    </ZindexDiv>
+                </Flexdiv>
+            </Flexdiv>
+        </React.Fragment>
+    )
+}
+
+export default Promote_ClubCreate_InflexInfo

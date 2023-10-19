@@ -41,7 +41,7 @@ const PostView_Content_Comment = (props) => {
 
     let contentList = elem.content.split("\n")
 
-
+    console.log(contentList)
     return (
         <React.Fragment>
             <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_flex-start" width="860px" margin="10px 0" padding="10px 0">
@@ -61,7 +61,7 @@ const PostView_Content_Comment = (props) => {
                         </Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" padding="5px 5px">
-                        {contentList.map((elem) => <P>{elem}</P>)}
+                        {contentList.map((elem) => <P margin="0px">{elem}</P>)}
                     </Flexdiv>
                     {/* 답글이 있으면 버튼 보임 */}
                     {(elem.replyCount != 0) &&

@@ -31,7 +31,8 @@ const Promote_ClubCreate_Section = () => {
         <React.Fragment>
             <Flexdiv flex="0_1_auto_column_center_center" width="100%">
                 <Flexdiv flex="0_1_auto_column_center_center" width="940px" margin="120px">
-                    <Flexdiv flex="0_1_auto_row_flex-start_center" width="900px" height="100px" font="36px_700" border="0_0_1px_0_#c4c4c4" margin="0 40px" padding="0 40px">동아리 만들기</Flexdiv>
+                    <Flexdiv flex="0_1_auto_row_flex-start_center" width="900px" height="100px" font="36px_700" customBorder="0px_0px_1px_0px_solid_#c4c4c4" margin="0 40px" padding="0 40px">동아리 만들기</Flexdiv>
+                    <Flexdiv flex="0_1_auto_row_flex-start_center" width="900px" height="50px" color="#EB5149" >동아리 이름과 분류는 이후에 수정이 불가능합니다.</Flexdiv>
                     <Promote_ClubCreate_InflexInfo />
                     <Promote_ClubCreate_FlexInfo />
                 </Flexdiv>

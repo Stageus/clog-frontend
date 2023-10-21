@@ -46,7 +46,6 @@ const Nav_Section = () => {
     const clubList = useRecoilValue(clubListAtom);//가입한 동아리정보(동아리넘버,이름,프로필로고)
     const [profileBtn, setProfileBtn] = React.useState(false);//프로필 설정 열고닫기
     const [alarmBtn, setAlarmBtn] = React.useState(false);//알람창 열고닫기
-    const zeroClubList = useRecoilValue(zeroClubListAtom);//임시로 가입된 동아리가 0개일때
     const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);//nav 여닫기
     // event ======================================================
     const navigate = useNavigate();
@@ -125,7 +124,6 @@ const Nav_Section = () => {
                 <ClubListBox width="240px" height="fit-content">
                     {/* 가입한 동아리가 0이면 ~, 아니면 ~ */}
                     {(clubList.length == 0) ?
-                        //empty 상자, 윗줄의 clubList를 zeroClubList로 변경시 볼 수 있음
                         <Flexdiv flex="0_1_auto_column_flex-start_center" width="240px">
                             <Flexdiv flex="0_1_auto" width="60px" margin="20px 0"><Svgempty fill="#c4c4c4" height="60px" /></Flexdiv>
                             <Span flex="0_1_auto" fontSize="16px" color="#c4c4c4" margin="5px 0">가입된 동아리가 없습니다</Span>

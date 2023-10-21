@@ -34,11 +34,13 @@ const Nav_NotificationBox = () => {
     // state ======================================================
     const [allData, setAllData] = useRecoilState(alarmAtom);//모든 데이터
     const [data, setData] = React.useState([]);//현재 데이터
-    const zeroData = useRecoilValue(zeroAlarmAtom)
     const [uncheckAlarmNum, setUncheckAlarmNum] = useRecoilState(alarmNumAtom);//안읽은 알람 개수
     const [isLoaded, setIsLoaded] = React.useState(false);//true이면 loading중임
     const page = React.useRef(0);//page count
     const perPage = 20;//한 페이지당 불러올 알람 개수
+    let last = allData.length % perPage// 마지막 페이지의 컴포넌트 개수
+    let pageMax = parseInt(allData.length / perPage)//총 페이지 수
+
 
     // event ======================================================
     //클릭이벤트
@@ -60,17 +62,26 @@ const Nav_NotificationBox = () => {
         }
         setAllData(newList)
         setUncheckAlarmNum(0)
-        //alarmNum을 0 으로 변경(ui 반영이 늦어도 되는 부분이라고 생각해 그냥 하위 컴포넌트에 넣음)
+        //alarmNum을 0 으로 변경, 랜더링 적용 타이밍수정 필요
     }
 
 
     ///////////////////////////////////무한 스크롤 관련 함수///////////////////
     //넘어온 알람을 20개씩 파싱(임시)
+    //데이터 파싱
     const cutData = () => {
         let newDataList = []
-        for (let index = 0; index < perPage; index++) {
-            let count = index + perPage * page.current
-            newDataList[index] = allData[count]
+        if (page.current < pageMax) {
+            for (let index = 0; index < perPage; index++) {
+                let count = index + perPage * page.current
+                newDataList[index] = allData[count]
+            }
+        }
+        else if (page.current >= pageMax) {
+            for (let index = 0; index < last; index++) {
+                let count = index + perPage * page.current
+                newDataList[index] = allData[count]
+            }
         }
         return newDataList
     }
@@ -78,8 +89,7 @@ const Nav_NotificationBox = () => {
     //callback함수 실행시 ...
     const fetchData = async () => {
         let newDataList = []
-        let pageMax = allData.length / perPage
-        if (page.current < pageMax) {
+        if (page.current <= pageMax) {
             //현재 페이지의, 추가할 데이터를 불러옴
             let newDataList = cutData()
             setData((data) => {
@@ -123,7 +133,6 @@ const Nav_NotificationBox = () => {
 
                 {/* 알림의 개수가 0개이면 ~, 아니면~ */}
                 {(data.length == 0) ?
-                    //윗줄에서 data 대신 zeroData를 입력하면 확인가능
                     <NotificationBox id="notification" width="480px" height="460px">
                         <Flexdiv flex="0_0_auto_column_center_center" height="100%">
                             <Flexdiv flex="0_0_auto" width="100px" ><Svgslash fill="#c4c4c4" height="100px" /></Flexdiv>

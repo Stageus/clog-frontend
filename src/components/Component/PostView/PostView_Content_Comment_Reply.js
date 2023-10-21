@@ -40,7 +40,7 @@ const Postview_Content_Comment_Reply = (props) => {
                         </Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" margin="0 10px" >
-                        {contentList.map((elem) => <P>{elem}</P>)}
+                        {contentList.map((elem) => <P margin="0px">{elem}</P>)}
                     </Flexdiv>
                 </Flexdiv>
             </CommentDiv>

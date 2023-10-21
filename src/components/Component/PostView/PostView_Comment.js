@@ -1,8 +1,8 @@
 import React from "react"
 
 // Container,Component
-import PostView_Content_Comment from "../../../components/Component/PostView/PostView_Content_Comment"
-import Postview_Content_Comment_Input from "../../Component/PostView/PostView_Content_Comment_Input"
+import PostView_Content_Comment from "./PostView_Content_Comment"
+import Postview_Content_Comment_Input from "./PostView_Content_Comment_Input"
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil"
 import { prPostViewAtom, prPostCommentAtom, prPostReplyAtom } from "../../../recoil/PromoteAtom"
@@ -21,7 +21,7 @@ const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
 
-const Promote_Comment = () => {
+const PostView_Comment = () => {
     // props ======================================================
 
     // state ======================================================
@@ -79,4 +79,4 @@ const Promote_Comment = () => {
     )
 }
 
-export default Promote_Comment
+export default PostView_Comment

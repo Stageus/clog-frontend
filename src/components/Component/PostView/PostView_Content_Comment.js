@@ -8,7 +8,7 @@ import { Flexdiv, P, Flexinput, Flexbutton, Img, Span } from "../../../style/com
 import styled from "styled-components"
 //svg
 import { ReactComponent as Svgdown } from "../../../image/angle-down.svg"
-
+import { ReactComponent as Svgup } from "../../../image/angle-up.svg"
 //router
 import { Link, useNavigate } from 'react-router-dom'
 import Postview_Content_Comment_Input from "./PostView_Content_Comment_Input"
@@ -67,7 +67,10 @@ const PostView_Content_Comment = (props) => {
                     {(elem.replyCount != 0) &&
                         <Flexdiv id="replyview" flex="0_1_auto_row_center_center" width="80px" hight="20px" fontSize="14px" color="#aaaaaa" radius="10px" outline="1px solid #dadada" margin="0 0 10px 0">
                             <Flexdiv id="replyview" flex="0_1_auto">답글 {elem.replyCount}개</Flexdiv>
-                            <Flexdiv id="replyview" flex="0_1_auto"><Svgdown id="replyview" fill="#aaaaaa" width="10px" height="10px" /></Flexdiv>
+                            <Flexdiv id="replyview" flex="0_1_auto">
+                                {replyView ? <Svgup id="replyview" fill="#aaaaaa" width="10px" height="10px" />
+                                    : <Svgdown id="replyview" fill="#aaaaaa" width="10px" height="10px" />}
+                            </Flexdiv>
                         </Flexdiv>}
 
                     {/* 답글 보는 버튼이 눌리면 답글 보임 */}

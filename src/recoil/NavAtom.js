@@ -19,10 +19,6 @@ export const alarmNumAtom = atom({
 })
 
 //알림 내용
-export const zeroAlarmAtom = atom({
-    "key": "zeroAlarmAtom",
-    "default": []
-})
 export const alarmAtom = atom({
     "key": "alarmAtom",
     "default": [
@@ -400,52 +396,52 @@ export const clubListAtom = atom({
         {
             "id": "1",
             "club": "MRA",
-            "profileImage": "../../../image/mra.png"
+            "profileImage": require("../image/mra.png")
         },
         {
             "id": "2",
             "club": "테니스부",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "3",
             "club": "동아리3",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "4",
             "club": "동아리4",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "5",
             "club": "동아리5",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "6",
             "club": "동아리6",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "7",
             "club": "동아리7",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "8",
             "club": "동아리8",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "9",
             "club": "동아리9",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         },
         {
             "id": "10",
             "club": "동아리10",
-            "profileImage": "../../../image/tenislogo.jpeg"
+            "profileImage": require("../image/tenislogo.jpeg")
         }
     ]
 })

@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-
+//소속
 export const belongAtom = atom({
     "key": "categoryAtom",
     "default": [{
@@ -24,7 +24,7 @@ export const belongAtom = atom({
         "content": "기타 소모임"
     }]
 })
-
+//대분류
 export const bigCategoryAtom = atom({
     "key": "bigCategoryAtom",
     "default": [{
@@ -69,7 +69,7 @@ export const bigCategoryAtom = atom({
     }]
 })
 
-
+//홍보물 목록
 export const prPostAtom = atom({
     "key": "prPostAtom",
     "default": [
@@ -77,8 +77,8 @@ export const prPostAtom = atom({
             "id": 0,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
@@ -86,17 +86,26 @@ export const prPostAtom = atom({
             "id": 1,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
+            "createAt": "20230512"
+        },
+        {
+            "id": 2,
+            "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "commentNum": 3,
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
+            "clubName": "코마매거진",
             "createAt": "20230512"
         },
         {
             "id": 3,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/ball.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -104,8 +113,8 @@ export const prPostAtom = atom({
             "id": 4,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/user.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         },
@@ -113,8 +122,8 @@ export const prPostAtom = atom({
             "id": 5,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
@@ -122,8 +131,8 @@ export const prPostAtom = atom({
             "id": 6,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
             "createAt": "20230512"
         },
@@ -131,8 +140,8 @@ export const prPostAtom = atom({
             "id": 7,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -140,8 +149,8 @@ export const prPostAtom = atom({
             "id": 8,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         },
@@ -149,8 +158,8 @@ export const prPostAtom = atom({
             "id": 9,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
@@ -158,8 +167,8 @@ export const prPostAtom = atom({
             "id": 10,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
             "createAt": "20230512"
         },
@@ -167,8 +176,8 @@ export const prPostAtom = atom({
             "id": 11,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -176,8 +185,8 @@ export const prPostAtom = atom({
             "id": 12,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         },
@@ -185,26 +194,26 @@ export const prPostAtom = atom({
             "id": 13,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
         {
             "id": 14,
-            "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "title": "END 대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
             "createAt": "20230512"
-        },
+        },//
         {
             "id": 15,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/ball.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -212,8 +221,8 @@ export const prPostAtom = atom({
             "id": 16,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         },
@@ -221,8 +230,8 @@ export const prPostAtom = atom({
             "id": 17,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
@@ -230,8 +239,8 @@ export const prPostAtom = atom({
             "id": 18,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
             "createAt": "20230512"
         },
@@ -239,8 +248,8 @@ export const prPostAtom = atom({
             "id": 19,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -248,8 +257,8 @@ export const prPostAtom = atom({
             "id": 20,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/ball.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         },
@@ -257,8 +266,8 @@ export const prPostAtom = atom({
             "id": 21,
             "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain1.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "OOF CLUB",
             "createAt": "20230512"
         },
@@ -266,8 +275,8 @@ export const prPostAtom = atom({
             "id": 22,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 5,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/mra.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
             "clubName": "MRA",
             "createAt": "20230512"
         },
@@ -275,8 +284,8 @@ export const prPostAtom = atom({
             "id": 23,
             "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
             "commentNum": 3,
-            "thumbnail": "../../../image/prmain2.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/ball.png"),
             "clubName": "코마매거진",
             "createAt": "20230512"
         },
@@ -284,20 +293,83 @@ export const prPostAtom = atom({
             "id": 24,
             "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
             "commentNum": 11,
-            "thumbnail": "../../../image/prmain3.jpg",
-            "clubImage": "../../../image/user.png",
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
+            "clubName": "UnivPT",
+            "createAt": "20230512"
+        },
+        {
+            "id": 25,
+            "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "commentNum": 5,
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
+            "clubName": "MRA",
+            "createAt": "20230512"
+        },
+        {
+            "id": 26,
+            "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "commentNum": 3,
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
+            "clubName": "코마매거진",
+            "createAt": "20230512"
+        },
+        {
+            "id": 27,
+            "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
+            "commentNum": 11,
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
+            "clubName": "UnivPT",
+            "createAt": "20230512"
+        },
+        {
+            "id": 28,
+            "title": "대학생 전시 기획 동아리 OOF CLUB 신입부원 모집 (~9/27)",
+            "commentNum": 3,
+            "thumbnail": require("../image/prmain1.jpg"),
+            "clubImage": require("../image/mra.png"),
+            "clubName": "OOF CLUB",
+            "createAt": "20230512"
+        },
+        {
+            "id": 29,
+            "title": "END대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "commentNum": 5,
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/mra.png"),
+            "clubName": "MRA",
+            "createAt": "20230512"
+        },//
+        {
+            "id": 30,
+            "title": "대학생 광고마케팅 잡지동아리 COMMA Magazine 2023 겨울호 신입 부원 모집",
+            "commentNum": 3,
+            "thumbnail": require("../image/prmain2.jpg"),
+            "clubImage": require("../image/global-news.png"),
+            "clubName": "코마매거진",
+            "createAt": "20230512"
+        },
+        {
+            "id": 31,
+            "title": "[대학생 연합 프레젠테이션 스터디] UnivPT에서 28기를 모집합니다!",
+            "commentNum": 11,
+            "thumbnail": require("../image/prmain3.jpg"),
+            "clubImage": require("../image/global-news.png"),
             "clubName": "UnivPT",
             "createAt": "20230512"
         }
     ]
 })
 
-
+//한 홍보물 내용
 export const prPostViewAtom = atom({
     "key": "prPostViewAtom",
     "default": {
         "clubName": "IRUN", // 동아리 이름
-        "profileImage": "../../../image/mra.png", // 동아리 이미지
+        "profileImage": require("../image/race.png"), // 동아리 이미지
         "title": "[인하대 러닝크루 IRUN]", // 홍보물 제목
         "content": "📢. 정규러닝 일자 : 9월 19일 화요일 20시\n\
             📢. 인스타 계정: irun_inha\n\
@@ -339,13 +411,13 @@ export const prPostViewAtom = atom({
 \n\
             📢인스타 계정: irun_inha\n\
 ", // 홍보물 내용
-        "promotionImages": ["../../../image/prpostview1", "../../../image/prpostview2", "../../../image/prpostview3", "../../../image/prpostview4"], // 홍보물 이미지 경로 최대 5장
+        "promotionImages": [require("../image/prpostview1.jpg"), require("../image/prpostview2.jpg"), require("../image/prpostview3.jpg"), require("../image/prpostview4.jpg"), require("../image/prpostview4.jpg")], // 홍보물 이미지 경로 최대 5장
         "createdAt": "2023.05.14 10:33", // 홍보물 작성 날짜,
         "authorState": false // 홍보물 작성자 여부 (해당 동아리의 운영진인지)
     }
 })
 
-
+//홍보물 댓글
 export const prPostCommentAtom = atom({
     "key": "prPostCommentAtom",
     "default": {
@@ -390,7 +462,7 @@ export const prPostCommentAtom = atom({
         ]
     }
 })
-
+//홍보물 한 댓글의 답글
 export const prPostReplyAtom = atom({
     "key": "prPostReplyAtom",
     "default": {
@@ -444,13 +516,13 @@ export const prPostReplyAtom = atom({
     }
 })
 
-
+//카테고리를 통한 동아리 검색결과
 export const categoryResultClubAtom = atom({
     "key": "categoryResultClubAtom",
     "default": [
         {
             "id": 0, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
              아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이\
@@ -464,7 +536,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 1, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IGDC", // 동아리 이름
             "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 \
             개발하고 이에 필요한 지식을 연구하는 소모임입니다.\
@@ -477,7 +549,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 2, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IRUN", // 동아리 이름
             "cover": "LIFE SHORT, WE RUN\
             아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
@@ -491,7 +563,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 0, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
             아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이 존재합니다.\
@@ -505,7 +577,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 1, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IGDC", // 동아리 이름
             "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 \
             개발하고 이에 필요한 지식을 연구하는 소모임입니다.\
@@ -518,7 +590,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 2, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IRUN", // 동아리 이름
             "cover": "LIFE SHORT, WE RUN\
             아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
@@ -532,7 +604,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 0, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
             아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이 존재합니다.\
@@ -546,7 +618,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 1, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IGDC", // 동아리 이름
             "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 \
             개발하고 이에 필요한 지식을 연구하는 소모임입니다.\
@@ -559,7 +631,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 2, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IRUN", // 동아리 이름
             "cover": "LIFE SHORT, WE RUN\
             아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
@@ -573,7 +645,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 0, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
             아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이 존재합니다.\
@@ -587,7 +659,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 1, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IGDC", // 동아리 이름
             "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 \
             개발하고 이에 필요한 지식을 연구하는 소모임입니다.\
@@ -600,7 +672,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 2, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IRUN", // 동아리 이름
             "cover": "LIFE SHORT, WE RUN\
             아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
@@ -614,7 +686,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 0, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "I&&D", // 동아리 이름
             "cover": "I&&D(아이앤디)는 순수 예술, 서브 컬처를 배제한 디자인 소모임입니다.\
             아이그루스 내 웹, 앱(현재는 없음), 게임, 보안, 임베디드, 알고리즘 소모임이 존재합니다.\
@@ -628,7 +700,7 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 1, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IGDC", // 동아리 이름
             "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 \
             개발하고 이에 필요한 지식을 연구하는 소모임입니다.\
@@ -641,7 +713,21 @@ export const categoryResultClubAtom = atom({
         },
         {
             "id": 2, // 동아리 pk
-            "profileImg": "../../../image/race.png", // 동아리 이미지 주소
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
+            "name": "IRUN", // 동아리 이름
+            "cover": "LIFE SHORT, WE RUN\
+            아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
+            ️학부생 대학원생 졸업생 모두 참여하고 있으며, 함께 뛰며 얻는 에너지에 중점을 두고 있습니다🔥🔥\
+            대학러닝리그에 참여해 타 대학교 러닝크루와도 활발한 교류 및 경쟁을 진행하면서 인천 \
+            지역의 러닝 문화에 함께하고자 합니다.\
+            러닝은 우리를 웃게하는 힘😁\
+            아이런과 함께 달려봐요!!🔥.", // 동아리 소개글
+            "isMember": true, // 해당 동아리에 가입 되어있는 상태인지
+            "isRecruit": false, // 해당 동아리의 가입 신청 오픈 유무
+        },
+        {
+            "id": 2, // 동아리 pk
+            "profileImg": require("../image/race.png"), // 동아리 이미지 주소
             "name": "IRUN", // 동아리 이름
             "cover": "LIFE SHORT, WE RUN\
             아이런은 인하인들로 구성된 러닝크루로써 인하대학교를 거점으로 2019년 시작되었습니다🏃‍♂️🏃‍♀\
@@ -656,7 +742,7 @@ export const categoryResultClubAtom = atom({
     ]
 })
 
-
+//소분류 전체
 export const smallCategoryAtom = atom({
     "key": "",
     "default": [
@@ -764,7 +850,7 @@ export const smallCategoryAtom = atom({
     ]
 })
 
-
+//검색결과(이름) 동아리
 export const searchResultClubAtom = atom({
     "key": "searchResultClubAtom",
     "default": [
@@ -821,7 +907,7 @@ export const searchResultClubAtom = atom({
     ]
 })
 
-
+//한 동아리 프로필 내용
 export const clubProfileAtom = atom({
     "key": "clubProfileAtom",
     "default": {
@@ -829,7 +915,7 @@ export const clubProfileAtom = atom({
         "belong": "중앙동아리", // 동아리 소속
         "bigCategory": "봉사", // 동아리 대분류
         "smallCategory": "아동/학생", // 동아리 소분류
-        "profileImage": "../../../image/mra.png", // 동아리 프로필 이미지
+        "profileImage": require("../image/mra.png"), // 동아리 프로필 이미)지
         "bannerImage": "?", // 동아리 배너 이미지
         "cover": "IGDC(Inha Game Developer Club)는 PC 및 모바일 게임을 개발하고\
          이에 필요한 지식을 연구하는 소모임입니다. 게임 개발에 관심 있는 사람들이 프로젝트를 \
@@ -843,7 +929,7 @@ export const clubProfileAtom = atom({
     }
 })
 
-
+//테마 컬러 리스트
 export const themaColorAtom = atom({
     "key": "themaColorAtom",
     "default": [
@@ -908,4 +994,18 @@ export const themaColorAtom = atom({
             "code": "535353",
         }
     ]
+})
+
+export const checkClubNameAtom = atom({
+    "key": "checkClubNameAtom",
+    "default": false
+})
+
+export const selectBigAtom = atom({
+    "key": "selectBigAtom",
+    "default": false
+})
+export const selectSmallAtom = atom({
+    "key": "selectSmallAtom",
+    "default": false
 })

@@ -199,6 +199,10 @@ export const Flexinput = styled.input`
     text-align:${props => props.textAlign};
     cursor: ${props => props.cursor};
 
+    &:focus{
+        outline: none;
+    }
+
     ${props => props.flex && css`
         ${setFlex(props.flex)};
         display: flex;

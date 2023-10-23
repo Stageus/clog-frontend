@@ -15,7 +15,7 @@ const HiddenImg = styled(Flexdiv)`
     overflow: scroll;
 `
 
-const PostView_Content_Image = (props) => {
+const PostView_Image = (props) => {
     // props ======================================================
     const { prPostView } = props
     // state ======================================================
@@ -40,4 +40,4 @@ const PostView_Content_Image = (props) => {
     )
 }
 
-export default PostView_Content_Image
+export default PostView_Image

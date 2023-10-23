@@ -14,7 +14,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
-const Postview_Content_Comment_Reply = (props) => {
+const Postview_Comment_Reply = (props) => {
     // props ======================================================
     const { elem } = props
     // state ======================================================
@@ -48,4 +48,4 @@ const Postview_Content_Comment_Reply = (props) => {
     )
 }
 
-export default Postview_Content_Comment_Reply
+export default Postview_Comment_Reply

@@ -2,7 +2,7 @@ import React from "react"
 
 // Container,Component
 import PostView_Comment from "../../Component/PostView/PostView_Comment"
-import PostView_Content_Image from "../../Component/PostView/PostView_Content_Image"
+import PostView_Image from "../../Component/PostView/PostView_Image"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil"
@@ -66,7 +66,7 @@ const Promote_PrPostView_Section = () => {
                     <PostView_Content prPostView={prPostView} />
 
                     {/* 홍보물 사진 */}
-                    <PostView_Content_Image prPostView={prPostView} />
+                    <PostView_Image prPostView={prPostView} />
 
                     {/* 홍보물 댓글 */}
                     <PostView_Comment />

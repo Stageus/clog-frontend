@@ -17,7 +17,7 @@ import { ReactComponent as Svgempty } from "../../../image/box-open.svg"
 import { Link, useNavigate } from 'react-router-dom'
 
 const HiddenDiv = styled(Flexdiv)`
-    overflow-x: hidden;
+    overflow-x: scroll;
 `
 
 const TransitionDiv = styled(Flexdiv)`

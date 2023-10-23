@@ -22,7 +22,13 @@ const Club_Board_Notice = (props) => {
 
     // event 선언하는 곳
 
-    // console.log(elem)
+    let comment = 0
+    if (elem.commentCount > 10000) {
+        comment =  "9999+"
+    }
+    else {
+        comment =  elem.commentCount
+    }
 
     return (
         <React.Fragment>
@@ -30,7 +36,7 @@ const Club_Board_Notice = (props) => {
                 <Flexdiv textAlign="start" width="530px" padding="0 10px 0 10px" font="14px_600_'Noto Sans KR', sans-serif"  textOver="hidden_nowrap_ellipsis" color={"#" + club[0].themeColor} cursor="pointer">{elem.title}</Flexdiv>
                 <Flexdiv flex="0_0_auto_raw_flex-start_center" width="110px" padding="0 10px 0 10px" font="14px_400_'Nanum Gothic', sans-serif">{elem.authorName}</Flexdiv>
                 <Flexdiv flex="0_0_auto_raw_center_center" width="110px" font="14px_400_'Nanum Gothic', sans-serif">{elem.createdAt}</Flexdiv>
-                <Flexdiv flex="0_0_auto_raw_center_center" width="70px" font="14px_600_'Noto Sans KR', sans-serif" color={"#" + club[0].themeColor}>{elem.commentCount}</Flexdiv>
+                <Flexdiv flex="0_0_auto_raw_center_center" width="70px" font="14px_600_'Noto Sans KR', sans-serif" color={"#" + club[0].themeColor}>{comment}</Flexdiv>
             </Flexdiv>
         </React.Fragment>
     )

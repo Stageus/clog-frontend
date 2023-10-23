@@ -54,27 +54,28 @@ const Club_ClubProfileBox = () => {
                 <Flexdiv width="190px" height="60px" margin="20px 0 20px">
                     <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
-                            <Category width="10px" height="10px" fill="#C4C4C4"/>
+                            <Category width="10px" height="10px" fill="#000000"/>
                         </Flexdiv>
-                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#C4C4C4">{club[0].big_category} 분과 {'>'} {club[0].small_category}</Span>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].bigCategory} 분과 {'>'} {club[0].smallCategory}</Span>
                     </Flexdiv>
                     <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
-                            <Cake width="10px" height="10px" fill="#C4C4C4"/>
+                            <Cake width="10px" height="10px" fill="#000000"/>
                         </Flexdiv>
-                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#C4C4C4">{club[0].createAt}</Span>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].createAt}</Span>
                     </Flexdiv>
                     <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
-                            <Users width="10px" height="10px" fill="#C4C4C4"/>
+                            <Users width="10px" height="10px" fill="#000000"/>
                         </Flexdiv>
-                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#C4C4C4">{club[0].memberCount} 명</Span>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].memberCount} 명</Span>
                     </Flexdiv>
                 </Flexdiv>
 
-                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor}>
-                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="16px" fontBold="600" color="#FFFFFF">동아리 글쓰기</Span>
+                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif">
+                    동아리 글쓰기
                 </Flexbutton>
+
             </Flexdiv>
         </React.Fragment>
     )

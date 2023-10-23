@@ -16,9 +16,9 @@ const Club_Main = () => {
 
     return(
         <React.Fragment>
-            <Club_Header/>
             <Club_Banner/>
             <Club_Main_Section/>
+            <Club_Header/>
         </React.Fragment>
     )
 }

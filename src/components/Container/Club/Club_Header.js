@@ -24,7 +24,9 @@ const Header = styled.header`
     display : flex;
     justify-content : space-between;
     position : fixed;
-    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
 `
 
 const HeaderButton = styled(Flexbutton)`

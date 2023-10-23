@@ -26,7 +26,7 @@ const Club_Board = (props) => {
     return (
         <React.Fragment>
             <Flexdiv flex="0_0_auto_raw_space-between_center" width="180px" height="30px">
-                <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">{elem.name}</Span>
+                <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000" cursor="pointer">{elem.name}</Span>
             </Flexdiv>
         </React.Fragment>
     )

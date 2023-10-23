@@ -24,13 +24,6 @@ const Main = styled.main`
     align-items: flex-start;
 `
 
-const Nav = styled.nav`
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-`
-
 const Section = styled.section`
     width: 860px;
     margin-bottom: 150px;
@@ -63,10 +56,7 @@ const Club_Main_Section = () => {
         <React.Fragment>
             <Flexdiv flex="0_0_auto_row_center_flex-start" position="relative_70px" cursor="default">
                 <Main>
-                    <Nav>
-                        <Club_ClubProfileBox/>
-                        <Club_BoardList/>
-                    </Nav>
+                    <Club_BoardList/>
 
                     {/* 여기서부터 main section */}
                     <Section>

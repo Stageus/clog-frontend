@@ -9,9 +9,12 @@ import { clubInfoAtom, userClubProfileAtom, boardListAtom } from "../../../recoi
 
 // import styled
 import styled from "styled-components"
-import { Flexbutton, Flexdiv, Span } from "../../../style/common"
+import { Flexbutton, Flexdiv, Span, Img } from "../../../style/common"
 
 // import image
+import { ReactComponent as Category } from "../../../image/settings-sliders.svg"
+import { ReactComponent as Cake } from "../../../image/cake-birthday.svg"
+import { ReactComponent as Users } from "../../../image/users.svg"
 import { ReactComponent as Up } from "../../../image/caret-up.svg"
 import { ReactComponent as Down } from "../../../image/caret-down.svg"
 
@@ -28,14 +31,14 @@ const Club_BoardList = () => {
     const [optionState, setOptionState] = React.useState(false)
 
     let level
-    if(user[0].position == "leader"){
-        level = 2
+    if(user[0].position == "PRESIDENT"){
+        level = 0
     }
-    else if(user[0].position == "manager") {
+    else if(user[0].position == "MANAGER") {
         level = 1
     }
     else {
-        level = 0
+        level = 2
     }
 
     // event ============================================================
@@ -48,10 +51,49 @@ const Club_BoardList = () => {
     
 
     return(
-        <React.Fragment>
+        <nav>
+            {/* 동아리 프로필 */}
+            <Flexdiv width="190px" height="315px" margin="0 0 20px 0" padding="3px 5px 0px" borderTop={"2px solid #" + club[0].themeColor} cursur="default">
+                <Flexdiv flex="0_0_auto_row_flex-start_center" font="12px_400_'Nanum Gothic', sans-serif" color="#C4C4C4">
+                    {club[0].belong}
+                </Flexdiv>
+                <Flexdiv flex="0_0_auto_row_flex-start_center" font="20px_600_'Noto Sans KR', sans-serif" color={"#" + club[0].themeColor}>
+                    {club[0].name}
+                </Flexdiv>
+                <Flexdiv flex="0_0_auto_row_center_center">
+                    <Img width="140px" height="140px" radius="70px" />
+                </Flexdiv>
+
+                <Flexdiv width="190px" height="60px" margin="20px 0 20px">
+                    <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
+                        <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
+                            <Category width="10px" height="10px" fill="#000000"/>
+                        </Flexdiv>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].bigCategory} 분과 {'>'} {club[0].smallCategory}</Span>
+                    </Flexdiv>
+                    <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
+                        <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
+                            <Cake width="10px" height="10px" fill="#000000"/>
+                        </Flexdiv>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].createAt}</Span>
+                    </Flexdiv>
+                    <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
+                        <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
+                            <Users width="10px" height="10px" fill="#000000"/>
+                        </Flexdiv>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000" cursor="pointer">{club[0].memberCount} 명</Span>
+                    </Flexdiv>
+                </Flexdiv>
+
+                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif">
+                    동아리 글쓰기
+                </Flexbutton>
+
+            </Flexdiv>
+
             
             {/* 동아리 관리 (동아리 관리자들한테만 보임) */}
-            { level > 0 && 
+            { level < 2 && 
                 <Flexdiv padding="10px" borderTop={"1px solid #" + club[0].themeColor}>
                     { optionState == false &&
                         <Flexdiv onClick={clickEvent} flex="0_0_auto_raw_space-between_center" width="180px" height="30px">
@@ -71,29 +113,32 @@ const Club_BoardList = () => {
                             </Flexdiv>
 
                             <Flexdiv flex="0_0_auto_column_center_flex-start" width="170px" margin="0 0 0 10px">
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">공지 작성</Span>
-                                </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">동아리 정보 수정</Span>
-                                </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">게시판 관리</Span>
-                                </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">홍보게시물 작성</Span>
-                                </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">홍보게시물 관리</Span>
-                                </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">신규 가입 신청 받기</Span>
-                                </Flexdiv>
-                                { level > 1 && 
-                                    <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center">
-                                        <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000">동아리원 관리</Span>
-                                    </Flexdiv>
+                                { level < 1 && 
+                                    <React.Fragment>
+                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                            동아리 정보 수정
+                                        </Flexdiv>
+                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                            동아리원 관리
+                                        </Flexdiv>
+                                    </React.Fragment>
                                 }
+
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                    공지 작성
+                                </Flexdiv>
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                    게시판 관리
+                                </Flexdiv>
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                    홍보게시물 작성
+                                </Flexdiv>
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                    홍보게시물 관리
+                                </Flexdiv>
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                    신규 가입 신청 받기
+                                </Flexdiv>
                             </Flexdiv>
                         </React.Fragment>
                     }
@@ -115,7 +160,7 @@ const Club_BoardList = () => {
             {/* 게시판 하단 마무리 디자인 */}
             <Flexdiv height="200px" width="200px" borderTop={"2px solid #" + club[0].themeColor}></Flexdiv>
 
-        </React.Fragment>
+        </nav>
     )
 }
 

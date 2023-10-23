@@ -11,7 +11,7 @@ export const clubInfoAtom = atom({
         "profileImage" : "" ,
         "bannerImage" : "" ,
         "cover" : "",
-        "themeColor" : "3EC054",
+        "themeColor" : "669AEE",
         "memberCount" : 100,
         "createAt" : "2023.10.10"
     }
@@ -22,7 +22,7 @@ export const userClubProfileAtom = atom({
     "key": "userClubProfileAtom",
     "default": {
         "name" : "김영제", 
-        "position" : "leader"
+        "position" : "PRESIDENT"
     }
 })
 
@@ -53,6 +53,7 @@ export const boardListAtom = atom({
     ]
 })
 
+// 동아리의 공지 목록
 export const noticeListAtom = atom({
     "key": "noticeListAtom",
     "default": [
@@ -94,6 +95,7 @@ export const noticeListAtom = atom({
     ]
 })
 
+// 동아리의 게시글 목록
 export const postListAtom = atom({
     "key": "postListAtom",
     "default": [
@@ -202,5 +204,53 @@ export const postListAtom = atom({
             "createdAt" : "2023.10.18.",
             "commentCount" : 3,
         },
+    ]
+})
+
+// 동아리의 회원 목록
+export const memberListAtom = atom({
+    "key" : "memberListAtom",
+    "default" : [
+        {
+            "id" : 0,
+            "userId" : 0,
+            "position" : "PRESIDENT",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 19,
+            "name" : "김영제",
+            "personalColor" : "FF8800",
+            "createdAt" : "2020.10.19."
+        },
+        {
+            "id" : 1,
+            "userId" : 1,
+            "position" : "MANAGER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 20,
+            "name" : "김영제",
+            "personalColor" : "FF8800",
+            "createdAt" : "2020.12.14."
+        },
+        {
+            "id" : 2,
+            "userId" : 2,
+            "position" : "MANAGER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 20,
+            "name" : "김영제",
+            "personalColor" : "0088FF",
+            "createdAt" : "2020.12.14."
+        },
+        {
+            "id" : 3,
+            "userId" : 3,
+            "position" : "MEMBER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 21,
+            "name" : "김영제",
+            "personalColor" : "0088FF",
+            "createdAt" : "2022.04.18."
+        },
+
     ]
 })

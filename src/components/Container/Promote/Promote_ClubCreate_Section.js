@@ -25,6 +25,7 @@ const Promote_ClubCreate_Section = () => {
     const selectBig = useRecoilValue(selectBigAtom)
     const selectSmall = useRecoilValue(selectSmallAtom)
     // event ============================================================
+    const navigate = useNavigate()
     const clickEvent = (e) => {
         let id = e.target.id
         //동아리 만들기 버튼 클릭
@@ -40,21 +41,22 @@ const Promote_ClubCreate_Section = () => {
         if (!checkClubname) {
             alert("동아리 이름 중복체크를 확인해주세요.")
         }
-        if (!selectBig) {
+        else if (!selectBig) {
             alert("분과를 선택해주세요")
         }
-        if (!selectSmall) {
+        else if (!selectSmall) {
             alert("소분류를 선택해주세요")
         }
         else {
             alert("동아리 생성이 완료되었습니다.\n가입한 동아리 목록에서 동아리방에 접속해주세요.")
+            navigate("/promote/main")
         }
     }
 
     return (
         <React.Fragment>
             <Flexdiv onClick={clickEvent} flex="0_1_auto_column_center_center" width="100%">
-                <Flexdiv flex="0_1_auto_column_center_center" width="940px" margin="120px">
+                <Flexdiv flex="0_1_auto_column_center_center" width="940px" margin="100px">
                     <Flexdiv flex="0_1_auto_row_flex-start_center" width="900px" height="100px" font="36px_700" customBorder="0px_0px_1px_0px_solid_#c4c4c4" margin="0 40px" padding="0 40px">동아리 만들기</Flexdiv>
                     <Flexdiv flex="0_1_auto_row_flex-start_center" width="900px" height="50px" color="#EB5149" >동아리 이름과 분류는 이후에 수정이 불가능합니다.</Flexdiv>
                     <Promote_ClubCreate_InflexInfo />

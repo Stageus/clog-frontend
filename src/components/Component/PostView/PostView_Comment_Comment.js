@@ -1,7 +1,8 @@
 import React from "react"
 
 // Container,Component
-import Postview_Content_Comment_Reply from "./PostView_Content_Comment_Reply"
+import Postview_Comment_Reply from "../../Component/PostView/PostView_Comment_Reply"
+import Postview_Comment_Input from "../../Component/PostView/PostView_Comment_Input"
 
 //styled-components 
 import { Flexdiv, P, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -11,13 +12,12 @@ import { ReactComponent as Svgdown } from "../../../image/angle-down.svg"
 import { ReactComponent as Svgup } from "../../../image/angle-up.svg"
 //router
 import { Link, useNavigate } from 'react-router-dom'
-import Postview_Content_Comment_Input from "./PostView_Content_Comment_Input"
 
 const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
 
-const PostView_Content_Comment = (props) => {
+const PostView_Comment_Comment = (props) => {
     // props ======================================================
     const { elem, reply } = props
 
@@ -74,9 +74,9 @@ const PostView_Content_Comment = (props) => {
                         </Flexdiv>}
 
                     {/* 답글 보는 버튼이 눌리면 답글 보임 */}
-                    {replyView && reply.replys.map((elem) => < Postview_Content_Comment_Reply elem={elem} />)}
+                    {replyView && reply.replys.map((elem) => < Postview_Comment_Reply elem={elem} />)}
                     {/* 답글 입력창 */}
-                    {replyInput && <Postview_Content_Comment_Input width={"810px"} />}
+                    {replyInput && <Postview_Comment_Input width={"810px"} />}
 
                 </Flexdiv>
 
@@ -85,4 +85,4 @@ const PostView_Content_Comment = (props) => {
     )
 }
 
-export default PostView_Content_Comment
+export default PostView_Comment_Comment

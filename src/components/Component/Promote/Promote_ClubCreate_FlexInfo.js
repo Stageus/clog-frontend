@@ -6,12 +6,13 @@ import { belongAtom, bigCategoryAtom, smallCategoryAtom, themaColorAtom } from "
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 //svg
 import { ReactComponent as Svgcheck } from "../../../image/check.svg"
 //router
 import { Link, useNavigate } from 'react-router-dom'
 
+// 동아리 소개글
 const TextArea = styled.textarea`
     width: 900px;
     height: 248px;
@@ -19,56 +20,44 @@ const TextArea = styled.textarea`
     border: 1px solid #c4c4c4;
     padding: 10px;
 `
-
+//img 태그의 테두리선 가리기
 const OverDiv = styled(Flexdiv)`
     overflow: hidden;
-`
+ `
 
-const Label = styled.label`
+
+//토글
+const Ani = keyframes`
+    0% {
+        left: 30px;
+    }
+    100% {
+        left: 0px;
+    }
+`
+const AniLabel = styled.label`
     display: block;
     position: relative;
-    width: 64px;
-    height: 38px;
-    background: #EB5149;
-    border-radius: 60px;
-    transition: background 0.4s;
-  &::after{
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 50%;
     width: 30px;
     height: 30px;
-    border-radius: 100%;
-    background-color: #f0f0f0;
-    transform: translateY(-50%);
-    transition: all 0.4s;
-  }
-  &::before{
-    content: "";
-    color: #fff;
-    font-size: 20px;
-    position: absolute;
-    left: 38px;
-    top: 50%;
-    transform: translateY(-50%);
-    transition: all 0.4s;
-  }
+    border-radius: 50%;
+    background: #f0f0f0;
+    left: 0px
+    border-radius: 60px;
+    ${(props) => props.toggle && css`
+        left: 30px;
+    `}
 `
+const ToggleDiv = styled(Flexdiv)`
+    background-color: #EB5149;
+    ${(props) => props.toggle && css`
+    background-color: #4B7BE5;
+    `}
+`
+// animation: ${Ani} 3s 0s 1;
 
-const Checked = styled(Flexinput)`
-  &:checked + label {
-    background: #4B7BE5;
-  }
-  &:checked + label::after {
-    left: calc(100% - 35px);
-   }
-   &:checked + label::before {
-    content: "";
-    color: #fff;
-    left: 15px;
-  }
-`
+
+//테마색상 선택 테두리
 const Themadiv = styled(Flexdiv)`
     &:hover{
         border: 4px solid #c4c4c4;
@@ -77,13 +66,15 @@ const Themadiv = styled(Flexdiv)`
 `
 
 
-const Promote_ClubCreate_FlexInfo = (props) => {
+
+
+const Promote_ClubCreate_FlexInfo = () => {
     // props ======================================================
-    const { elem } = props
     const themaColor = useRecoilValue(themaColorAtom)
     const colorlist = []
     // state ======================================================
-    const [selectedColor, setSelectedColor] = React.useState("")
+    const [selectedColor, setSelectedColor] = React.useState("themacolor11")
+    const [toggle, setToggle] = React.useState(true)//토글 on/off 
     // event ======================================================
     for (let index = 0; index < themaColor.length; index++) {
         colorlist[index] = themaColor[index].code
@@ -93,6 +84,10 @@ const Promote_ClubCreate_FlexInfo = (props) => {
         let id = e.target.id
         if (id.includes("themacolor")) {
             setSelectedColor(id)
+        }
+        if (id == "toggle") {
+            console.log(id)
+            setToggle(!toggle)
         }
     }
 
@@ -124,7 +119,7 @@ const Promote_ClubCreate_FlexInfo = (props) => {
                         <Flexdiv color="#c4c4c4">생성한 동아리 홈페이지의 테마가 되는 색깔입니다.</Flexdiv>
                         <Flexdiv flex="0_1_auto_row_center_center_wrap" width="600px" height="200px">
                             {colorlist.map((elem, i) => <Themadiv id={"themacolor" + i} flex="0_1_auto_row_center_center" width="60px" height="60px" radius="50%" backgroundColor={"#" + elem} margin="20px">
-                                {(selectedColor == ("themacolor" + i)) && <Svgcheck width="30px" height="30px" fill="#333333" />}
+                                {(selectedColor == ("themacolor" + i)) && <Svgcheck width="30px" height="30px" fill="#f0f0f0" />}
                             </Themadiv>)}
                         </Flexdiv>
                     </Flexdiv>
@@ -144,12 +139,13 @@ const Promote_ClubCreate_FlexInfo = (props) => {
 
                 {/* 가입신청 온오프 토글 */}
                 <Flexdiv flex="0_1_auto_row_center_center" width="900px" height="60px" radius="10px" border="1px solid #c4c4c4" margin="50px 0">
-                    <Flexdiv flex="0_1_auto_row_center_center" width="100px" height="60px">
-                        <Checked type="checkbox" /><Label for="switch"></Label>
+                    <ToggleDiv id="toggle" toggle={toggle} flex="0_1_auto_row_flex-start_center" width="60px" height="40px" radius="60px" padding="0 6px" margin="0 10px">
+                        <AniLabel id="toggle" toggle={toggle}></AniLabel>
+                    </ToggleDiv>
 
-
+                    <Flexdiv flex="2_1_auto_row_flex-start_center" height="60px">
+                        {toggle ? "동아리를 생성하면서 바로 신규 회원 가입신청을 받습니다." : "동아리를 생성하면서 바로 신규 회원 가입신청을 받지 않습니다."}
                     </Flexdiv>
-                    <Flexdiv flex="2_1_auto_row_flex-start_center" height="60px">동아리를 생성하면서 바로 신규 회원 가입신청을 받습니다.</Flexdiv>
                 </Flexdiv>
             </Flexdiv>
         </React.Fragment>

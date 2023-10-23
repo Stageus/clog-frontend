@@ -14,7 +14,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #aaaaaa;
 `
-const Postview_Content_Comment_Input = (props) => {
+const Postview_Comment_Input = (props) => {
     // props ======================================================
     const { width, clickEvent } = props
     // state ======================================================
@@ -39,4 +39,4 @@ const Postview_Content_Comment_Input = (props) => {
     )
 }
 
-export default Postview_Content_Comment_Input
+export default Postview_Comment_Input

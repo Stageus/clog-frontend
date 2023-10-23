@@ -38,9 +38,9 @@ export const Flexdiv = styled.div`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    border-radius: ${props => props.radius || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
+    border-radius: ${props => props.radius || "0px"};
 
     border: ${props => props.border};
     outline: ${props => props.outline};
@@ -101,7 +101,6 @@ export const Flexdiv = styled.div`
 
     font-size: ${props => props.fontSize};
     border-top: ${props => props.borderTop};
-    
 `
 
 //button
@@ -109,11 +108,11 @@ export const Flexbutton = styled.button`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    border-radius: ${props => props.radius || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
+    border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
@@ -185,11 +184,11 @@ export const Flexinput = styled.input`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
@@ -265,11 +264,11 @@ export const Img = styled.img`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
@@ -333,8 +332,8 @@ export const Span = styled.span`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
     border:${props => props.border};
@@ -396,7 +395,7 @@ export const Span = styled.span`
 
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
-    font-weight: ${props => props.fontBold || "400"};
+    font-weight: ${props => props.fontBold};
 
 `
 
@@ -405,8 +404,8 @@ export const P = styled.p`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
     border:${props => props.border};

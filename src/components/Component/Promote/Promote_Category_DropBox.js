@@ -53,8 +53,8 @@ const Promote_Category_DropBox = (props) => {
         <React.Fragment>
             <Flexdiv onClick={clickEvent} position="absolute_0_0_0_0">
                 {dropBoxOpen ?
-                    <Flexdiv flex="0_1_auto_column_center_center" width={width} outline="2px solid #333333" backgroundColor="#ffffff" radius="10px">
-                        <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="2px solid #c4c4c4" radius="10px 10px 0 0">
+                    <Flexdiv flex="0_1_auto_column_center_center" width={width} outline="1px solid #333333" backgroundColor="#ffffff" radius="10px">
+                        <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="1px solid #c4c4c4" radius="10px 10px 0 0">
                             <Span flex=" 0_1_auto" color="#aaaaaa" margin="0 0 0 10px" >{list[0]}</Span>
                             <Flexbutton id="opendropbox" flex="0_1_auto_row_center_center" width="36px" height="36px" backgroundColor="#ffffff" margin="0 10px 0 0" padding="0px">
                                 <Svgdown id="opendropbox" fill="#c4c4c4" width="16px" height="16px" />
@@ -68,7 +68,7 @@ const Promote_Category_DropBox = (props) => {
                         </Flexdiv>
                     </Flexdiv> :
                     <Flexdiv flex="0_1_auto" width={width} backgroundColor="#ffffff" >
-                        <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="2px solid #c4c4c4" radius="10px">
+                        <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="1px solid #c4c4c4" radius="10px">
                             <Span flex=" 0_1_auto" color="#aaaaaa" margin="0 0 0 10px">{clickDropDown}</Span>
                             <Flexbutton id="opendropbox" flex="0_1_auto_row_center_center" width="36px" height="36px" backgroundColor="#ffffff" margin="0 10px 0 0" padding="0px">
                                 <Svgdown id="opendropbox" fill="#c4c4c4" width="16px" height="16px" />

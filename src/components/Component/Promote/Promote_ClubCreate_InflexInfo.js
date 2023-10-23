@@ -13,7 +13,9 @@ import styled from "styled-components"
 import { Link, useNavigate } from 'react-router-dom'
 import Promote_Category_DropBox from "./Promote_Category_DropBox"
 
-
+const OverDiv = styled(Flexdiv)`
+    overflow: visible;
+`
 const Promote_ClubCreate_InflexInfo = () => {
     // props ======================================================
 
@@ -143,7 +145,7 @@ const Promote_ClubCreate_InflexInfo = () => {
                 <Flexdiv flex="0_1_auto_column_flex-start_flex-start" width="450px" height="210px" >
                     <Flexdiv flex="0_1_auto_row_center_center" font="20px_600" height='40px'>동아리 이름</Flexdiv>
                     {/* 동아리 이름 입력 */}
-                    <Flexinput id="clubnameinput" flex="0_1_auto" width="400px" height="50px" radius="10px" border="2px solid #c4c4c4" placeholder="한글 영어 혼용 가능, 최소 1자~최대 10자" padding="0px" />
+                    <Flexinput id="clubnameinput" flex="0_1_auto" width="400px" height="50px" radius="10px" border="1px solid #c4c4c4" placeholder="한글 영어 혼용 가능, 최소 1자~최대 10자" padding="0px" />
                     {/* 중복체크 */}
                     <Flexdiv flex="0_1_auto_row_flex-end_center" width="400px" height="50px" margin="10px 0">
                         <Flexdiv flex="2_1_auto_row_flex-start_center" font="20px" color={checkClubname ? "#4B7BE5" : "#EB5149"} > {checkClubname ? "사용 가능한 이름입니다." : "사용 불가능한 이름입니다."}</Flexdiv>
@@ -152,22 +154,27 @@ const Promote_ClubCreate_InflexInfo = () => {
                 </Flexdiv>
 
                 {/* 동아리 분류 */}
-                <Flexdiv flex="0_1_auto_column_flex-start_flex-end" width="450px" height="210px">
+                <OverDiv flex="0_1_auto_column_flex-start_flex-end" width="450px" height="210px">
                     <Flexdiv flex="0_1_auto_row_flex-start_center" width="400px" font="20px_600" margin="10px 0">동아리 분류</Flexdiv>
                     {/* z-index가 순서대로 쌓이기 때문에 역으로 넣고, relative로 조정함 */}
                     <Flexdiv position="relative_120px" width="400px" height="50px" flex="0_1_auto_row_center_center">
-                        {/* 기본값이 아닌 대분류 선택하면 소분류 생성*/}
                         {selectBig && <Promote_Category_DropBox dropboxname={"smallCategory"} list={smallList} width="400px" height={"50px"} />}
                     </Flexdiv>
+
                     {/* 대분류 선택 */}
                     <Flexdiv position="relative_10px" width="400px" height="50px" flex="0_1_auto_row_center_center">
                         <Promote_Category_DropBox dropboxname={"bigCategory"} list={bigList} width="400px" height={"50px"} />
                     </Flexdiv>
+
+
                     {/* 소속 선택 */}
                     <Flexdiv position="relative_-100px" width="400px" height="50px" flex="0_1_auto_row_center_center">
                         <Promote_Category_DropBox dropboxname={"belong"} list={belongList} width="400px" height={"50px"} />
                     </Flexdiv>
-                </Flexdiv>
+                    {/* <Promote_Category_DropBox back="#333333" dropboxname={"belong"} list={belongList} width="400px" height={"50px"} /> */}
+                    {/* <Promote_Category_DropBox dropboxname={"bigCategory"} list={bigList} width="400px" height={"50px"} /> */}
+                    {/* {selectBig && <Promote_Category_DropBox dropboxname={"smallCategory"} list={smallList} width="400px" height={"50px"} />} */}
+                </OverDiv>
             </Flexdiv>
         </React.Fragment >
     )

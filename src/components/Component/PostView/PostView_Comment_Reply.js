@@ -14,7 +14,7 @@ import { Link, useNavigate } from 'react-router-dom'
 const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
-const Postview_Content_Comment_Reply = (props) => {
+const Postview_Comment_Reply = (props) => {
     // props ======================================================
     const { elem } = props
     // state ======================================================
@@ -40,7 +40,7 @@ const Postview_Content_Comment_Reply = (props) => {
                         </Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" margin="0 10px" >
-                        {contentList.map((elem) => <P>{elem}</P>)}
+                        {contentList.map((elem) => <P margin="0px">{elem}</P>)}
                     </Flexdiv>
                 </Flexdiv>
             </CommentDiv>
@@ -48,4 +48,4 @@ const Postview_Content_Comment_Reply = (props) => {
     )
 }
 
-export default Postview_Content_Comment_Reply
+export default Postview_Comment_Reply

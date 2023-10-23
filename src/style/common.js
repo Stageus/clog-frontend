@@ -38,9 +38,9 @@ export const Flexdiv = styled.div`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    border-radius: ${props => props.radius || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
+    border-radius: ${props => props.radius || "0px"};
 
     border: ${props => props.border};
     outline: ${props => props.outline};
@@ -49,7 +49,7 @@ export const Flexdiv = styled.div`
     background-color: ${props => props.backgroundColor};
     opacity: ${props => props.opacity};
 
-    text-align:${props => props.textAlign || "center"};
+    text-align:${props => props.textAlign};
     cursor: ${props => props.cursor};
 
     ${props => props.flex && css`
@@ -93,11 +93,14 @@ export const Flexdiv = styled.div`
         overflow : ${setTextOver(props.textOver)[0]};
         white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};
     border-top: ${props => props.borderTop};
-    
 `
 
 //button
@@ -105,15 +108,15 @@ export const Flexbutton = styled.button`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    border-radius: ${props => props.radius || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
+    border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
-    background-color: ${props => props.backgroundColor};
+    background-color: ${props => props.backgroundColor || "#ffffff"};
     opacity: ${props => props.opacity};
 
     text-align:${props => props.textAlign};
@@ -157,9 +160,13 @@ export const Flexbutton = styled.button`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
     ${props => props.url &&
         css`
@@ -177,11 +184,11 @@ export const Flexinput = styled.input`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
@@ -190,6 +197,10 @@ export const Flexinput = styled.input`
 
     text-align:${props => props.textAlign};
     cursor: ${props => props.cursor};
+
+    &:focus{
+        outline: none;
+    }
 
     ${props => props.flex && css`
         ${setFlex(props.flex)};
@@ -229,9 +240,13 @@ export const Flexinput = styled.input`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
     ${props => props.url &&
         css`
@@ -249,11 +264,11 @@ export const Img = styled.img`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
-    border:${props => props.border || "none"};
+    border:${props => props.border || "0px"};
     outline: ${props => props.outline};
 
     color: ${props => props.color};
@@ -300,9 +315,13 @@ export const Img = styled.img`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     box-sizing: border - box;
@@ -313,8 +332,8 @@ export const Span = styled.span`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
     border:${props => props.border};
@@ -365,14 +384,18 @@ export const Span = styled.span`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};
     font-family: ${props => props.fontFamily};
-    font-weight: ${props => props.fontBold || "400"};
+    font-weight: ${props => props.fontBold};
 
 `
 
@@ -381,8 +404,8 @@ export const P = styled.p`
 
     width: ${props => props.width};
     height: ${props => props.height};
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
+    margin: ${props => props.margin || "0px"};
+    padding: ${props => props.padding || "0px"};
     border-radius: ${props => props.radius || "0px"};
 
     border:${props => props.border};
@@ -433,9 +456,13 @@ export const P = styled.p`
     `}
     ${props => props.textOver && css`
         ${setTextOver(props.textOver)};
-        white-space : ${setTextOver(props.textOver)[0]};
-        overflow : ${setTextOver(props.textOver)[1]};
+        overflow : ${setTextOver(props.textOver)[0]};
+        white-space : ${setTextOver(props.textOver)[1]};
         text-overflow : ${setTextOver(props.textOver)[2]};
+        -webkit-line-clamp : ${setTextOver(props.textOver)[3] || "1"};
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        word-break: keep-all;
     `}
 
     font-size: ${props => props.fontSize};

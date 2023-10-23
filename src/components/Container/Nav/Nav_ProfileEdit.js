@@ -52,7 +52,7 @@ const Nav_ProfileEdit = () => {
 
     return (
         <React.Fragment>
-            <ProfileBox id="profileBox" onClick={clickEvent} position="absolute_0px_0_0_250px" width="460px" height="270px" radius="10px" outline="1px solid #dadada" backgroundColor='#ffffff'>
+            <ProfileBox id="profileBox" onClick={clickEvent} position="absolute_340px_0px_0px_250px" width="460px" height="270px" radius="10px" outline="1px solid #dadada" backgroundColor='#ffffff'>
                 {/* 프로필 설정 제목 */}
                 <BoxTitle flex="0_0_auto_row_space-between_center" width="100%" height="40px" margin="10px 0">
                     <Span flex="0_0_auto" margin="0 0 0 20px">프로필 설정</Span>
@@ -60,12 +60,12 @@ const Nav_ProfileEdit = () => {
                 <Flexdiv flex="0_0_auto_column_flex-start_center" width="460px" height="210px">
                     {/* 이름 인풋 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" width="430px" height="50px" radius="10px" outline="1px solid #dadada" margin="5px 0px">
-                        <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svguser fill="#c4c4c4" /></Flexdiv>
+                        <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svguser width="22px" height="22px" fill="#c4c4c4" /></Flexdiv>
                         <Flexinput id="nameinput" flex="0_0_auto" type="text" placeholder={account.name} width="380px" height="50px" />
                     </Flexdiv>
                     {/* 학과 인풋 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" width="430px" height="50px" radius="10px" outline="1px solid #dadada" margin="5px 0px">
-                        <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svgbook fill="#c4c4c4" /></Flexdiv>
+                        <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svgbook width="24px" height="24px" fill="#c4c4c4" /></Flexdiv>
                         <Flexinput id="majorinput" flex="0_0_auto" type="text" placeholder={account.major} width="380px" height="50px" />
                     </Flexdiv>
 

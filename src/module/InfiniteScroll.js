@@ -1,5 +1,4 @@
 import React from "react"
-//컴포넌트(컨테이너)가 아니라 커스텀 훅?
 
 //관찰자 생성
 const useIntersect = (onIntersect, option) => {

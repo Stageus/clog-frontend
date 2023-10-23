@@ -1,23 +1,23 @@
 import React from "react"
 
 // Container,Component
-import Postview_Content_Comment_Reply from "./PostView_Content_Comment_Reply"
+import Postview_Comment_Reply from "../../Component/PostView/PostView_Comment_Reply"
+import Postview_Comment_Input from "../../Component/PostView/PostView_Comment_Input"
 
 //styled-components 
 import { Flexdiv, P, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
 import styled from "styled-components"
 //svg
 import { ReactComponent as Svgdown } from "../../../image/angle-down.svg"
-
+import { ReactComponent as Svgup } from "../../../image/angle-up.svg"
 //router
 import { Link, useNavigate } from 'react-router-dom'
-import Postview_Content_Comment_Input from "./PostView_Content_Comment_Input"
 
 const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
 
-const PostView_Content_Comment = (props) => {
+const PostView_Comment_Comment = (props) => {
     // props ======================================================
     const { elem, reply } = props
 
@@ -41,7 +41,7 @@ const PostView_Content_Comment = (props) => {
 
     let contentList = elem.content.split("\n")
 
-
+    console.log(contentList)
     return (
         <React.Fragment>
             <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_flex-start" width="860px" margin="10px 0" padding="10px 0">
@@ -61,19 +61,22 @@ const PostView_Content_Comment = (props) => {
                         </Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" padding="5px 5px">
-                        {contentList.map((elem) => <P>{elem}</P>)}
+                        {contentList.map((elem) => <P margin="0px">{elem}</P>)}
                     </Flexdiv>
                     {/* 답글이 있으면 버튼 보임 */}
                     {(elem.replyCount != 0) &&
                         <Flexdiv id="replyview" flex="0_1_auto_row_center_center" width="80px" hight="20px" fontSize="14px" color="#aaaaaa" radius="10px" outline="1px solid #dadada" margin="0 0 10px 0">
                             <Flexdiv id="replyview" flex="0_1_auto">답글 {elem.replyCount}개</Flexdiv>
-                            <Flexdiv id="replyview" flex="0_1_auto"><Svgdown id="replyview" fill="#aaaaaa" width="10px" height="10px" /></Flexdiv>
+                            <Flexdiv id="replyview" flex="0_1_auto">
+                                {replyView ? <Svgup id="replyview" fill="#aaaaaa" width="10px" height="10px" />
+                                    : <Svgdown id="replyview" fill="#aaaaaa" width="10px" height="10px" />}
+                            </Flexdiv>
                         </Flexdiv>}
 
                     {/* 답글 보는 버튼이 눌리면 답글 보임 */}
-                    {replyView && reply.replys.map((elem) => < Postview_Content_Comment_Reply elem={elem} />)}
+                    {replyView && reply.replys.map((elem) => < Postview_Comment_Reply elem={elem} />)}
                     {/* 답글 입력창 */}
-                    {replyInput && <Postview_Content_Comment_Input width={"810px"} />}
+                    {replyInput && <Postview_Comment_Input width={"810px"} />}
 
                 </Flexdiv>
 
@@ -82,4 +85,4 @@ const PostView_Content_Comment = (props) => {
     )
 }
 
-export default PostView_Content_Comment
+export default PostView_Comment_Comment

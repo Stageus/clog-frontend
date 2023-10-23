@@ -1,8 +1,8 @@
 import React from "react"
 
 // Container,Component
-import PostView_Content_Comment from "../../../components/Component/PostView/PostView_Content_Comment"
-import Postview_Content_Comment_Input from "../../Component/PostView/PostView_Content_Comment_Input"
+import PostView_Comment_Comment from "./PostView_Comment_Comment"
+import Postview_Comment_Input from "./PostView_Comment_Input"
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil"
 import { prPostViewAtom, prPostCommentAtom, prPostReplyAtom } from "../../../recoil/PromoteAtom"
@@ -21,7 +21,7 @@ const CommentDiv = styled(Flexdiv)`
     border-top: 1px solid #dadada;
 `
 
-const Promote_Comment = () => {
+const PostView_Comment = () => {
     // props ======================================================
 
     // state ======================================================
@@ -69,14 +69,14 @@ const Promote_Comment = () => {
                     <Flexdiv flex="0_1_auto" height="60px" fontSize="20px">댓글 {prPostcomment.count}</Flexdiv>
                 </Flexdiv>
                 {/* 댓글 */}
-                {prPostcomment.comments.map((elem) => <PostView_Content_Comment elem={elem} reply={prPostReply} />)}
+                {prPostcomment.comments.map((elem) => <PostView_Comment_Comment elem={elem} reply={prPostReply} />)}
 
                 {/* 댓글 입력란 */}
-                <Postview_Content_Comment_Input width={"860px"} clickEvent={clickEvent} />
+                <Postview_Comment_Input width={"860px"} clickEvent={clickEvent} />
 
             </CommentDiv>
         </React.Fragment>
     )
 }
 
-export default Promote_Comment
+export default PostView_Comment

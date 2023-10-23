@@ -51,6 +51,9 @@ const Promote_Header = () => {
         else if (id == "gosearch") {
             navigate("/promote/search-result")
         }
+        else if (id == "goclubcreate") {
+            navigate("/promote/club-create")
+        }
     }
 
     return (
@@ -70,7 +73,7 @@ const Promote_Header = () => {
                 </Flexdiv>
 
                 {/* 오른쪽 헤더 */}
-                <Flexbutton flex="0_1_56px_row_center_center" width="56px" backgroundColor="#ffffff"><Svgplus height="24px" /></Flexbutton>
+                <Flexbutton id="goclubcreate" flex="0_1_56px_row_center_center" width="56px" backgroundColor="#ffffff"><Svgplus id="goclubcreate" height="24px" /></Flexbutton>
             </PromoteHeaderdiv>
 
         </React.Fragment>

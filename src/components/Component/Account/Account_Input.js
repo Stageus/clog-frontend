@@ -24,7 +24,7 @@ import { ReactComponent as Svgmessage } from "../../../image/envelope.svg"
 
 const Account_Input = (props) => {
     // props ======================================================
-    const { flex, placeholder } = props
+    const { id, svg, flex, placeholder } = props
     // state ======================================================
 
     // event ======================================================
@@ -33,9 +33,9 @@ const Account_Input = (props) => {
         <React.Fragment>
             <Flexdiv flex={flex} width="460px" height="48px" border="1px solid #c4c4c4" radius="10px" margin="5px 0">
                 <Flexdiv margin="0 14px" flex="0_1_auto_row_center_center">
-                    <Svguser flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
+                    {svg}
                 </Flexdiv>
-                <Flexinput flex="1_1_auto" height="30px" font="16px" placeholder={placeholder} />
+                <Flexinput id={id} flex="1_1_auto" height="30px" font="16px" placeholder={placeholder} />
             </Flexdiv>
         </React.Fragment>
     )

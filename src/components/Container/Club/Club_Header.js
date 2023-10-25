@@ -71,11 +71,11 @@ const Club_Header = () => {
                 {/* 가운데 부분 */}
                 <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default" backgroundColor="#FFFFFF">
                     {/* 가운데 좌측, 동아리로고 부분 */}
-                    <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute}>
-                        <Flexdiv flex="0_0_auto_row_center_center" width="75px" height="70px">
-                            <Clog height="40px" fill={"#" + club[0].themeColor}/>
+                    <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute} cursor="pointer">
+                        <Flexdiv flex="0_0_auto_row_center_center" width="75px" height="70px" cursor="pointer">
+                            <Clog height="40px" fill={"#" + club[0].themeColor} cursor="pointer"/>
                         </Flexdiv>
-                        <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="36px" fontBold="800" color={"#" + club[0].themeColor}>{club[0].name}</Span>
+                        <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="36px" fontBold="800" color={"#" + club[0].themeColor} cursor="pointer">{club[0].name}</Span>
                     </Flexdiv>
                     
                     {/* 가운데 우측, 동아리 내 검색바 */}

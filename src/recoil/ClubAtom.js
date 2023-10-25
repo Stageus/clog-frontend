@@ -228,7 +228,7 @@ export const memberListAtom = atom({
             "major" : "컴퓨터공학과",
             "entryYear" : 20,
             "name" : "김영제",
-            "personalColor" : "FF8800",
+            "personalColor" : "0088FF",
             "createdAt" : "2020.12.14."
         },
         {
@@ -238,17 +238,47 @@ export const memberListAtom = atom({
             "major" : "컴퓨터공학과",
             "entryYear" : 20,
             "name" : "김영제",
-            "personalColor" : "0088FF",
+            "personalColor" : "FF0088",
             "createdAt" : "2020.12.14."
         },
         {
             "id" : 3,
             "userId" : 3,
+            "position" : "MANAGER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 20,
+            "name" : "김영제",
+            "personalColor" : "00FF88",
+            "createdAt" : "2020.12.14."
+        },
+        {
+            "id" : 4,
+            "userId" : 4,
+            "position" : "MANAGER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 20,
+            "name" : "김영제",
+            "personalColor" : "88FF00",
+            "createdAt" : "2020.12.14."
+        },
+        {
+            "id" : 5,
+            "userId" : 5,
+            "position" : "MANAGER",
+            "major" : "컴퓨터공학과",
+            "entryYear" : 20,
+            "name" : "김영제",
+            "personalColor" : "8800ff",
+            "createdAt" : "2020.12.14."
+        },
+        {
+            "id" : 6,
+            "userId" : 6,
             "position" : "MEMBER",
             "major" : "컴퓨터공학과",
             "entryYear" : 21,
             "name" : "김영제",
-            "personalColor" : "0088FF",
+            "personalColor" : "88ffff",
             "createdAt" : "2022.04.18."
         },
 

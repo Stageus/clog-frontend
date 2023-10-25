@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 // import components
 import Club_Board from "../../Component/Club/Club_Board"
@@ -21,6 +22,8 @@ import { ReactComponent as Down } from "../../../image/caret-down.svg"
 
 const Club_BoardList = () => {
     // route ============================================================
+    const navigate = useNavigate()
+    const memberRoute = () => navigate("/club/members")
 
     // props ============================================================
 
@@ -54,6 +57,7 @@ const Club_BoardList = () => {
         <nav>
             {/* 동아리 프로필 */}
             <Flexdiv width="190px" height="315px" margin="0 0 20px 0" padding="3px 5px 0px" borderTop={"2px solid #" + club[0].themeColor} cursur="default">
+                {/* 동아리이름, 프로필사진 */}
                 <Flexdiv flex="0_0_auto_row_flex-start_center" font="12px_400_'Nanum Gothic', sans-serif" color="#C4C4C4">
                     {club[0].belong}
                 </Flexdiv>
@@ -64,6 +68,7 @@ const Club_BoardList = () => {
                     <Img width="140px" height="140px" radius="70px" />
                 </Flexdiv>
 
+                {/* 동아리 세부정보 */}
                 <Flexdiv width="190px" height="60px" margin="20px 0 20px">
                     <Flexdiv flex="0_0_auto_row_flex-start_center" height="20px">
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
@@ -81,10 +86,12 @@ const Club_BoardList = () => {
                         <Flexdiv flex="0_0_auto_row_center_center" width="20px" height="20px">
                             <Users width="10px" height="10px" fill="#000000"/>
                         </Flexdiv>
-                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000" cursor="pointer">{club[0].memberCount} 명</Span>
+                        <Span fontFamily="'Nanum Gothic', sans-serif" fontSize="10px" fontBold="400" color="#000000">{club[0].memberCount} 명</Span>
+                        <Span font="10px_400_'Nanum Gothic', sans-serif" margin="0 0 0 10px" color="#C4C4C4" cursor="pointer" onClick={memberRoute}> 조회하기 </Span>
                     </Flexdiv>
                 </Flexdiv>
 
+                {/* 동아리 글쓰기 버튼 */}
                 <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif">
                     동아리 글쓰기
                 </Flexbutton>

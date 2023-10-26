@@ -24,6 +24,7 @@ const Club_BoardList = () => {
     // route ============================================================
     const navigate = useNavigate()
     const memberRoute = () => navigate("/club/members")
+    const wirteRoute = () => navigate("/club/post-writing")
 
     // props ============================================================
 
@@ -92,7 +93,7 @@ const Club_BoardList = () => {
                 </Flexdiv>
 
                 {/* 동아리 글쓰기 버튼 */}
-                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif">
+                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif" onClick={wirteRoute}>
                     동아리 글쓰기
                 </Flexbutton>
 

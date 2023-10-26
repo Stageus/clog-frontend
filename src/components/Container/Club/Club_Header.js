@@ -2,6 +2,7 @@ import React from "react"
 import { useNavigate } from "react-router-dom"
 
 // import components
+import Club_Search from "./Club_Search"
 
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
@@ -40,17 +41,18 @@ const HeaderButton = styled(Flexbutton)`
 `
 
 
-const Club_Header = () => {
+const Club_Header = (props) => {
     // route ============================================================
     const navigate = useNavigate()
     const mainRoute = () => navigate("/club/main")
 
     // props ============================================================
+    const { elem } = props
 
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)   // 동아리에 대한 정보 가져오는 Atom
     const [searchState, setSearchState] = React.useState(true)    // 검색창의 검색 필터에 대한 State
-
+    
     // event ============================================================
     const clickEvent = (e) => {
         let id = e.target.id
@@ -69,6 +71,7 @@ const Club_Header = () => {
                 </HeaderButton>
 
                 {/* 가운데 부분 */}
+                { elem == true &&
                 <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default" backgroundColor="#FFFFFF">
                     {/* 가운데 좌측, 동아리로고 부분 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute} cursor="pointer">
@@ -84,15 +87,15 @@ const Club_Header = () => {
                         {/* 검색 필터 */}
                         { searchState ?
                             <Flexdiv flex="0_0_auto_row_flex-start_center" width="486px" cursor="default">
-                                <Flexbutton onClick={clickEvent} type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="default">
-                                    <Title id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
+                                <Flexbutton onClick={clickEvent} id="search_filter" type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="pointer">
+                                    <Title id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer" title="작성자 이름으로 게시글 검색 필터 전환"/>
                                 </Flexbutton>
                                 <Flexinput width="429px" height="50px" placeholder="게시물 제목으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
                             </Flexdiv>
                             :
                             <Flexdiv flex="0_0_auto_row_flex-start_center" width="486px">
-                                <Flexbutton onClick={clickEvent} type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="default">
-                                    <Writer id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
+                                <Flexbutton onClick={clickEvent} id="search_filter" type="button" flex="0_0_auto_row_center_center" width="52px" height="52px" radius="26px" backgroundColor="#FFFFFF" cursor="pointer">
+                                    <Writer id="search_filter" width="24px" height="24px" fill="#C4C4C4" cursor="pointer" title="게시물 제목으로 게시글 검색 필터 전환"/>
                                 </Flexbutton>
                                 <Flexinput width="429px" height="50px" placeholder="작성자 이름으로 게시글 검색" fontSize="20px" fontFamily="'Noto Sans KR', sans-serif" cursor="text"/>
                             </Flexdiv>
@@ -104,6 +107,7 @@ const Club_Header = () => {
                         </Flexbutton>
                     </Flexdiv>
                 </Flexdiv>
+                }
 
                 {/* chat 버튼 */}
                 <HeaderButton type="button" flex="0_0_auto_row_center_center" color={"#" + club.themeColor}>

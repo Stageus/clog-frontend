@@ -1,8 +1,6 @@
 import React from "react"
 
 // import components
-import Club_ClubProfileBox from "./Club_ClubProfileBox"
-import Club_BoardList from "./Club_BoardList"
 import Club_Members_MemberInfo from "../../Component/Club/Club_Members_MemberInfo"
 
 // import recoil
@@ -18,13 +16,6 @@ import { StyleSheetContext } from "styled-components"
 import { ReactComponent as Left } from "../../../image/angle-left2.svg"
 import { ReactComponent as Right } from "../../../image/angle-right2.svg"
 
-
-const Main = styled.main`
-    width : 1080px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-`
 
 const Section = styled.section`
     width: 860px;
@@ -62,71 +53,59 @@ const Club_Members_Section = () => {
     const managerList = clubMemberList[0].filter(member => member.position == "MANAGER")
     const memberList  = clubMemberList[0].filter(member => member.position == "MEMBER")
 
-    console.log("회장")
-    console.log(presidentList)
-    console.log("운영자")
-    console.log(managerList)
-    console.log("회원")
-    console.log(memberList)
     // event ============================================================
 
 
     return(
         <React.Fragment>
-            <Flexdiv flex="0_0_auto_row_center_flex-start" position="relative_70px" cursor="default">
-                <Main>
-                    <Club_BoardList/>
+            
+            <Section>
+                <Flexdiv height="30px" margin="0 0 20px 0" flex="0_0_auto_row_flex-start_center">
+                    <H1>동아리 회원 조회</H1>
+                </Flexdiv>
 
-                    {/* 여기서부터 main section */}
-                    <Section>
-                        <Flexdiv height="30px" margin="0 0 20px 0" flex="0_0_auto_row_flex-start_center">
-                            <H1>동아리 회원 조회</H1>
+                <Flexdiv width="800px" height="960px" padding="29px" radius="10px" border="1px solid #C4C4C4">
+                    {/* 회장 block */}
+                    <Flexdiv width="800px" height="140px" flex="0_0_auto_column_flex-start_center">
+                        <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
+                            <H2 color={"#" + club[0].themeColor}>회장</H2>
                         </Flexdiv>
+                        <Flexdiv width="825px" height="90px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_center">
+                            { presidentList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
+                        </Flexdiv>
+                    </Flexdiv>
 
-                        <Flexdiv width="800px" height="960px" padding="29px" radius="10px" border="1px solid #C4C4C4">
-                            {/* 회장 block */}
-                            <Flexdiv width="800px" height="140px" flex="0_0_auto_column_flex-start_center">
-                                <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
-                                    <H2 color={"#" + club[0].themeColor}>회장</H2>
-                                </Flexdiv>
-                                <Flexdiv width="825px" height="90px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_center">
-                                    { presidentList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
-                                </Flexdiv>
-                            </Flexdiv>
-
-                            {/* 운영진 block */}
-                            <Flexdiv width="800px" height="230px" padding="10px 0 0 0" customBorder="1px_0_0_0_solid_#C4C4C4" flex="0_0_auto_column_flex-start_center">
-                                <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
-                                    <H2 color={"#" + club[0].themeColor}>운영진</H2>
-                                    <Flexdiv width="100px" height="30px" flex="0_0_auto_raw_space-between_center">
-                                        <Left width="16px" height="16px" fill={"#" + club[0].themeColor}/>
-                                        <Span font="16px_400_'Noto Sans KR', sans-serif">1 / 1</Span>
-                                        <Right width="16px" height="16px" fill={"#" + club[0].themeColor}/>
-                                    </Flexdiv>
-                                </Flexdiv>
-                                <Flexdiv width="825px" height="180px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_flex-start_wrap">
-                                    { managerList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
-                                </Flexdiv>
-                            </Flexdiv>
-
-                            {/* 동아리원 block */}
-                            <Flexdiv width="800px" padding="10px 0 0 0" customBorder="1px_0_0_0_solid_#C4C4C4" flex="0_0_auto_column_flex-start_center">
-                                <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
-                                    <H2 color={"#" + club[0].themeColor}>동아리원</H2>
-                                    <Flexdiv width="100px" height="30px" flex="0_0_auto_raw_space-between_center">
-                                        <Left width="16px" height="16px" fill={"#" + club[0].themeColor}/>
-                                        <Span font="16px_400_'Noto Sans KR', sans-serif">1 / 1</Span>
-                                        <Right width="16px" height="16px" fill={"#" + club[0].themeColor}/>
-                                    </Flexdiv>
-                                </Flexdiv>
-                                <Flexdiv width="825px" height="180px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_flex-start_wrap">
-                                    { memberList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
-                                </Flexdiv>
+                    {/* 운영진 block */}
+                    <Flexdiv width="800px" height="230px" padding="10px 0 0 0" customBorder="1px_0_0_0_solid_#C4C4C4" flex="0_0_auto_column_flex-start_center">
+                        <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
+                            <H2 color={"#" + club[0].themeColor}>운영진</H2>
+                            <Flexdiv width="100px" height="30px" flex="0_0_auto_raw_space-between_center">
+                                <Left width="16px" height="16px" fill={"#" + club[0].themeColor}/>
+                                <Span font="16px_400_'Noto Sans KR', sans-serif">1 / 1</Span>
+                                <Right width="16px" height="16px" fill={"#" + club[0].themeColor}/>
                             </Flexdiv>
                         </Flexdiv>
-                    </Section>
-                </Main>
-            </Flexdiv>
+                        <Flexdiv width="825px" height="180px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_flex-start_wrap">
+                            { managerList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
+                        </Flexdiv>
+                    </Flexdiv>
+
+                    {/* 동아리원 block */}
+                    <Flexdiv width="800px" padding="10px 0 0 0" customBorder="1px_0_0_0_solid_#C4C4C4" flex="0_0_auto_column_flex-start_center">
+                        <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
+                            <H2 color={"#" + club[0].themeColor}>동아리원</H2>
+                            <Flexdiv width="100px" height="30px" flex="0_0_auto_raw_space-between_center">
+                                <Left width="16px" height="16px" fill={"#" + club[0].themeColor}/>
+                                <Span font="16px_400_'Noto Sans KR', sans-serif">1 / 1</Span>
+                                <Right width="16px" height="16px" fill={"#" + club[0].themeColor}/>
+                            </Flexdiv>
+                        </Flexdiv>
+                        <Flexdiv width="825px" height="180px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_flex-start_wrap">
+                            { memberList.map((elem) => <Club_Members_MemberInfo elem={elem}/>) }
+                        </Flexdiv>
+                    </Flexdiv>
+                </Flexdiv>
+            </Section>
 
         </React.Fragment>
     )

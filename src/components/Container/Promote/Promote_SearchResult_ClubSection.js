@@ -1,10 +1,11 @@
-import React from "react"
+import React from "react";
 
 // Container,Component
 import Promote_SearchResult_Club from "../../Component/Promote/Promote_SearchResult_Club"
+import usePagenation from "../../../module/Pagenation";
 //recoil
-import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { searchResultClubAtom } from "../../../recoil/PromoteAtom"
+import { useRecoilValue, useSetRecoilState, useRecoilState, readOnlySelector } from "recoil"
+import { pageAtom, searchResultClubAtom } from "../../../recoil/PromoteAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, P, Flexbutton, Img, Span } from "../../../style/common"
@@ -32,16 +33,19 @@ const TransitionDiv = styled(Flexdiv)`
 `
 const Promote_SearchResult_ClubSection = () => {
     // props ============================================================
-
+    // perPage,onePage,data?
     // state ============================================================
-    const allData = useRecoilValue(searchResultClubAtom)//모든 데이터(20개 제한))
-    const page = React.useRef(0);//현재 page count
-    const perPage = 4//한 페지당 불러올 prpost 개수
-    const last = allData.length % perPage//마지막 페이지의 데이터 개수
-    let pageMax = parseInt(allData.length / perPage)//총 페이지 수
-    const [data, setData] = React.useState([])
+    const [data, setData] = React.useState([])//현재페이지에 뜰 데이터 리스트
+    const [page, setPage] = useRecoilState(pageAtom)
+    const allData = useRecoilValue(searchResultClubAtom)//모든 데이터
+    const perPage = 4//한 페이지당 불러올 prpost 개수
+    const onePage = 5 //화면에 나타날 페이지 개수
+    let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수
+    const last = allData.length - (perPage * (pageMax - 1))//마지막 페이지의 데이터 개수
     // event ============================================================
     const navigate = useNavigate()
+    const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage);
+    //클릭이벤트
     const clickEvent = (e) => {
         let id = e.target.id
         if (id == "goclubprofile") {
@@ -49,58 +53,45 @@ const Promote_SearchResult_ClubSection = () => {
             navigate("/promote/club-profile")
         }
         else if (id == "clubresultback") {
-            console.log(id)
-            previousData()
+            let pagereturn = previous()
+            console.log("previous", pagereturn)
+            if (pagereturn != null) {
+                setPage(pagereturn)//페이지그룹 넘긴후 마지막페이지를 page로
+            }
         }
         else if (id == "clubresultfront") {
-            console.log(id)
-            nextData()
-        }
-    }
-
-    //데이터 파싱
-    const cutData = () => {
-        let newDataList = []
-        if (page.current < pageMax) {
-            for (let index = 0; index < perPage; index++) {
-                let count = index + perPage * page.current
-                newDataList[index] = allData[count]
+            let pagereturn = next()
+            console.log("next", pagereturn)
+            if (pagereturn != null) {
+                setPage(pagereturn)//페이지그룹 넘긴 후 첫번째페이지를 page로
             }
         }
-        else if (page.current == pageMax) {
-            for (let index = 0; index < last; index++) {
-                let count = index + perPage * page.current
-                newDataList[index] = allData[count]
-            }
-        }
-        return newDataList
-    }
-
-    const nextData = () => {
-        if (page.current <= pageMax) {
-            let newDataList = cutData()
-            setData((data) => [...data, ...newDataList])
-            page.current = page.current + 1
-            //css animation 추가
-        }
-        else if (page.current > pageMax) {
-            console.log("END")
-        }
-    }
-    const previousData = () => {
-        if (page.current == 0) {
-            console.log("START")
-        }
-        else if (page.current <= pageMax) {
-            page.current = page.current - 1
-            //css animation 추가
+        //페이지버튼 클릭시 해당 페이지로 이동
+        else if (id.includes("pagebtn")) {
+            let num = id.split("_")[1]
+            setPage(parseInt(num))
         }
     }
 
-
+    // //데이터 파싱
     React.useEffect(() => {
-        nextData()
-    }, [])
+        let newDataList = []
+        if (page < pageMax) {
+            for (let index = 0; index < perPage; index++) {
+                let count = index + perPage * (page - 1)
+                newDataList[index] = allData[count]
+            }
+            console.log(page, "현재페이지에띄울 데이터: ", newDataList)
+        }
+        else if (page == pageMax) {
+            for (let index = 0; index < last; index++) {
+                let count = index + perPage * (page - 1)
+                newDataList[index] = allData[count]
+            }
+            console.log(page, "현재페이지에띄울 데이터 마지막: ", newDataList)
+        }
+        setData([...newDataList])
+    }, [page])
 
     return (
         <React.Fragment>
@@ -114,23 +105,21 @@ const Promote_SearchResult_ClubSection = () => {
                             <Span color="#c4c4c4" margin="5px 0">검색결과가 없습니다</Span>
                         </Flexdiv>
                         :
-                        <HiddenDiv flex="0_1_auto_row_flex-start_center" width="1170px" height="120px">
-                            <TransitionDiv flex="0_1_auto_row_flex-start_center" height="100%" backgroundColor="orange">
-                                {data.map((elem) => <Promote_SearchResult_Club elem={elem} />)}
-                            </TransitionDiv>
-                        </HiddenDiv>}
-                    {/* 페이지 넘김 버튼 */}
-                    <Flexdiv flex="0_1_auto_row_flex-end_center" width="1160px" height="20px" margin="9px 0">
-                        {/* <Flexdiv flex="0_1_auto_row_center_center_" height="20px" backgroundColor="orange">
-                            <Flexdiv width="15px" height="15px" backgroundColor="#aaaaaa" radius="50%" margin="0 10px"></Flexdiv>
-                            <Flexdiv width="15px" height="15px" backgroundColor="#aaaaaa" radius="50%" margin="0 10px"></Flexdiv>
-                            <Flexdiv width="15px" height="15px" backgroundColor="#aaaaaa" radius="50%" margin="0 10px"></Flexdiv>
-                            <Flexdiv width="15px" height="15px" backgroundColor="#aaaaaa" radius="50%" margin="0 10px"></Flexdiv>
-                            <Flexdiv width="15px" height="15px" backgroundColor="#aaaaaa" radius="50%" margin="0 10px"></Flexdiv>
-                        </Flexdiv> */}
-                        <Flexbutton id="clubresultback"><Svgleft id="clubresultback" width="15px" height="15px" fill="#aaaaaa" /></Flexbutton>
-                        <Flexbutton id="clubresultfront"><Svgright id="clubresultfront" width="15px" height="15px" fill="#aaaaaa" /></Flexbutton>
-                    </Flexdiv>
+                        <>
+                            <HiddenDiv flex="0_1_auto_row_flex-start_center" width="1170px" height="120px">
+                                <TransitionDiv flex="0_1_auto_row_flex-start_center" height="100%">
+                                    {data.map((elem) => <Promote_SearchResult_Club elem={elem} />)}
+                                </TransitionDiv>
+                            </HiddenDiv>
+
+                            <Flexdiv flex="0_1_auto_row_flex-end_center" height="20px" margin="9px 0">
+                                <Flexbutton id="clubresultback" backgroundColor="#f0f0f0"><Svgleft id="clubresultback" width="15px" height="15px" fill="#333333" /></Flexbutton>
+                                <Flexdiv flex="0_1_auto_row_center_center_" height="20px">
+                                    {pagebtnList.map((elem) => <Flexdiv id={"pagebtn_" + elem} flex="0_1_auto_row_center_center" width="15px" height="15px" backgroundColor="#f0f0f0" radius="50%" margin="0 10px">{elem}</Flexdiv>)}
+                                </Flexdiv>
+                                <Flexbutton id="clubresultfront" backgroundColor="#f0f0f0"><Svgright id="clubresultfront" width="15px" height="15px" fill="#333333" /></Flexbutton>
+                            </Flexdiv>
+                        </>}
                 </Flexdiv>
             </Flexdiv>
         </React.Fragment>

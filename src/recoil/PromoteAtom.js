@@ -1223,6 +1223,76 @@ export const searchResultClubAtom = atom({
             "id": "10",
             "club": "동아리10",
             "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "11",
+            "club": "MRA",
+            "profileImage": "../../../image/mra.png"
+        },
+        {
+            "id": "12",
+            "club": "테니스부",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "13",
+            "club": "동아리3",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "14",
+            "club": "동아리4",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "15",
+            "club": "동아리5",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "16",
+            "club": "동아리6",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "17",
+            "club": "동아리7",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "18",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "19",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "20",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "21",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "22",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "23",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "24",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
         }
     ]
 })
@@ -1328,4 +1398,9 @@ export const selectBigAtom = atom({
 export const selectSmallAtom = atom({
     "key": "selectSmallAtom",
     "default": false
+})
+
+export const pageAtom = atom({
+    "key": "pageAtom",
+    "default": 1
 })

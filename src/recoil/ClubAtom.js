@@ -284,3 +284,72 @@ export const memberListAtom = atom({
 
     ]
 })
+
+export const requestListAtom = atom({
+    "key" : "requestListAtom",
+    "default" : [
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+        {
+            "requestId": 0,
+            "id": 1,
+            "name": "김영제",
+            "personalColor": "246324",
+            "entryYear": 19,
+            "major": "컴퓨터공학과",
+            "createdAt": "2023.10.27 19:34"
+        },
+    ]
+})

@@ -23,8 +23,15 @@ import { ReactComponent as Down } from "../../../image/caret-down.svg"
 const Club_BoardList = () => {
     // route ============================================================
     const navigate = useNavigate()
+
     const memberRoute = () => navigate("/club/members")
-    const wirteRoute = () => navigate("/club/post-writing")
+    const writePostRoute = () => navigate("/club/post-writing")
+
+    const editClubRoute = () => navigate("/club/edit-club-profile")
+    const editPositonRoute = () => navigate("/club/edit-position")
+    const writeNoticeRoute = () => navigate("/club/notice-writing")
+    const editBoardRoute = () => navigate("/club/edit-board-list")
+    const requestRoute = () => navigate("/club/request-accept")
 
     // props ============================================================
 
@@ -93,7 +100,7 @@ const Club_BoardList = () => {
                 </Flexdiv>
 
                 {/* 동아리 글쓰기 버튼 */}
-                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif" onClick={wirteRoute}>
+                <Flexbutton flex="0_0_auto_row_center_center" width="190px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="16px_600_'Noto Sans KR', sans-serif" onClick={writePostRoute}>
                     동아리 글쓰기
                 </Flexbutton>
 
@@ -123,19 +130,19 @@ const Club_BoardList = () => {
                             <Flexdiv flex="0_0_auto_column_center_flex-start" width="170px" margin="0 0 0 10px">
                                 { level < 1 && 
                                     <React.Fragment>
-                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={editClubRoute}>
                                             동아리 정보 수정
                                         </Flexdiv>
-                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                        <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={editPositonRoute}>
                                             동아리원 관리
                                         </Flexdiv>
                                     </React.Fragment>
                                 }
 
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={writeNoticeRoute}>
                                     공지 작성
                                 </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={editBoardRoute}>
                                     게시판 관리
                                 </Flexdiv>
                                 <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
@@ -144,7 +151,7 @@ const Club_BoardList = () => {
                                 <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
                                     홍보게시물 관리
                                 </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={requestRoute}>
                                     신규 가입 신청 받기
                                 </Flexdiv>
                             </Flexdiv>

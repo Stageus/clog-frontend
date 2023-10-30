@@ -13,8 +13,8 @@ import { Flexbutton, Flexdiv, Flexinput, Span } from "../../../style/common"
 import { StyleSheetContext } from "styled-components"
 
 // import image
-import { ReactComponent as Down} from "../../../image/angle-down.svg"
-import { ReactComponent as Up} from "../../../image/angle-up.svg"
+import { ReactComponent as Check} from "../../../image/checkbox.svg"
+import { ReactComponent as Box} from "../../../image/square.svg"
 
 const Main = styled.main`
     width : 1080px;
@@ -43,41 +43,25 @@ const Flexinput2 = styled(Flexinput)`
 
 
 
-const Club_PostWriting_Section = () => {
+const Club_NoticeWriting_Section = () => {
 	// route ============================================================
 
     // props ============================================================
 
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)
-    const boardList = useRecoilState(boardListAtom)
-    const [boardState, setBoardState] = React.useState(false)
-    // let board = "게시판을 선택해 주세요."
-    const board = useRef(null)
+    const [noticeState, setNoticeState] = React.useState(false)
 
     // event ============================================================
     const clickEvent = (e) => {
         let id = e.target.id
-        if (id == "boardOption") {
-            setBoardState(!boardState)
+        if (id == "checkin") {
+            setNoticeState(true)
         }
-        // console.log(boardState)
-        // console.log("현재 board는 " + board)
-    }
-
-    const selectEvent = (e) => {
-        let id = e.target.id
-        if (id == "boardName") {
-            setBoardState(false)
-            board.current = e.target.innerText
-            // console.log(board + "로 바뀜")
+        else if (id="checkout") {
+            setNoticeState(false)
         }
-        // console.log("바뀐 게시판은 " + board)
     }
-
-    useEffect(() => {
-        console.log(board)
-    })
     
 
     return(
@@ -86,41 +70,24 @@ const Club_PostWriting_Section = () => {
                 <Main>
                     {/* 페이지의 이름 부분 */}
                     <Flexdiv width="1040px" height="40px" padding="10px 20px" customBorder="0_0_1px_0_solid_#C4C4C4" flex="0_0_auto_raw_flex-start_center">
-                        <H1>동아리 글쓰기</H1>
+                        <H1>동아리 공지 쓰기</H1>
                     </Flexdiv>
                     
                     {/* 페이지의 내용 부분 */}
                     <Flexdiv width="1040px" padding="20px" flex="0_0_auto_column_flex-start_center">
 
-                        {/* 게시판 선택 드롭다운 부분 */}
-                        { boardState == true &&
-                            <Flexdiv width="1040px" border="2px solid #000000" radius="10px" position="absolute" backgroundColor="#FFFFFF">
-                                <Flexdiv width="1040px" height="50px" radius="10px 10px 0 0" customBorder="0_0_1px_0_solid_#C4C4C4" flex="0_0_auto_raw_space-between_center" onClick={clickEvent}>
-                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">{board}</Span>
-                                    <Flexbutton id="boardOption" width="50px" height="50px" flex="0_0_auto_raw_center_center" radius="10px">
-                                        <Up id="boardOption" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
-                                    </Flexbutton>
-                                </Flexdiv>
-                                
-                                <Flexdiv padding="10px">
-                                    { boardList[0].map((elem) => 
-                                        <Flexdiv onClick={selectEvent} flex="0_0_auto_raw_space-between_center" height="40px">
-                                            <Span id="boardName" font="16px_400_'Nanum Gothic', sans-serif" cursor="pointer">{elem.name}</Span>
-                                        </Flexdiv>
-                                    ) }
-                                </Flexdiv>
-                            </Flexdiv>
-                        }
-
-                        <Flexdiv width="1040px" height="50px" margin="0 0 20px 0" border="1px solid #C4C4C4" radius="10px" flex="0_0_auto_raw_space-between_center" onClick={clickEvent}>
-                            { board === null ?
-                                <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">게시판을 선택해 주세요.</Span>
+                        {/* 주요 공지사항 체크 */}
+                        <Flexdiv width="1020px" height="30px" padding="10px" margin="0 0 20px 0" flex="0_0_auto_raw_flex-start_center">
+                            { noticeState === false ?
+                                <Flexbutton width="30px" height="30px" flex="0_0_auto_raw_center_center" onClick={clickEvent}>
+                                    <Box id="checkin" width="24px" height="24px" fill={"#" + club[0].themeColor} cursor="pointer"/>
+                                </Flexbutton>
                                 :
-                                <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#000000">{board.current}</Span>
+                                <Flexbutton width="30px" height="30px" flex="0_0_auto_raw_center_center" onClick={clickEvent}>
+                                    <Check id="checkout" width="24px" height="24px" fill={"#" + club[0].themeColor} cursor="pointer"/>
+                                </Flexbutton>
                             }
-                            <Flexbutton id="boardOption" width="50px" height="50px" flex="0_0_auto_raw_center_center" radius="10px">
-                                <Down id="boardOption" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
-                            </Flexbutton>
+                            <Span margin="0 0 0 10px" font="16px_400_'Nanum Gothic', sans-serif">주요 공지사항으로 등록</Span>
                         </Flexdiv>
 
                         {/* 제목 입력란 */}
@@ -151,4 +118,4 @@ const Club_PostWriting_Section = () => {
     )
 }
 
-export default Club_PostWriting_Section
+export default Club_NoticeWriting_Section

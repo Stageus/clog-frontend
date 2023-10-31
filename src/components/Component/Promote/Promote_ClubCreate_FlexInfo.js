@@ -24,8 +24,13 @@ const TextArea = styled.textarea`
 const OverDiv = styled(Flexdiv)`
     overflow: hidden;
  `
-
-
+//테마색상 선택 테두리
+const Themadiv = styled(Flexdiv)`
+&:hover{
+    border: 4px solid #c4c4c4;
+    margin: 16px;
+}
+`
 //토글
 const AniLabelGo = keyframes`
     0% {
@@ -89,14 +94,6 @@ background-color: #EB5149;
         animation-duration: 0.5s;
         animation-fill-mode: forwards;
         `}
-`
-
-//테마색상 선택 테두리
-const Themadiv = styled(Flexdiv)`
-    &:hover{
-        border: 4px solid #c4c4c4;
-        margin: 16px;
-    }
 `
 
 

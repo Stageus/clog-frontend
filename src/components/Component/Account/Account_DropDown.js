@@ -1,5 +1,8 @@
 import React from "react"
 
+// Container,Component,module
+import useIntersect from "../../../module/InfiniteScroll"
+
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, P, Img, Span } from "../../../style/common"
 import styled from "styled-components"
@@ -7,6 +10,10 @@ import styled from "styled-components"
 import { ReactComponent as Svgdown } from "../../../image/angle-down.svg"
 //router
 import { Link, useNavigate } from 'react-router-dom'
+
+//recoil
+import { useRecoilSnapshot, useRecoilState } from "recoil"
+import { entryYeardropAtom } from "../../../recoil/AccountAtom"
 
 
 
@@ -27,6 +34,9 @@ const HoverDiv = styled(Flexdiv)`
         color: #333333;
     }
 `
+const DropdownBox = styled(Flexdiv)`
+    overflow-y: auto;
+`
 const Account_DropDown = (props) => {
     // props ======================================================
     const { svg, dropboxname, list, width, height } = props
@@ -34,6 +44,15 @@ const Account_DropDown = (props) => {
     // state ======================================================
     const [dropBoxOpen, setDropBoxOpen] = React.useState(false)
     const [clickDropDown, setClickDropDown] = React.useState(list[0])
+
+    const allData = list;//모든 데이터
+    const [data, setData] = React.useState([]);//현재 데이터
+    const [isLoaded, setIsLoaded] = React.useState(false);//true이면 loading중임
+    const page = React.useRef(0);//page count
+    const perPage = 10;//한 페이지당 불러올 알람 개수
+    let last = allData.length % perPage// 마지막 페이지의 컴포넌트 개수
+    let pageMax = parseInt(allData.length / perPage)//총 페이지 수
+
 
     // event ======================================================
     const clickEvent = (e) => {
@@ -49,6 +68,60 @@ const Account_DropDown = (props) => {
     }
 
 
+    ///////////////////////////////////무한 스크롤 관련 함수///////////////////
+    //넘어온 알람을 20개씩 파싱(임시)
+    //데이터 파싱
+    const cutData = () => {
+        let newDataList = []
+        if (page.current < pageMax) {
+            for (let index = 0; index < perPage; index++) {
+                let count = index + perPage * page.current
+                newDataList[index] = allData[count]
+            }
+        }
+        else if (page.current >= pageMax) {
+            for (let index = 0; index < last; index++) {
+                let count = index + perPage * page.current
+                newDataList[index] = allData[count]
+            }
+        }
+        return newDataList
+    }
+
+    //callback함수 실행시 ...
+    const fetchData = async () => {
+        let newDataList = []
+        if (page.current <= pageMax) {
+            //현재 페이지의, 추가할 데이터를 불러옴
+            let newDataList = cutData()
+            setData((data) => {
+                return [...data, ...newDataList]
+            })//데이터에 즉시 추가
+            setIsLoaded(true)
+            page.current++;//다음 페이지
+        }
+    };
+
+    //마운트시 fetch
+    React.useEffect(() => {
+        fetchData();
+    }, []);//
+
+    //custom hook 사용
+    const [_, setRef] = useIntersect(async (entry, observer) => {
+        //데이터 패칭이 완료되기 전에 교차 상태를 여러번 변화시키는 상황이 발생하지 않도록 관찰을 중단했다가 다시 observe한다.
+        observer.unobserve(entry.target);
+        await fetchData();//데이터 불러오는 함수
+        observer.observe(entry.target);
+    }, {
+        root: document.getElementById('profiledropdown'),//부모로 설정할 요소
+        threshold: 1,
+        rootMargin: '0px',
+    });
+    ///////////////////////////////////무한 스크롤 관련 함수///////////////////
+
+
+
     return (
         <React.Fragment>
             <Flexdiv onClick={clickEvent} position="absolute_0_0_0_0">
@@ -61,12 +134,15 @@ const Account_DropDown = (props) => {
                                 <Svgdown id="opendropbox" fill="#c4c4c4" width="16px" height="16px" />
                             </Flexbutton>
                         </Flexdiv>
-                        <Flexdiv width={width} backgroundColor="#ffffff" margin="2px 0 0 0">
-                            {list.map((elem, i) =>
+                        {/* 부모 */}
+                        <DropdownBox id="profiledropdown" width={width} height="200px" backgroundColor="#ffffff" margin="2px 0 0 0">
+                            {data.map((elem, i) =>
                                 <HoverDiv id={dropboxname + "_" + i} flex="0_1_auto_row_space-between_center" width={width} height={height} color="#aaaaaa" backgroundColor="#ffffff">
                                     <Span id={dropboxname + "_" + i} flex=" 0_1_auto" margin="0 0 0 10px">{elem}</Span>
                                 </HoverDiv>)}
-                        </Flexdiv>
+                            {isLoaded && <Flexdiv ref={setRef} backgroundColor="blue"> Loading!</Flexdiv>}
+
+                        </DropdownBox>
                     </Flexdiv> :
                     <Flexdiv flex="0_1_auto" width={width} backgroundColor="#ffffff" >
                         <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="1px solid #c4c4c4" radius="10px">

@@ -15,12 +15,18 @@ import { ReactComponent as Svglock } from "../../../image/lock.svg"
 //router
 import { useNavigate } from "react-router-dom"
 
+//recoil
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
+import { authOrfindPageAtom } from "../../../recoil/AccountAtom"
+
+
 
 const Account_Login_LoginBox = () => {
     // props ============================================================
 
     // state ============================================================
     const [focus, setFocus] = React.useState(-1);
+    const [authOrfind, setAuthOrfind] = useRecoilState(authOrfindPageAtom)//true이면 auth, false이면 findPW
     // event ============================================================
     const navigate = useNavigate()
     const clickEvent = (e) => {
@@ -29,10 +35,12 @@ const Account_Login_LoginBox = () => {
             navigate("/promote/main")
         }
         else if (id == "goauth") {
+            setAuthOrfind(true)
             navigate("/account/auth")
         }
         else if (id == "gofindPW") {
-            navigate("/account/find-pw")
+            setAuthOrfind(false)
+            navigate("/account/auth")
         }
         else if (id == "entryyear" || id == "entryinput") {
             setFocus(0)

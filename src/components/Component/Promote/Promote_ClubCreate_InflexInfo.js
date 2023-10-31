@@ -2,7 +2,7 @@ import React from "react"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { belongAtom, bigCategoryAtom, smallCategoryAtom, checkClubNameAtom, selectBigAtom, selectSmallAtom, collegeAtom, majorAtom } from "../../../recoil/PromoteAtom"
+import { belongAtom, bigCategoryAtom, smallCategoryAtom, checkClubNameAtom, collegeAtom, majorAtom, categoryDoneAtom } from "../../../recoil/PromoteAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -26,14 +26,16 @@ const Promote_ClubCreate_InflexInfo = () => {
     const belong = useRecoilValue(belongAtom)
     const smallCategory = useRecoilValue(smallCategoryAtom)
     const bigCategory = useRecoilValue(bigCategoryAtom)
-    const belongList = []
-    const collegeList = ["분과(선택 안함)"]
-    const majorList = ["분과(선택 안함)"]
-    const templist = ["분과(선택 안함)"]
-    const [smallList, setSmallList] = React.useState(["소분류(선택 안함)"])
-    const [bigList, setBigList] = React.useState(["분과(선택 안함)"])
-    const [selectBig, setSelectBig] = useRecoilState(selectBigAtom)
-    const setSelectSmall = useSetRecoilState(selectSmallAtom)
+    const belongList = []//소속 리스트
+    const collegeList = ["분과(선택 안함)"]//학부 리스트
+    const majorList = ["분과(선택 안함)"]//전공 리스트
+    const templist = ["분과(선택 안함)"]//대분류 리스트 임시
+    const [smallList, setSmallList] = React.useState(["소분류(선택 안함)"])//소분류 리스트(대분류마다 다름)
+    const [bigList, setBigList] = React.useState(["분과(선택 안함)"])//대분류 리스트
+    const [belongSelection, setBelongSelection] = React.useState(-1)
+    const [selectBig, setSelectBig] = React.useState(false)
+    const [selectSmall, setSelectSmall] = React.useState(false)
+    const [categoryDone, setCategoryDone] = useRecoilState(categoryDoneAtom)
 
     /////////////////////////////////////소속 리스트에 세팅////////////
     for (let index = 0; index < belong.length; index++) {
@@ -79,48 +81,55 @@ const Promote_ClubCreate_InflexInfo = () => {
             let num = id.split("_")[1]
             //중앙,일반 동아리
             if (num == "0" || num == "1") {
-                setBigList((bigList) => [...templist])
-                setSelectBig(true)
+                setBelongSelection(num)
+                setBigList([...templist])
             }
             //단과대 소모임
             else if (num == "2") {
-                console.log(id)
-                console.log("?")
-                setBigList((bigList) => [...collegeList])
+                console.log("단과대 소모임")
+                setBelongSelection(num)
+                setBigList([...collegeList])
                 setSelectBig(false)
+                setSelectSmall(false)
             }
             //학과 소모임
             else if (num == "3") {
-                setBigList((bigList) => [...majorList])
+                setBelongSelection(num)
+                setBigList([...majorList])
                 setSelectBig(false)
+                setSelectSmall(false)
             }
         }
-        //대분류 선택시
-        else if (selectBig && id.includes("bigCategory")) {
+        //소속 0,1 선택시
+        if ((belongSelection == 0 || belongSelection == 1) && id.includes("bigCategory")) {
             let num = id.split("_")[1]
             //기본값 선택하면 소분류 dropbox 숨기기
-            if (id == "bigCategory_0") {
+            if (num == 0) {
                 setSelectBig(false)
+                if (categoryDone) { setCategoryDone(false) }
             }
             // bigCategory1~10번 선택하면 smallList 업데이트해서 해당하는 소분류 dropbox 띄우기
             else {
-                smallListCount.filter((elem, i) => {
-                    if (num == (i + 1)) {
-                        setSmallList(["소분류(선택 안함)", ...temp[i]])
-                    }
-                    setSelectBig(true)
-                })
+                setSmallList(["소분류(선택 안함)", ...temp[num - 1]])
+                setSelectBig(true)
+                if (categoryDone) { setCategoryDone(false) }
             }
         }
-        //소분류 선택시
-        else if (id.includes("smallCategory")) {
+        //소속 2,3,4 선택시
+        else if (id.includes("bigCategory")) {
             let num = id.split("_")[1]
-            if (num == "0") {
-                setSelectSmall(false)
+            if (num != 0) {
+                if (!categoryDone) { setCategoryDone(true) }
             }
-            else if (num != "0") {
-                setSelectSmall(true)
+            else { if (categoryDone) { setCategoryDone(false) } }
+        }
+        //소분류 선택시
+        if (id.includes("smallCategory")) {
+            let num = id.split("_")[1]
+            if (num != 0) {
+                if (!categoryDone) { setCategoryDone(true) }
             }
+            else { if (categoryDone) { setCategoryDone(false) } }
         }
         // 
     }
@@ -171,9 +180,6 @@ const Promote_ClubCreate_InflexInfo = () => {
                     <Flexdiv position="relative_-100px" width="400px" height="50px" flex="0_1_auto_row_center_center">
                         <Promote_Category_DropBox dropboxname={"belong"} list={belongList} width="400px" height={"50px"} />
                     </Flexdiv>
-                    {/* <Promote_Category_DropBox back="#333333" dropboxname={"belong"} list={belongList} width="400px" height={"50px"} /> */}
-                    {/* <Promote_Category_DropBox dropboxname={"bigCategory"} list={bigList} width="400px" height={"50px"} /> */}
-                    {/* {selectBig && <Promote_Category_DropBox dropboxname={"smallCategory"} list={smallList} width="400px" height={"50px"} />} */}
                 </OverDiv>
             </Flexdiv>
         </React.Fragment >

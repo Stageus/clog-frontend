@@ -31,7 +31,6 @@ const Account_ResetPW_ResetPWBox = () => {
                         <Svgclog width="200px" height="200px" />
                     </Flexdiv>
                     <Flexdiv flex="0_1_auto_column_flex-start_center" height="300px">
-
                         <Account_PwInput svg={svglock} flex="0_1_auto_row_center_center" placeholder="신규 비밀번호 입력" />
                         <Account_PwInput svg={svglock} flex="0_1_auto_row_center_center" placeholder="신규 비밀번호 재입력" />
                     </Flexdiv>

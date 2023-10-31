@@ -1,5 +1,5 @@
 import React from "react"
-// Container,Component
+// Container,Component,module
 import useIntersect from "../../../module/InfiniteScroll"
 import Nav_NotificationBox_Notification from "../../Component/Nav/Nav_NotificationBox_Notification"
 
@@ -62,7 +62,6 @@ const Nav_NotificationBox = () => {
         }
         setAllData(newList)
         setUncheckAlarmNum(0)
-        //alarmNum을 0 으로 변경, 랜더링 적용 타이밍수정 필요
     }
 
 

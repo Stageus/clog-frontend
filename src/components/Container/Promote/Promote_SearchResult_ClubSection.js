@@ -44,6 +44,7 @@ const Promote_SearchResult_ClubSection = () => {
     const last = allData.length - (perPage * (pageMax - 1))//마지막 페이지의 데이터 개수
     // event ============================================================
     const navigate = useNavigate()
+    //페이지네이션
     const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage);
     //클릭이벤트
     const clickEvent = (e) => {
@@ -112,10 +113,11 @@ const Promote_SearchResult_ClubSection = () => {
                                 </TransitionDiv>
                             </HiddenDiv>
 
+                            {/* 페이지네이션 버튼 */}
                             <Flexdiv flex="0_1_auto_row_flex-end_center" height="20px" margin="9px 0">
                                 <Flexbutton id="clubresultback" backgroundColor="#f0f0f0"><Svgleft id="clubresultback" width="15px" height="15px" fill="#333333" /></Flexbutton>
                                 <Flexdiv flex="0_1_auto_row_center_center_" height="20px">
-                                    {pagebtnList.map((elem) => <Flexdiv id={"pagebtn_" + elem} flex="0_1_auto_row_center_center" width="15px" height="15px" backgroundColor="#f0f0f0" radius="50%" margin="0 10px">{elem}</Flexdiv>)}
+                                    {pagebtnList.map((elem) => <Flexdiv id={"pagebtn_" + elem} flex="0_1_auto_row_center_center" width="20px" height="20px" backgroundColor={(page == elem) ? "#dadada" : "#f0f0f0"} radius="50%" margin="0 5px">{elem}</Flexdiv>)}
                                 </Flexdiv>
                                 <Flexbutton id="clubresultfront" backgroundColor="#f0f0f0"><Svgright id="clubresultfront" width="15px" height="15px" fill="#333333" /></Flexbutton>
                             </Flexdiv>

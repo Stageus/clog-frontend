@@ -778,6 +778,150 @@ export const prPostCommentAtom = atom({
                 "authorPosition": "미가입", // 작성자 직책
                 "authorEntryYear": "21", // 작성자 학번
                 "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 3, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 4, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 4, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": false, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 5, // 댓글의 pk
+                "content": "ㅇ ㅖ?", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 6, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 4, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 7, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": false, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 8, // 댓글의 pk
+                "content": "ㅇ ㅖ?", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 9, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 4, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 10, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": false, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 11, // 댓글의 pk
+                "content": "ㅇ ㅖ?", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 12, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 4, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 13, // 댓글의 pk
+                "content": "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항", // 학번인데 내용으로 변경
+                "manageState": false, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
+            },
+            {
+                "id": 14, // 댓글의 pk
+                "content": "END", // 학번인데 내용으로 변경
+                "manageState": true, // 댓글 수정, 삭제 여부
+                "createdAt": "2023.05.15 02:23", // 작성 날짜
+                "replyCount": 0, // 대댓글 개수
+                "authorId": 3, // 작성자 pk
+                "authorMajor": "인공지능공학과", // 작성자 학과
+                "authorPosition": "미가입", // 작성자 직책
+                "authorEntryYear": "21", // 작성자 학번
+                "authorPcolor": "2fffff", // 작성자 퍼스널 컬러
             }
         ]
     }
@@ -1386,20 +1530,18 @@ export const themaColorAtom = atom({
     ]
 })
 
+//동아리 생성 페이지 동아리 이름 예외처리
 export const checkClubNameAtom = atom({
     "key": "checkClubNameAtom",
     "default": false
 })
-
-export const selectBigAtom = atom({
-    "key": "selectBigAtom",
-    "default": false
-})
-export const selectSmallAtom = atom({
-    "key": "selectSmallAtom",
+//동아리 생성 페이지 카테고리 예외처리
+export const categoryDoneAtom = atom({
+    "key": "categoryDoneAtom",
     "default": false
 })
 
+//검색결과(동아리 이름)의 페이지
 export const pageAtom = atom({
     "key": "pageAtom",
     "default": 1

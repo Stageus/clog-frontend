@@ -18,8 +18,11 @@ import { ReactComponent as Svglock } from "../../../image/lock.svg"
 
 //router
 import { useNavigate } from "react-router-dom"
-import { useRecoilValue } from "recoil"
 import { majorAtom } from "../../../recoil/PromoteAtom"
+
+//recoil
+import { useRecoilState, useRecoilValue } from "recoil"
+
 
 
 
@@ -27,6 +30,8 @@ const Account_Signup_SignBox = () => {
     // props ============================================================
 
     // state ============================================================
+    const [entryYeardrop, setEntryYeardrop] = React.useState(false)//학번 선택시 true
+    const [majordrop, setMajordrop] = React.useState(false)//학과 선택시 true
     const [exception, setException] = React.useState("")
     const major = useRecoilValue(majorAtom)
     const majorlist = ["학과"]
@@ -47,14 +52,36 @@ const Account_Signup_SignBox = () => {
                 navigate("/promote/main")
             }
         }
+        else if (id.includes("entryyear")) {
+            let num = id.split("_")[1]
+            if (num != 0) {
+                setEntryYeardrop(true)
+            }
+            else { setEntryYeardrop(false) }
+        }
+        else if (id.includes("major")) {
+            let num = id.split("_")[1]
+            if (num != 0) {
+                setMajordrop(true)
+            }
+            else { setMajordrop(false) }
+        }
     }
     const checkException = () => {
         let name = document.getElementById("nameinput").value
         let pw = document.getElementById("pwinput").value
         let repw = document.getElementById("repwinput").value
-        console.log(pw, repw)
+
         if (name.length == 0) {
             setException("이름을 입력해 주세요")
+            return false
+        }
+        else if (!majordrop) {
+            setException("학과를 선택해 주세요")
+            return false
+        }
+        else if (!entryYeardrop) {
+            setException("학번을 선택해 주세요")
             return false
         }
         else if (pw.length == 0) {
@@ -80,11 +107,11 @@ const Account_Signup_SignBox = () => {
                     <Flexdiv flex="0_1_auto_column_center_center" width="460px" height="120px">
                         {/* 학번 */}
                         <Flexdiv flex="0_1_auto" width="460px" position="relative_10px">
-                            <Account_DropDown svg={svggraduation} list={entryYear} width={"460px"} height={"50px"} />
+                            <Account_DropDown svg={svggraduation} dropboxname="entryyear" list={entryYear} width={"460px"} height={"50px"} />
                         </Flexdiv>
                         {/* 학과 */}
                         <Flexdiv flex="0_1_auto" width="460px" position="relative_-55px" margin="5px 0">
-                            <Account_DropDown svg={svgmajor} list={majorlist} width={"460px"} height={"50px"} />
+                            <Account_DropDown svg={svgmajor} dropboxname="major" list={majorlist} width={"460px"} height={"50px"} />
                         </Flexdiv>
                     </Flexdiv>
                     {/* 비밀번호 입력,재입력 */}

@@ -41,23 +41,28 @@ const PostView_Comment_Comment = (props) => {
 
     let contentList = elem.content.split("\n")
 
-    console.log(contentList)
     return (
         <React.Fragment>
             <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_flex-start" width="860px" margin="10px 0" padding="10px 0">
+                {/* 작성자 프로필 */}
                 <Flexdiv flex="0_1_auto_row_center_center" width="50px">
                     <Img width="40px" radius="50%" src={require("../../../image/user.png")} />
                 </Flexdiv>
                 <Flexdiv flex="0_1_auto_column_center_flex-start" width="810px">
                     <Flexdiv flex="0_1_auto_row_space-between_center" width="100%" height="20px">
-                        <Flexdiv flex="0_1_auto" fontSize="14px" margin="0 0 0 5px">익명</Flexdiv>
-                        <Flexdiv flex="0_1_auto" fontSize="12px" color="#aaaaaa">{elem.createdAt}</Flexdiv>
+                        <Flexdiv flex="0_1_auto_row_center_center">
+                            <Flexdiv flex="0_1_auto" fontSize="14px" margin="0 5px">익명</Flexdiv>
+                            <Flexdiv flex="0_1_auto" fontSize="12px" color="#aaaaaa">{elem.createdAt}</Flexdiv>
+                        </Flexdiv>
+                        {/* 답글/수정/삭제 */}
                         <Flexdiv flex="0_1_auto" >
-                            <Flexbutton id="replyinput" backgroundColor="#ffffff" color="#aaaaaa">답글</Flexbutton>
+                            <Flexbutton flex="0_1_auto_row_center_center" id="replyinput" backgroundColor="#ffffff" color="#aaaaaa">답글</Flexbutton>
                             {/* manageState = true 일때만 보임 */}
                             {elem.manageState &&
-                                <Flexdiv><Flexbutton backgroundColor="#ffffff" color="#aaaaaa">수정</Flexbutton>
-                                    <Flexbutton backgroundColor="#ffffff" color="#aaaaaa">삭제</Flexbutton></Flexdiv>}
+                                <Flexdiv flex="0_1_auto_row_center_center">
+                                    <Flexbutton flex="0_1_auto_row_center_center" backgroundColor="#ffffff" color="#aaaaaa" margin="0 5px">수정</Flexbutton>
+                                    <Flexbutton flex="0_1_auto_row_center_center" backgroundColor="#ffffff" color="#aaaaaa">삭제</Flexbutton>
+                                </Flexdiv>}
                         </Flexdiv>
                     </Flexdiv>
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" padding="5px 5px">

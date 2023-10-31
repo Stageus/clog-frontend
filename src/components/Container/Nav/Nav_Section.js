@@ -8,7 +8,7 @@ import Nav_ProfileEdit from "./Nav_ProfileEdit"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom, navOpenAtom } from "../../../recoil/NavAtom"
+import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom, navOpenAtom, alarmAtom } from "../../../recoil/NavAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -41,12 +41,13 @@ const Nav_Section = () => {
     // props ======================================================
 
     // state ======================================================
+    const [alarm, setAlarm] = useRecoilState(alarmAtom);//모든 데이터
     const account = useRecoilValue(accountInfoAtom);//계정정보(이름,퍼컬,전공,입학년도,가입일)
-    const uncheckAlarmNum = useRecoilValue(alarmNumAtom);//안읽은 알람 개수
+    const [uncheckAlarmNum, setUncheckAlarmNum] = useRecoilState(alarmNumAtom);//안읽은 알람 개수
     const clubList = useRecoilValue(clubListAtom);//가입한 동아리정보(동아리넘버,이름,프로필로고)
     const [profileBtn, setProfileBtn] = React.useState(false);//프로필 설정 열고닫기
     const [alarmBtn, setAlarmBtn] = React.useState(false);//알람창 열고닫기
-    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);//nav 여닫기
+    const setNavOpen = useSetRecoilState(navOpenAtom);//nav 여닫기
     // event ======================================================
     const navigate = useNavigate();
 
@@ -81,12 +82,27 @@ const Nav_Section = () => {
             setNavOpen(false)
         }
     }
+    const settingUncheckAlarmNum = () => {
+        let count = 0
+        for (let index0 = 0; index0 < alarm.length; index0++) {
+            let newData = { ...alarm[index0] }
+            if (newData.isRead == false) {
+                count = count + 1
+            }
+        }
+        setUncheckAlarmNum(count)
+    }
+    React.useEffect(() => {
+        settingUncheckAlarmNum()
+    }, [alarm])
 
 
     return (
         <React.Fragment>
             {/* 네브 외의 부분은 투명하게 */}
-            <OpacityDiv onClick={clickEvent} id="navEmptySpot" flex="0_1_auto" position="fixed_0px_0_0_240px" width="100vw" height="100%" backgroundColor="#f0f0f0"></OpacityDiv>
+            <OpacityDiv onClick={clickEvent} id="navEmptySpot" flex="0_1_auto" position="fixed_0px_0_0_240px" width="100vw" height="100%" backgroundColor="#f0f0f0">
+                {/* {profileBtn && <Nav_ProfileEdit />} */}
+            </OpacityDiv>
             <Flexdiv onClick={clickEvent} flex="0_1_auto_column_flex-start_center" position="fixed_0px_0_0_0px" width="240px" height="100vh" backgroundColor="#ffffff">
                 {/* 네브 여닫이 버튼,클로그 로고 */}
                 <Nav_Header />
@@ -97,7 +113,7 @@ const Nav_Section = () => {
                     <Flexdiv flex="0_0_auto_row_flex-end_center" width="240px" height="56px">
                         <Flexdiv flex="0_0_auto" position="relative" width="56px" height="56px">
                             <Flexbutton id="alarmBtn" type="button" flex="0_0_auto" width="24px" height="24px" margin="16px" url={require("../../../image/bell.svg").default}></Flexbutton>
-                            <Alamdiv id="alarmBtn" flex="0_1_auto_row_center_center" position="absolute_8px_7px_0_0" width="20px" height="20px" backgroundColor="#ff0000" fontSize="13px" color="#ffffff" radius="50%">{uncheckAlarmNum}</Alamdiv>
+                            <Alamdiv id="alarmBtn" flex="0_1_auto_row_center_center" position="absolute_8px_0_0_5px" width="20px" height="20px" backgroundColor="#ff0000" fontSize="13px" color="#ffffff" radius="50%">{uncheckAlarmNum}</Alamdiv>
                             {/* 알림창 박스 */}
                             {alarmBtn && <Nav_NotificationBox />}
                         </Flexdiv>

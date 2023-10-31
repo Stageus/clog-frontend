@@ -24,15 +24,44 @@ const TextArea = styled.textarea`
 const OverDiv = styled(Flexdiv)`
     overflow: hidden;
  `
-
-
+//테마색상 선택 테두리
+const Themadiv = styled(Flexdiv)`
+&:hover{
+    border: 4px solid #c4c4c4;
+    margin: 16px;
+}
+`
 //토글
-const Ani = keyframes`
+const AniLabelGo = keyframes`
     0% {
         left: 30px;
     }
     100% {
         left: 0px;
+    }
+`
+const AniLabelBack = keyframes`
+    0% {
+        left: 0px;
+    }
+    100% {
+        left: 30px;
+    }
+`
+const AniDivGo = keyframes`
+    0% {
+        background-color: #EB5149;
+    }
+    100% {
+        background-color: #4B7BE5;
+    }
+`
+const AniDivBack = keyframes`
+    0% {
+        background-color: #4B7BE5;
+    }
+    100% {
+        background-color: #EB5149;
     }
 `
 const AniLabel = styled.label`
@@ -42,27 +71,29 @@ const AniLabel = styled.label`
     height: 30px;
     border-radius: 50%;
     background: #f0f0f0;
-    left: 0px
     border-radius: 60px;
-    ${(props) => props.toggle && css`
-        left: 30px;
+    left: 30px;
+    ${(props) => props.toggle ? css`
+    animation-name: ${AniLabelGo};
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    `: css`
+    animation-name: ${AniLabelBack};
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
     `}
 `
 const ToggleDiv = styled(Flexdiv)`
-    background-color: #EB5149;
-    ${(props) => props.toggle && css`
-    background-color: #4B7BE5;
-    `}
-`
-// animation: ${Ani} 3s 0s 1;
-
-
-//테마색상 선택 테두리
-const Themadiv = styled(Flexdiv)`
-    &:hover{
-        border: 4px solid #c4c4c4;
-        margin: 16px;
-    }
+background-color: #EB5149;
+    ${(props) => props.toggle ? css`
+        animation-name: ${AniDivGo};
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        `: css`
+        animation-name: ${AniDivBack};
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+        `}
 `
 
 

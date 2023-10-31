@@ -5,7 +5,7 @@ import Promote_PrPost from "../../Component/Promote/Promote_PrPost"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { checkClubNameAtom, selectBigAtom, selectSmallAtom } from "../../../recoil/PromoteAtom"
+import { categoryDoneAtom, checkClubNameAtom } from "../../../recoil/PromoteAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, P, Flexbutton, Img, Span } from "../../../style/common"
@@ -22,8 +22,7 @@ const Promote_ClubCreate_Section = () => {
 
     // state ============================================================
     const checkClubname = useRecoilValue(checkClubNameAtom)
-    const selectBig = useRecoilValue(selectBigAtom)
-    const selectSmall = useRecoilValue(selectSmallAtom)
+    const categoryDone = useRecoilValue(categoryDoneAtom)
     // event ============================================================
     const navigate = useNavigate()
     const clickEvent = (e) => {
@@ -41,11 +40,8 @@ const Promote_ClubCreate_Section = () => {
         if (!checkClubname) {
             alert("동아리 이름 중복체크를 확인해주세요.")
         }
-        else if (!selectBig) {
-            alert("분과를 선택해주세요")
-        }
-        else if (!selectSmall) {
-            alert("소분류를 선택해주세요")
+        else if (!categoryDone) {
+            alert("카테고리를 선택해주세요")
         }
         else {
             alert("동아리 생성이 완료되었습니다.\n가입한 동아리 목록에서 동아리방에 접속해주세요.")

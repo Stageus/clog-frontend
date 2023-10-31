@@ -10,8 +10,11 @@ import { ReactComponent as Svguser } from "../../../image/user.svg"
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
 import { accountInfoAtom } from "../../../recoil/NavAtom"
+import { majorAtom } from "../../../recoil/PromoteAtom"
 //router
 import { useNavigate } from 'react-router-dom'
+import Account_Input from "../../Component/Account/Account_Input"
+import Account_DropDown from "../../Component/Account/Account_DropDown"
 
 const BoxTitle = styled(Flexdiv)`
     border-bottom: 1px solid #dadada;
@@ -27,7 +30,15 @@ const Nav_ProfileEdit = () => {
 
     // state ======================================================
     const [account, setAccount] = useRecoilState(accountInfoAtom);//계정정보(이름,퍼컬,전공,입학년도,가입일)
+    const [major, setMajor] = useRecoilState(majorAtom)
+    let majorlist = []
+    const svguser = <Svguser width="22px" height="22px" fill="#c4c4c4" />
+    const svgbook = <Svgbook width="24px" height="24px" fill="#c4c4c4" />
 
+    //majorlist 세팅
+    for (let index = 0; index < major.length; index++) {
+        majorlist[index] = major[index].major
+    }
     // event ======================================================
     const navigate = useNavigate();
     const clickEvent = (e) => {
@@ -59,15 +70,15 @@ const Nav_ProfileEdit = () => {
                 </BoxTitle>
                 <Flexdiv flex="0_0_auto_column_flex-start_center" width="460px" height="210px">
                     {/* 이름 인풋 */}
-                    <Flexdiv flex="0_0_auto_row_flex-start_center" width="430px" height="50px" radius="10px" outline="1px solid #dadada" margin="5px 0px">
-                        <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svguser width="22px" height="22px" fill="#c4c4c4" /></Flexdiv>
-                        <Flexinput id="nameinput" flex="0_0_auto" type="text" placeholder={account.name} width="380px" height="50px" />
-                    </Flexdiv>
+                    <Account_Input id="navprofilename" svg={svguser} flex="0_0_auto_row_flex-start_center" placeholder={account.name} />
                     {/* 학과 인풋 */}
-                    <Flexdiv flex="0_0_auto_row_flex-start_center" width="430px" height="50px" radius="10px" outline="1px solid #dadada" margin="5px 0px">
+                    <Flexdiv flex="0_0_auto_row_flex-start_center" position="relative" width="430px" height="50px">
+                        <Account_DropDown svg={svgbook} dropboxname="navprofilemajor" list={majorlist} width="430px" height="50px" />
+                    </Flexdiv>
+                    {/* <Flexdiv flex="0_0_auto_row_flex-start_center" width="430px" height="50px" radius="10px" outline="1px solid #dadada" margin="5px 0px">
                         <Flexdiv flex="0_0_auto" width="24px" height="24px" margin="13px"><Svgbook width="24px" height="24px" fill="#c4c4c4" /></Flexdiv>
                         <Flexinput id="majorinput" flex="0_0_auto" type="text" placeholder={account.major} width="380px" height="50px" />
-                    </Flexdiv>
+                    </Flexdiv> */}
 
                     <Flexdiv flex="0_0_auto_row_flex-end_center" width="430px" margin="20px 0 0 0">
                         {/* 비밀번호 재설정 페이지 이동 */}

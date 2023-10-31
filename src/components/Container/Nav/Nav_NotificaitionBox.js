@@ -42,6 +42,9 @@ const Nav_NotificationBox = () => {
     let pageMax = parseInt(allData.length / perPage)//총 페이지 수
 
 
+
+    //?
+
     // event ======================================================
     //클릭이벤트
     const clickEvent = (e) => {

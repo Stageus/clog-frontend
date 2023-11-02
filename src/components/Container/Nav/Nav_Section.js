@@ -13,6 +13,7 @@ import { accountInfoAtom, alarmNumAtom, clubListAtom, zeroClubListAtom, navOpenA
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
 import styled from "styled-components"
+
 //svg
 import { ReactComponent as Svgempty } from ".././../../image/box-open.svg"
 
@@ -92,6 +93,7 @@ const Nav_Section = () => {
         }
         setUncheckAlarmNum(count)
     }
+
     React.useEffect(() => {
         settingUncheckAlarmNum()
     }, [alarm])

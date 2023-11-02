@@ -9,7 +9,7 @@ import { Flexdiv, Flexinput, Img, Span } from "../../../style/common"
 const Nav_NotificationBox_Notification = (props) => {
     // props ======================================================
     const { elem } = props
-
+    console.log(elem)
     // state ======================================================
 
     // event ======================================================

@@ -43,8 +43,6 @@ const Nav_NotificationBox = () => {
 
 
 
-    //?
-
     // event ======================================================
     //클릭이벤트
     const clickEvent = (e) => {

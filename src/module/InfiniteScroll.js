@@ -7,6 +7,7 @@ const useIntersect = (onIntersect, option) => {
     // state ======================================================
     // 관찰 대상을 지정할 수 있도록 ref값을 useState 훅을 이용해 state로 관리해준다.
     const [ref, setRef] = React.useState(null);
+    // const [all, setAll] = React.useState(allData)
 
     // event ======================================================
     const checkIntersect = React.useCallback(([entry], observer) => {
@@ -23,6 +24,7 @@ const useIntersect = (onIntersect, option) => {
                 ...option
             });
             observer.observe(ref);
+            // console.log(all)
         }
         return () => observer && observer.disconnect();//이미 사용한 관찰자는 모든 요소의 관측을 중단한다(삭제)
     }, [ref, option.root, option.threshold, option.rootMargin, checkIntersect]);

@@ -741,7 +741,7 @@ export const prPostViewAtom = atom({
 export const prPostCommentAtom = atom({
     "key": "prPostCommentAtom",
     "default": {
-        "count": 3, // 게시물의 총 댓글 수
+        "count": 15, // 게시물의 총 댓글 수
         "comments": [
             {
                 "id": 0, // 댓글의 pk

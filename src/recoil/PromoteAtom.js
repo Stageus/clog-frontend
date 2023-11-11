@@ -1437,6 +1437,126 @@ export const searchResultClubAtom = atom({
             "id": "24",
             "club": "동아리10",
             "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "1",
+            "club": "MRA",
+            "profileImage": "../../../image/mra.png"
+        },
+        {
+            "id": "2",
+            "club": "테니스부",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "3",
+            "club": "동아리3",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "4",
+            "club": "동아리4",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "5",
+            "club": "동아리5",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "6",
+            "club": "동아리6",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "7",
+            "club": "동아리7",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "8",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "9",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "10",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "11",
+            "club": "MRA",
+            "profileImage": "../../../image/mra.png"
+        },
+        {
+            "id": "12",
+            "club": "테니스부",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "13",
+            "club": "동아리3",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "14",
+            "club": "동아리4",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "15",
+            "club": "동아리5",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "16",
+            "club": "동아리6",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "17",
+            "club": "동아리7",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "18",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "19",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "20",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "21",
+            "club": "동아리8",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "22",
+            "club": "동아리9",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "23",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
+        },
+        {
+            "id": "24",
+            "club": "동아리10",
+            "profileImage": "../../../image/tenislogo.jpeg"
         }
     ]
 })

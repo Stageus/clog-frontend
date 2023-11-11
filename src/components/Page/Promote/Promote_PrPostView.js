@@ -15,8 +15,8 @@ import styled from "styled-components"
 const Promote_PrPostView = () => {
     return (
         <React.Fragment>
-            <Promote_Header />
             <Promote_PrPostView_Section />
+            <Promote_Header />
         </React.Fragment>
     )
 }

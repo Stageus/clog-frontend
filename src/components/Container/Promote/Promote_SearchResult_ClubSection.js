@@ -33,7 +33,6 @@ const TransitionDiv = styled(Flexdiv)`
 `
 const Promote_SearchResult_ClubSection = () => {
     // props ============================================================
-    // perPage,onePage,data?
     // state ============================================================
     const [data, setData] = React.useState([])//현재페이지에 뜰 데이터 리스트
     const [page, setPage] = useRecoilState(pageAtom)
@@ -42,6 +41,7 @@ const Promote_SearchResult_ClubSection = () => {
     const onePage = 5 //화면에 나타날 페이지 개수
     let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수
     const last = allData.length - (perPage * (pageMax - 1))//마지막 페이지의 데이터 개수
+
     // event ============================================================
     const navigate = useNavigate()
     //페이지네이션
@@ -54,18 +54,10 @@ const Promote_SearchResult_ClubSection = () => {
             navigate("/promote/club-profile")
         }
         else if (id == "clubresultback") {
-            let pagereturn = previous()
-            console.log("previous", pagereturn)
-            if (pagereturn != null) {
-                setPage(pagereturn)//페이지그룹 넘긴후 마지막페이지를 page로
-            }
+            setPage(previous())
         }
         else if (id == "clubresultfront") {
-            let pagereturn = next()
-            console.log("next", pagereturn)
-            if (pagereturn != null) {
-                setPage(pagereturn)//페이지그룹 넘긴 후 첫번째페이지를 page로
-            }
+            setPage(next())
         }
         //페이지버튼 클릭시 해당 페이지로 이동
         else if (id.includes("pagebtn")) {

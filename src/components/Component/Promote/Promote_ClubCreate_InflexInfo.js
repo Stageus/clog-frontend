@@ -18,7 +18,6 @@ const OverDiv = styled(Flexdiv)`
 `
 const Promote_ClubCreate_InflexInfo = () => {
     // props ======================================================
-
     // state ======================================================
     const [checkClubname, setCheckClubname] = useRecoilState(checkClubNameAtom)
     const college = useRecoilValue(collegeAtom)
@@ -32,7 +31,7 @@ const Promote_ClubCreate_InflexInfo = () => {
     const templist = ["분과(선택 안함)"]//대분류 리스트 임시
     const [smallList, setSmallList] = React.useState(["소분류(선택 안함)"])//소분류 리스트(대분류마다 다름)
     const [bigList, setBigList] = React.useState(["분과(선택 안함)"])//대분류 리스트
-    const [belongSelection, setBelongSelection] = React.useState(-1)
+    const [belongSelection, setBelongSelection] = React.useState(-1)//소속 선택결과
     const [selectBig, setSelectBig] = React.useState(false)
     const [selectSmall, setSelectSmall] = React.useState(false)
     const [categoryDone, setCategoryDone] = useRecoilState(categoryDoneAtom)
@@ -51,7 +50,7 @@ const Promote_ClubCreate_InflexInfo = () => {
         majorList[index + 1] = major[index].major
     }
     //소분류 대분류별로 잘라 이중배열에 넣기
-    let temp = [[], [], [], [], [], [], [], [], [], []]
+    let temp = Array.from(Array(templist.length - 1), () => new Array(1))
     let count = 0
     let smallListCount = [6, 1, 6, 1, 1, 4, 1, 1, 1, 3]//대분류 별 소분류 개수
     smallListCount.filter((elem, i) => {
@@ -62,19 +61,18 @@ const Promote_ClubCreate_InflexInfo = () => {
     })
     /////////////////////////////////////////////////////////////
 
-
-
-    //마운트시 biglist에 bigCategory값 초기화
-    React.useEffect(() => {
-        setBigList([...templist])
-    }, [])
-
     // event ======================================================
     const clickEvent = (e) => {
         let id = e.target.id
         //중복 체크
         if (id == "checkclubname") {
-            replychecking()
+            let value = document.getElementById("clubnameinput").value
+            if (value.length < 11 && value.length > 0) {
+                setCheckClubname(true)
+            }
+            else {
+                setCheckClubname(false)
+            }
         }
         //소속 선택시
         else if (id.includes("belong")) {
@@ -134,16 +132,9 @@ const Promote_ClubCreate_InflexInfo = () => {
         // 
     }
 
-    //동아리 입력값 확인
+    //onchange발생시
     const replychecking = () => {
-        let value = document.getElementById("clubnameinput").value
-        if (value.length < 11 && value.length > 0) {
-            setCheckClubname(true)
-            console.log(value)
-        }
-        else {
-            setCheckClubname(false)
-        }
+        setCheckClubname(false)
     }
 
 

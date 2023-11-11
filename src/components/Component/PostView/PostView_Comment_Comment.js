@@ -29,11 +29,10 @@ const PostView_Comment_Comment = (props) => {
     //랜더링 최적화 때문에 컴포넌트에도 이벤트를 주는 상황 => ?
     const clickEvent = (e) => {
         let id = e.target.id
-        console.log(id)
         if (id == "replyinput") {
             setReplyInput(!replyInput)
         }
-        if (id == "replyview") {
+        else if (id == "replyview") {
             console.log(elem)
             setReplyView(!replyView)
         }
@@ -61,7 +60,7 @@ const PostView_Comment_Comment = (props) => {
                             {elem.manageState &&
                                 <Flexdiv flex="0_1_auto_row_center_center">
                                     <Flexbutton flex="0_1_auto_row_center_center" backgroundColor="#ffffff" color="#aaaaaa" margin="0 5px">수정</Flexbutton>
-                                    <Flexbutton flex="0_1_auto_row_center_center" backgroundColor="#ffffff" color="#aaaaaa">삭제</Flexbutton>
+                                    <Flexbutton id={"commentremove" + elem.id} flex="0_1_auto_row_center_center" backgroundColor="#ffffff" color="#aaaaaa">삭제</Flexbutton>
                                 </Flexdiv>}
                         </Flexdiv>
                     </Flexdiv>

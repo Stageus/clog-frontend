@@ -16,7 +16,7 @@ const CommentDiv = styled(Flexdiv)`
 `
 const Postview_Comment_Input = (props) => {
     // props ======================================================
-    const { width, clickEvent } = props
+    const { width } = props
     // state ======================================================
 
     // event ======================================================
@@ -24,7 +24,7 @@ const Postview_Comment_Input = (props) => {
 
     return (
         <React.Fragment>
-            <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_center" width={width} height="120px">
+            <CommentDiv flex="0_1_auto_row_center_center" width={width} height="120px">
                 <Flexdiv flex="0_1_auto_row_center_flex-start" width="50px" height="100px"><Img width="40px" radius="50%" src={require("../../../image/user.png")} /></Flexdiv>
                 <Flexdiv flex="2_1_auto_column_flex-start-center" height="100px" backgroundColor="#f0f0f0" radius="10px" margin="0 5px 0 0">
                     <Flexdiv flex="0_1_auto" fontSize="14px" margin="5px 0 0 10px">익명</Flexdiv>

@@ -21,7 +21,7 @@ const PostView_Image = (props) => {
     // state ======================================================
 
     // event ======================================================
-    console.log(prPostView.promotionImages)
+
     return (
         <React.Fragment>
             {/* 사진 가로스크롤 */}

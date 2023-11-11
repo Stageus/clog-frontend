@@ -32,11 +32,28 @@ const H1 = styled.h1`
     font-weight: ${props => props.fontBold || "800"};
     color: ${props => props.color || "#000000"};
 `
-
+//사진 불러오는 버튼
+const Label = styled.label`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90px; 
+    height: 40px; 
+    border-radius: 10px;
+    background-color: ${props => props.backgroundColor};
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Noto Sans KR', sans-serif;
+    cursor: pointer;
+`
+const UploadInput = styled(Flexinput)`
+    display: none;
+`
 // 동아리 소개글
 const TextArea = styled.textarea`
     width: 688px;
-    height: 248px;
+    height: 233px;
     border-radius: 10px;
     border: 1px solid #c4c4c4;
     padding: 10px;
@@ -131,10 +148,23 @@ const Club_EditClubProfile_Section = () => {
     const club = useRecoilState(clubInfoAtom)
     const [selectedColor, setSelectedColor] = React.useState("#" + club[0].themeColor)
     const [toggle, setToggle] = React.useState(true)//토글 on/off 
+    const [profileImg, setProfileImg] = useState(null)
+    const [bannerImg, setBannerImg] = useState(null)
 
     // event ============================================================
     for (let index = 0; index < themaColor.length; index++) {
         colorlist[index] = themaColor[index].code
+    }
+
+    const setProfileEvent = (e) => {
+        const imgFile = e.target.files[0]
+        const imageUrl = URL.createObjectURL(imgFile)
+        setProfileImg(imageUrl)
+    }
+    const setBannerEvent = (e) => {
+        const imgFile = e.target.files[0]
+        const imageUrl = URL.createObjectURL(imgFile)
+        setBannerImg(imageUrl)
     }
 
     const clickEvent = (e) => {
@@ -192,10 +222,12 @@ const Club_EditClubProfile_Section = () => {
                             <Flexdiv flex="0_1_auto_column_center_flex-start" width="300px" height="300px">
                                 <Flexdiv flex="0_1_auto_row_flex-start_center" font="20px_600_'Noto Sans KR', sans-serif" height='40px'>프로필 이미지 수정</Flexdiv>
                                 <OverDiv flex="0_1_auto_row_center_center" width="220px" height="220px" backgroundColor="#f0f0f0" radius="50%">
-                                    <Img width="222px" height="222px" radius="50%" />
+                                    <Img width="222px" height="222px" radius="50%" src={profileImg ? profileImg : club[0].profileImage}/>
                                 </OverDiv>
                                 <Flexdiv flex="0_1_auto_row_flex-end_center" width="100%" height="40px">
-                                    <Flexbutton flex="0_1_auto_row_center_center" width="90px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#ffffff" font="14px_600_'Noto Sans KR', sans-serif">찾아보기</Flexbutton>
+                                    {/* <Flexbutton flex="0_1_auto_row_center_center" width="90px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#ffffff" font="14px_600_'Noto Sans KR', sans-serif">찾아보기</Flexbutton> */}
+                                    <Label htmlFor="profileUpload" backgroundColor={selectedColor}>찾아보기</Label>
+                                    <UploadInput type="file" id="profileUpload" accept="image/*" onChange={setProfileEvent}/>
                                 </Flexdiv>
                             </Flexdiv>
 
@@ -208,18 +240,20 @@ const Club_EditClubProfile_Section = () => {
 
                         {/* 배너 이미지 등록 */}
                         <Flexdiv flex="0_1_auto_column_center_flex-start" width="1040px" height="315px">
-                            <Flexdiv flex="0_1_auto_row_flex-start_center" font="20px_600_'Noto Sans KR', sans-serif" height='40px'>배너 이미지 등록</Flexdiv>
-                            <Flexdiv height="20px" color="#c4c4c4">생성한 동아리 홈페이지의 상단 배너에 들어가는 이미지입니다. (권장 규격 1080 X 240 )</Flexdiv>
+                            <Flexdiv flex="0_1_auto_row_flex-start_center" font="20px_600_'Noto Sans KR', sans-serif" height='40px'>배너 이미지 변경</Flexdiv>
+                            <Flexdiv height="20px" color="#c4c4c4">권장 규격 1080 X 240</Flexdiv>
                             <OverDiv flex="0_1_auto_row_center_center" width="1040px" height="200px" radius="10px" backgroundColor="#f0f0f0">
-                                <Img width="1042px" height="202px" radius="10px" />
+                                <Img width="1042px" height="202px" radius="10px" src={bannerImg ? bannerImg : club[0].bannerImage}/>
                             </OverDiv>
                             <Flexdiv flex="0_1_auto_row_flex-end_center" width="100%" height="40px" margin="10px 0">
-                                <Flexbutton flex="0_1_auto_row_center_center" width="90px" height="40px" radius="10px" backgroundColor={"#" + club[0].themeColor} color="#ffffff" font="14px_600_'Noto Sans KR', sans-serif">찾아보기</Flexbutton>
+                                {/* <Flexbutton flex="0_1_auto_row_center_center" width="90px" height="40px" radius="10px" backgroundColor={selectedColor} color="#ffffff" font="14px_600_'Noto Sans KR', sans-serif">찾아보기</Flexbutton> */}
+                                <Label htmlFor="bannerUpload" backgroundColor={selectedColor}>찾아보기</Label>
+                                <UploadInput type="file" id="bannerUpload" accept="image/*" onChange={setBannerEvent}/>
                             </Flexdiv>
                         </Flexdiv>
 
                         {/* 저장 버튼 */}
-                        <Flexbutton width="400px" height="60px" radius="10px" margin="50px 0 100px 0" backgroundColor={"#" + club[0].themeColor} color="#FFFFFF" font="24px_800_'Noto Sans KR', sans-serif">변경사항 저장</Flexbutton>
+                        <Flexbutton width="400px" height="60px" radius="10px" margin="50px 0 100px 0" backgroundColor={selectedColor} color="#FFFFFF" font="24px_800_'Noto Sans KR', sans-serif">변경사항 저장</Flexbutton>
                     </Flexdiv>
                     
                 </Main>

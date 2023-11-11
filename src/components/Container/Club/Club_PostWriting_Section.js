@@ -23,11 +23,6 @@ const Main = styled.main`
     flex-direction: column;
 `
 
-const Section = styled.section`
-    width: 860px;
-    margin-bottom: 150px;
-`
-
 const H1 = styled.h1`
     margin: ${props => props.margin || "none"};
     padding: ${props => props.padding || "none"};
@@ -37,8 +32,15 @@ const H1 = styled.h1`
     color: ${props => props.color || "#000000"};
 `
 
-const Flexinput2 = styled(Flexinput)`
-    vertical-align: bottom;
+const Flexinput2 = styled.textarea`
+    width: 1020px;
+    height: 380px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: 'Nanum Gothic', sans-serif;
 `
 
 
@@ -129,7 +131,7 @@ const Club_PostWriting_Section = () => {
                         <Flexinput width="1020px" height="30px" padding="10px" margin="0 0 20px 0" border="1px solid #C4C4C4" radius="10px" font="16px_400_'Nanum Gothic', sans-serif" placeholder="제목을 입력해주세요."/>
 
                         {/* 본문 입력란 */}
-                        <Flexinput2 width="1020px" height="380px" padding="10px" margin="0 0 20px 0" border="1px solid #C4C4C4" radius="10px" font="16px_400_'Nanum Gothic', sans-serif" placeholder="내용을 입력해주세요." />
+                        <Flexinput2 placeholder="내용을 입력해주세요."></Flexinput2>
 
                         {/* 사진 첨부 */}
                         <Flexdiv width="1040px" height="30px" margin="0 0 10px 0" flex="0_0_auto_raw_space-between_center">

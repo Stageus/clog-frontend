@@ -52,17 +52,21 @@ const Club_PostWriting_Section = () => {
     const club = useRecoilState(clubInfoAtom)
     const boardList = useRecoilState(boardListAtom)
     const [boardState, setBoardState] = React.useState(false)
-    // let board = "게시판을 선택해 주세요."
-    const board = useRef(null)
+    let board = useRef("")
 
     // event ============================================================
-    const clickEvent = (e) => {
+    const openEvent = (e) => {
         let id = e.target.id
         if (id == "boardOption") {
-            setBoardState(!boardState)
+            setBoardState(true)
         }
-        // console.log(boardState)
-        // console.log("현재 board는 " + board)
+    }
+
+    const closeEvent = (e) => {
+        let id = e.target.id
+        if (id == "boardOption") {
+            setBoardState(true)
+        }
     }
 
     const selectEvent = (e) => {
@@ -70,15 +74,8 @@ const Club_PostWriting_Section = () => {
         if (id == "boardName") {
             setBoardState(false)
             board.current = e.target.innerText
-            // console.log(board + "로 바뀜")
         }
-        // console.log("바뀐 게시판은 " + board)
     }
-
-    useEffect(() => {
-        console.log(board)
-    })
-    
 
     return(
         <React.Fragment>
@@ -92,11 +89,15 @@ const Club_PostWriting_Section = () => {
                     {/* 페이지의 내용 부분 */}
                     <Flexdiv width="1040px" padding="20px" flex="0_0_auto_column_flex-start_center">
 
-                        {/* 게시판 선택 드롭다운 부분 */}
+                        {/* 게시판 선택 - 펼쳤을때 나오는 부분 */}
                         { boardState == true &&
                             <Flexdiv width="1040px" border="2px solid #000000" radius="10px" position="absolute" backgroundColor="#FFFFFF">
-                                <Flexdiv width="1040px" height="50px" radius="10px 10px 0 0" customBorder="0_0_1px_0_solid_#C4C4C4" flex="0_0_auto_raw_space-between_center" onClick={clickEvent}>
-                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">{board}</Span>
+                                <Flexdiv width="1040px" height="50px" radius="10px 10px 0 0" customBorder="0_0_1px_0_solid_#C4C4C4" flex="0_0_auto_raw_space-between_center" onClick={closeEvent}>
+                                { board.current === "" ?
+                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">게시판을 선택해 주세요.</Span>
+                                    :
+                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#000000">{board.current}</Span>
+                                }
                                     <Flexbutton id="boardOption" width="50px" height="50px" flex="0_0_auto_raw_center_center" radius="10px">
                                         <Up id="boardOption" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
                                     </Flexbutton>
@@ -112,8 +113,9 @@ const Club_PostWriting_Section = () => {
                             </Flexdiv>
                         }
 
-                        <Flexdiv width="1040px" height="50px" margin="0 0 20px 0" border="1px solid #C4C4C4" radius="10px" flex="0_0_auto_raw_space-between_center" onClick={clickEvent}>
-                            { board === null ?
+                        {/* 게시판 선택 - 기본 */}
+                        <Flexdiv width="1040px" height="50px" margin="0 0 20px 0" border="1px solid #C4C4C4" radius="10px" flex="0_0_auto_raw_space-between_center" onClick={openEvent}>
+                            { board.current === "" ?
                                 <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">게시판을 선택해 주세요.</Span>
                                 :
                                 <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#000000">{board.current}</Span>

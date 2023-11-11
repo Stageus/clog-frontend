@@ -16,8 +16,8 @@ const Club_Members = () => {
     return(
         <React.Fragment>
             <Club_Banner/>
-            <Club_Content elem = {"members"}/>
-            <Club_Header elem = {true}/>
+            <Club_Content page = {"members"}/>
+            <Club_Header exit = {true}/>
         </React.Fragment>
     )
 }

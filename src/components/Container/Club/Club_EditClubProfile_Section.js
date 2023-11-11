@@ -2,7 +2,8 @@ import React from "react"
 import { useEffect, useRef, useState } from "react" 
 
 // import components
-import Club_EditBoardList_Board from "../../Component/Club/Club_EditBoardList_Board"
+import Promote_ClubCreate_FlexInfo from "../../Component/Promote/Promote_ClubCreate_FlexInfo"
+
 
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
@@ -66,7 +67,7 @@ const Club_EditClubProfile_Section = () => {
                     
                     {/* 페이지의 내용 부분 */}
                     <Flexdiv width="1040px" padding="20px" flex="0_0_auto_column_flex-start_center">
-                        
+                        <Promote_ClubCreate_FlexInfo/>
                     </Flexdiv>
                 </Main>
             </Flexdiv>

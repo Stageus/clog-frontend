@@ -10,7 +10,7 @@ export const clubInfoAtom = atom({
         "smallCategory" : "SW/IT",
         "profileImage" : "" ,
         "bannerImage" : "" ,
-        "cover" : "",
+        "cover" : "우리 동아리는 이런 동아리입니다.",
         "themeColor" : "669AEE",
         "memberCount" : 100,
         "createAt" : "2023.10.10"

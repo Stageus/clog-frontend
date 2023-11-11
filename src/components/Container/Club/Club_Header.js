@@ -47,7 +47,7 @@ const Club_Header = (props) => {
     const mainRoute = () => navigate("/club/main")
 
     // props ============================================================
-    const { elem } = props
+    const { exit } = props
 
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)   // 동아리에 대한 정보 가져오는 Atom
@@ -71,7 +71,7 @@ const Club_Header = (props) => {
                 </HeaderButton>
 
                 {/* 가운데 부분 */}
-                { elem == true &&
+                { exit == true &&
                 <Flexdiv flex="0_0_auto_row_space-between_center" width="1080px" cursor="default" backgroundColor="#FFFFFF">
                     {/* 가운데 좌측, 동아리로고 부분 */}
                     <Flexdiv flex="0_0_auto_row_flex-start_center" onClick={mainRoute} cursor="pointer">

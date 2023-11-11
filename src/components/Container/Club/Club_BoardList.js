@@ -31,7 +31,10 @@ const Club_BoardList = () => {
     const editPositonRoute = () => navigate("/club/edit-position")
     const writeNoticeRoute = () => navigate("/club/notice-writing")
     const editBoardRoute = () => navigate("/club/edit-board-list")
+    const prPostRoute = () => navigate("/club/pr-post-board")
     const requestRoute = () => navigate("/club/request-accept")
+
+    const noticeBoardRoute = () => navigate("/club/notice-board")
 
     // props ============================================================
 
@@ -59,6 +62,8 @@ const Club_BoardList = () => {
             setOptionState(!optionState)
         }
     }
+    
+
     
 
     return(
@@ -148,7 +153,7 @@ const Club_BoardList = () => {
                                 <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
                                     홍보게시물 작성
                                 </Flexdiv>
-                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer">
+                                <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={prPostRoute}>
                                     홍보게시물 관리
                                 </Flexdiv>
                                 <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={requestRoute}>
@@ -162,14 +167,16 @@ const Club_BoardList = () => {
 
             {/* 공지사항 */}
             <Flexdiv padding="10px" borderTop={"1px solid #" + club[0].themeColor}>
-                <Flexdiv flex="0_0_auto_raw_space-between_center" width="180px" height="30px">
-                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="600" color={"#" + club[0].themeColor}>공지사항</Span>
+                <Flexdiv flex="0_0_auto_raw_space-between_center" width="180px" height="30px" cursor="pointer" onClick={noticeBoardRoute}>
+                    <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="600" color={"#" + club[0].themeColor} cursor="pointer">공지사항</Span>
                 </Flexdiv>
             </Flexdiv>
             
             {/* 일반 게시판 */}
             <Flexdiv padding="10px" borderTop={"1px solid #" + club[0].themeColor}>
-                { boardList[0].map((elem) => <Club_Board elem={elem}/>) }
+                <Flexdiv flex="0_0_auto_column_center_flex-start">
+                    { boardList[0].map((elem) => <Club_Board elem={elem}/>) }
+                </Flexdiv>
             </Flexdiv>
 
             {/* 게시판 하단 마무리 디자인 */}

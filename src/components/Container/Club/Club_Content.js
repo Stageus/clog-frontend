@@ -4,6 +4,10 @@ import React from "react"
 import Club_BoardList from "./Club_BoardList"
 import Club_Main_Section from "./Club_Main_Section"
 import Club_Members_Section from "./Club_Members_Section"
+import Club_PostBoard_Section from "./Club_PostBoard_Section"
+import Club_NoticeBoard_Section from "./Club_NoticeBoard_Section"
+import Club_PrPostBoard_Section from "./Club_PrPostBoard_Section"
+import Club_PostView_Section from "./Club_PostView_Section"
 
 // import recoil
 
@@ -25,7 +29,7 @@ const Club_Content = (props) => {
 	// route ============================================================
 
     // props ============================================================
-    const { elem } = props
+    const { page } = props
 
     // state ============================================================
 
@@ -39,8 +43,12 @@ const Club_Content = (props) => {
                     <Club_BoardList/>
 
                     {/* 여기서부터 페이지별 section */}
-                    { elem == "main" && <Club_Main_Section/> }
-                    { elem == "members" && <Club_Members_Section/> }
+                    { page == "main" && <Club_Main_Section/> }
+                    { page == "members" && <Club_Members_Section/> }
+                    { page == "postBoard" && <Club_PostBoard_Section/> }
+                    { page == "noticeBoard" && <Club_NoticeBoard_Section/> }
+                    { page == "prPostBoard" && <Club_PrPostBoard_Section/> }
+                    { page == "postView" && <Club_PostView_Section/> }
 
                 </Main>
             </Flexdiv>

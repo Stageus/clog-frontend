@@ -1,4 +1,5 @@
 import React from "react"
+import { useNavigate } from "react-router-dom"
 
 // import components
 
@@ -14,6 +15,9 @@ import { Flexbutton, Flexdiv, Span } from "../../../style/common"
 
 const Club_Board = (props) => {
 
+    const navigate = useNavigate()
+    const postBoardRoute = () => navigate("/club/post-board")
+
     // props 받는 곳
     const { elem } = props
 
@@ -25,8 +29,8 @@ const Club_Board = (props) => {
 
     return (
         <React.Fragment>
-            <Flexdiv flex="0_0_auto_raw_space-between_center" width="180px" height="30px">
-                <Span fontFamily="'Noto Sans KR', sans-serif" fontSize="14px" fontBold="400" color="#000000" cursor="pointer">{elem.name}</Span>
+            <Flexdiv height="30px" flex="0_0_auto_raw_flex-start_center" font="14px_400_'Noto Sans KR', sans-serif" color="#000000" cursor="pointer" onClick={postBoardRoute}>
+                {elem.name}
             </Flexdiv>
         </React.Fragment>
     )

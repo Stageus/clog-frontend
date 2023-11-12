@@ -55,7 +55,7 @@ const Club_Main_Section = () => {
 
     // event ============================================================
     //페이지네이션
-    const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage);
+    const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage, page);
     //클릭이벤트
     const clickEvent = (e) => {
         let id = e.target.id

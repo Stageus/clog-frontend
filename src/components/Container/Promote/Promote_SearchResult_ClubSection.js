@@ -21,16 +21,6 @@ const HiddenDiv = styled(Flexdiv)`
     overflow-x: scroll;
 `
 
-const TransitionDiv = styled(Flexdiv)`
-    #front{
-        transform: translate(-1170px, 0px);
-        transition-duration: 1s;
-    }
-    #back{
-        transform: translate(1170px, 0px);
-        transition-duration: 1s;
-    }
-`
 const Promote_SearchResult_ClubSection = () => {
     // props ============================================================
     // state ============================================================
@@ -100,9 +90,9 @@ const Promote_SearchResult_ClubSection = () => {
                         :
                         <>
                             <HiddenDiv flex="0_1_auto_row_flex-start_center" width="1170px" height="120px">
-                                <TransitionDiv flex="0_1_auto_row_flex-start_center" height="100%">
+                                <Flexdiv flex="0_1_auto_row_flex-start_center" height="100%">
                                     {data.map((elem) => <Promote_SearchResult_Club elem={elem} />)}
-                                </TransitionDiv>
+                                </Flexdiv>
                             </HiddenDiv>
 
                             {/* 페이지네이션 버튼 */}

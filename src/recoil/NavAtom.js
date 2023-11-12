@@ -454,3 +454,433 @@ export const navOpenAtom = atom({
 })
 
 
+
+
+
+
+
+// /////////////////
+// 동아리의 게시글 목록
+export const clubPostListAtom = atom({
+    "key": "clubPostListAtom",
+    "default": [
+        {
+            "id": 0,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 1,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 777,
+        },
+        {
+            "id": 2,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 999,
+        },
+        {
+            "id": 3,
+            "title": "일반게시판 예시 일반게시판 예시 일반게시판 예시 일반게시판 예시 일반게시판 예시 일반게시판 예시 일반게시판 예시 일반게시판 예시 ",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 25,
+        },
+        {
+            "id": 4,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 5,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 6,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 7,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 8,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 777,
+        },
+        {
+            "id": 9,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 999,
+        },
+        {
+            "id": 10,
+            "title": "일반게시판 예시",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 25,
+        },
+        {
+            "id": 11,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 12,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 13,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 14,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+        {
+            "id": 15,
+            "title": "기말고사 화이팅",
+            "authorName": "김영제",
+            "createdAt": "2023.10.18.",
+            "commentCount": 3,
+        },
+    ]
+})
+
+export const clubPostPageAtom = atom({
+    "key": "clubPostPageAtom",
+    "default": 1
+})
+
+export const prPostBoardPageAtom = atom({
+    "key": "prPostBoardPageAtom",
+    "default": 1
+})
+
+export const clubMemberListAtom = atom({
+    "key": "clubMemberListAtom",
+    "default": [
+        {
+            "id": 0,
+            "userId": 0,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 19,
+            "name": "김영제",
+            "personalColor": "FF8800",
+            "createdAt": "2020.10.19."
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "0088FF",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "FF0088",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 3,
+            "userId": 3,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "00FF88",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 4,
+            "userId": 4,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "88FF00",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 5,
+            "userId": 5,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "8800ff",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 6,
+            "userId": 6,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 21,
+            "name": "김영제",
+            "personalColor": "88ffff",
+            "createdAt": "2022.04.18."
+        },
+        {
+            "id": 0,
+            "userId": 0,
+            "position": "PRESIDENT",
+            "major": "컴퓨터공학과",
+            "entryYear": 19,
+            "name": "김영제",
+            "personalColor": "FF8800",
+            "createdAt": "2020.10.19."
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "0088FF",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "FF0088",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 3,
+            "userId": 3,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "00FF88",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 4,
+            "userId": 4,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "88FF00",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 5,
+            "userId": 5,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "8800ff",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 6,
+            "userId": 6,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 21,
+            "name": "김영제",
+            "personalColor": "88ffff",
+            "createdAt": "2022.04.18."
+        },
+        {
+            "id": 0,
+            "userId": 0,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 19,
+            "name": "김영제",
+            "personalColor": "FF8800",
+            "createdAt": "2020.10.19."
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "0088FF",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "FF0088",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 3,
+            "userId": 3,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "00FF88",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 4,
+            "userId": 4,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "88FF00",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 5,
+            "userId": 5,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "8800ff",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 6,
+            "userId": 6,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 21,
+            "name": "김영제",
+            "personalColor": "88ffff",
+            "createdAt": "2022.04.18."
+        },
+        {
+            "id": 0,
+            "userId": 0,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 19,
+            "name": "김영제",
+            "personalColor": "FF8800",
+            "createdAt": "2020.10.19."
+        },
+        {
+            "id": 1,
+            "userId": 1,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "0088FF",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 2,
+            "userId": 2,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "FF0088",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 3,
+            "userId": 3,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "00FF88",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 4,
+            "userId": 4,
+            "position": "MANAGER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "end김영제",
+            "personalColor": "88FF00",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 5,
+            "userId": 5,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 20,
+            "name": "김영제",
+            "personalColor": "8800ff",
+            "createdAt": "2020.12.14."
+        },
+        {
+            "id": 6,
+            "userId": 6,
+            "position": "MEMBER",
+            "major": "컴퓨터공학과",
+            "entryYear": 21,
+            "name": "김영제",
+            "personalColor": "88ffff",
+            "createdAt": "2022.04.18."
+        },
+    ]
+})
+
+export const managerPageAtom = atom({
+    "key": "managerPageAtom",
+    "default": 1
+})
+
+export const memberPageAtom = atom({
+    "key": "memberPageAtom",
+    "default": 1
+})

@@ -8,6 +8,7 @@ import Club_PostBoard_Section from "./Club_PostBoard_Section"
 import Club_NoticeBoard_Section from "./Club_NoticeBoard_Section"
 import Club_PrPostBoard_Section from "./Club_PrPostBoard_Section"
 import Club_PostView_Section from "./Club_PostView_Section"
+import Club_SearchResult_Section from "./Club_SearchResult_Section"
 
 // import recoil
 
@@ -49,6 +50,7 @@ const Club_Content = (props) => {
                     { page == "noticeBoard" && <Club_NoticeBoard_Section/> }
                     { page == "prPostBoard" && <Club_PrPostBoard_Section/> }
                     { page == "postView" && <Club_PostView_Section/> }
+                    { page == "searchResult" && <Club_SearchResult_Section/> }
 
                 </Main>
             </Flexdiv>

@@ -27,7 +27,7 @@ const Club_Banner = () => {
         <React.Fragment>
             <Flexdiv flex="0_0_auto_row_center_flex-start" position="relative_70px">
                 <Flexdiv width="1080px" height="240px" margin="0 0 20px 0" backgroundColor="#F0F0F0">
-                    {/* <Img width="1080px" height="240px" src={club[0].banner_img}/> */}
+                    <Img width="1080px" height="240px" src={club[0].bannerImage}/>
                 </Flexdiv>
             </Flexdiv>
         </React.Fragment>

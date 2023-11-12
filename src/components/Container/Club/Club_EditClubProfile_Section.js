@@ -2,8 +2,6 @@ import React from "react"
 import { useEffect, useRef, useState } from "react" 
 
 // import components
-import Promote_ClubCreate_FlexInfo from "../../Component/Promote/Promote_ClubCreate_FlexInfo"
-
 
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
@@ -76,33 +74,37 @@ const Themadiv = styled(Flexdiv)`
 const AniLabelGo = keyframes`
     0% {
         left: 30px;
+        background-color: ${props => props.backgroundColor};
     }
     100% {
         left: 0px;
+        background-color: #F0F0F0;
     }
 `
 const AniLabelBack = keyframes`
     0% {
         left: 0px;
+        background-color: #F0F0F0;
     }
     100% {
         left: 30px;
+        background-color: ${props => props.backgroundColor};
     }
 `
 const AniDivGo = keyframes`
     0% {
-        background-color: #EB5149;
+        background-color: #F0F0F0;
     }
     100% {
-        background-color: #4B7BE5;
+        background-color: ${props => props.backgroundColor};
     }
 `
 const AniDivBack = keyframes`
     0% {
-        background-color: #4B7BE5;
+        background-color: ${props => props.backgroundColor};
     }
     100% {
-        background-color: #EB5149;
+        background-color: #F0F0F0;
     }
 `
 const AniLabel = styled.label`
@@ -111,7 +113,7 @@ const AniLabel = styled.label`
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    background: #f0f0f0;
+    background: ${props => props.backgroundColor};
     border-radius: 60px;
     left: 30px;
     ${(props) => props.toggle ? css`
@@ -125,7 +127,7 @@ const AniLabel = styled.label`
     `}
 `
 const ToggleDiv = styled(Flexdiv)`
-background-color: #EB5149;
+background-color: ${props => props.backgroundColor};
     ${(props) => props.toggle ? css`
         animation-name: ${AniDivGo};
         animation-duration: 0.5s;
@@ -147,7 +149,7 @@ const Club_EditClubProfile_Section = () => {
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)
     const [selectedColor, setSelectedColor] = React.useState("#" + club[0].themeColor)
-    const [toggle, setToggle] = React.useState(true)//토글 on/off 
+    const [toggle, setToggle] = React.useState(false)//토글 on/off 
     const [profileImg, setProfileImg] = useState(null)
     const [bannerImg, setBannerImg] = useState(null)
 
@@ -170,7 +172,6 @@ const Club_EditClubProfile_Section = () => {
     const clickEvent = (e) => {
         let id = e.target.id
         if (id == "toggle") {
-            console.log(id)
             setToggle(!toggle)
         }
     }
@@ -195,8 +196,8 @@ const Club_EditClubProfile_Section = () => {
                     <Flexdiv width="1040px" padding="20px" flex="0_0_auto_column_flex-start_center">
                         {/* 가입신청 온오프 토글 */}
                         <Flexdiv onClick={clickEvent} flex="0_1_auto_row_center_center" width="1040px" height="60px" radius="10px" border="1px solid #c4c4c4" margin="30px 0 50px 0">
-                            <ToggleDiv id="toggle" toggle={toggle} flex="0_1_auto_row_flex-start_center" width="60px" height="40px" radius="60px" padding="0 6px" margin="0 10px">
-                                <AniLabel id="toggle" toggle={toggle}></AniLabel>
+                            <ToggleDiv id="toggle" toggle={toggle} flex="0_1_auto_row_flex-start_center" width="60px" height="40px" radius="60px" padding="0 6px" margin="0 10px" backgroundColor={selectedColor}>
+                                <AniLabel id="toggle" toggle={toggle} backgroundColor={selectedColor}></AniLabel>
                             </ToggleDiv>
 
                             <Flexdiv flex="2_1_auto_row_flex-start_center" height="60px" font="16px_400_'Nanum Gothic', sans-serif">
@@ -234,7 +235,7 @@ const Club_EditClubProfile_Section = () => {
                             {/* 동아리 소개글 */}
                             <Flexdiv>
                                 <Flexdiv flex="0_1_auto_row_flex-start_center" font="20px_600_'Noto Sans KR', sans-serif" height='40px'>동아리 소개글</Flexdiv>
-                                <TextArea padding="0px">{club[0].cover}</TextArea>
+                                <TextArea padding="0px" maxLength="500">{club[0].cover}</TextArea>
                             </Flexdiv>
                         </Flexdiv>
 

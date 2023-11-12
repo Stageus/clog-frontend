@@ -32,7 +32,8 @@ const Account_Login_LoginBox = () => {
     const clickEvent = (e) => {
         let id = e.target.id
         if (id == "gopromotemain") {
-            navigate("/promote/main")
+            // navigate("/promote/main")
+            loginEvent()
         }
         else if (id == "goauth") {
             setAuthOrfind(true)
@@ -54,7 +55,35 @@ const Account_Login_LoginBox = () => {
             setFocus(-1)
         }
     }
+    const loginEvent = async () => {
+        console.log("실행")
+        const url = "https://7208-211-207-13-52.ngrok-free.app/auth/login";
+        const response = await fetch(url, {
+            "method": "POST",
+            "credentials": "include",
+            "headers": {
+                "Content-Type": "application/json",
+            },
+            "body": JSON.stringify({
+                "email": "test123@inha.edu",
+                "pw": "1234Asd.."
+            })
+        });
+        console.log(response)
+        const result = await response.json()//왠지는 몰겠으나 .json이 비동기함수여서 동기함수로 바꿔주기
+        console.log(result)//이렇게 하고 실행하면 console 창에 뜬다
+        if (response.status == 200) {
+            alert(result.data.userId)
+        } else {
+            alert("에러")
+        }
 
+        const response2 = await fetch("https://7208-211-207-13-52.ngrok-free.app/account")
+        const result2 = await response2.json()//왠지는 몰겠으나 .json이 비동기함수여서 동기함수로 바꿔주기
+        console.log(result2)//이렇게 하고 실행하면 console 창에 뜬다
+        console.log("2", response2)
+
+    }
     return (
         <React.Fragment>
             <Flexdiv onClick={clickEvent} width="100%" flex="0_1_auto_row_center_center">

@@ -1,62 +1,52 @@
 import React from "react"
 
 // import components
-import Club_Board_Notice from "../../Component/Club/Club_Board_Notice"
-import Club_Board_Post from "../../Component/Club/Club_Board_Post"
+import Club_Members_MemberInfo from "../../Component/Club/Club_Members_MemberInfo"
 import usePagenation from "../../../module/Pagenation"
 
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { clubInfoAtom, userClubProfileAtom, noticeListAtom, postListAtom } from "../../../recoil/ClubAtom"
-import { clubPostListAtom, prPostBoardPageAtom } from "../../../recoil/NavAtom"
+import { clubInfoAtom, memberListAtom } from "../../../recoil/ClubAtom"
+import { clubMemberListAtom, managerPageAtom } from "../../../recoil/NavAtom"
 
 // import styled
 import styled from "styled-components"
-import { Flexdiv, Flexbutton } from "../../../style/common"
+import { Flexbutton, Flexdiv, Span } from "../../../style/common"
 import { StyleSheetContext } from "styled-components"
 
-// import image
+//svg
 import { ReactComponent as Svgleft } from "../../../image/angle-left.svg"
 import { ReactComponent as Svgright } from "../../../image/angle-right.svg"
 
-const Section = styled.section`
-    width: 860px;
-    margin-bottom: 150px;
-`
-
-const H1 = styled.h1`
-    margin: ${props => props.margin || "none"};
-    padding: ${props => props.padding || "none"};
-    font-size: ${props => props.fontSize || "24px"};
-    font-family: ${props => props.fontFamily || "'Noto Sans KR', sans-serif"};
-    font-weight: ${props => props.fontBold || "800"};
-    color: ${props => props.color || "#000000"};
+const H2 = styled.h2`
+    margin: 0px;
+    padding: 0px;
+    font-size: 20px;
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 800;
+    color: ${props => props.color};
 `
 
 
-const Club_PrPostBoard_Section = () => {
+const Club_Members_Members = (props) => {
     // route ============================================================
-
+    const { allDataList, membersname, perPage, page, setPage } = props
     // props ============================================================
 
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)
-    const noticeList = useRecoilState(noticeListAtom)
+    // const clubMemberList = useRecoilState(clubMemberListAtom)
+    // const managerList = clubMemberList[0].filter(member => member.position == "MANAGER")
 
     const [data, setData] = React.useState([])//현재페이지에 뜰 데이터 리스트
-    const [page, setPage] = useRecoilState(prPostBoardPageAtom)
-    const allData = useRecoilValue(clubPostListAtom)//모든 데이터
-    const perPage = 15//한 페이지당 불러올 prpost 개수
-    const onePage = 10 //화면에 나타날 페이지 개수
+    const allData = allDataList//모든 데이터
+    const onePage = 5 //화면에 나타날 페이지 개수
     let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수
     const last = allData.length - (perPage * (pageMax - 1))//마지막 페이지의 데이터 개수
 
-
-
-
     // event ============================================================
     //페이지네이션
-    const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage);
+    const [previous, next, pagebtnList] = usePagenation(allData, perPage, onePage, page);
     //클릭이벤트
     const clickEvent = (e) => {
         let id = e.target.id
@@ -72,6 +62,7 @@ const Club_PrPostBoard_Section = () => {
             setPage(parseInt(num))
         }
     }
+
 
     // //데이터 파싱
     React.useEffect(() => {
@@ -92,27 +83,13 @@ const Club_PrPostBoard_Section = () => {
         }
         setData([...newDataList])
     }, [page])
+
     return (
         <React.Fragment>
-
-            <Section onClick={clickEvent}>
-                <Flexdiv height="30px" margin="0 0 20px 0" flex="0_0_auto_raw_flex-start_center">
-                    <H1>홍보게시물 관리</H1>
-                </Flexdiv>
-
-                <Flexdiv width="860px" margin="0 0 50px 0" flex="0_0_auto_column_center_center">
-                    <Flexdiv width="860px" height="50px" flex="0_0_auto_raw_flex-start_center" customBorder={"1px_0px_1px_0px_solid_#" + club[0].themeColor}>
-                        <Flexdiv width="550px" height="50px" flex="0_0_auto_raw_center_center" font="16px_600_'Noto Sans KR', sans-serif">제목</Flexdiv>
-                        <Flexdiv width="130px" height="50px" flex="0_0_auto_raw_center_center" font="16px_600_'Noto Sans KR', sans-serif">작성자</Flexdiv>
-                        <Flexdiv width="110px" height="50px" flex="0_0_auto_raw_center_center" font="16px_600_'Noto Sans KR', sans-serif">작성일</Flexdiv>
-                        <Flexdiv width="70px" height="50px" flex="0_0_auto_raw_center_center" font="16px_600_'Noto Sans KR', sans-serif">댓글</Flexdiv>
-                    </Flexdiv>
-
-                    {data.map((elem) => <Club_Board_Post elem={elem} />)}
-
-                </Flexdiv>
-
-                <Flexdiv width="860px" height="140px" radius="0 0 20px 20px" backgroundColor="#F0F0F0" flex="0_0_auto_raw_center_center">
+            {/* 운영진 block */}
+            <Flexdiv onClick={clickEvent} width="800px" height="230px" padding="10px 0 0 0" customBorder="1px_0_0_0_solid_#C4C4C4" flex="0_0_auto_column_flex-start_center">
+                <Flexdiv width="800px" height="30px" margin="0 0 10px 0" flex="0_0_auto_row_space-between_center">
+                    <H2 color={"#" + club[0].themeColor}>{membersname}</H2>
                     {/* 페이지네이션 버튼 */}
                     <Flexdiv flex="0_1_auto_row_flex-end_center" height="20px" margin="9px 0">
                         <Flexbutton id="clubresultback" backgroundColor="#f0f0f0"><Svgleft id="clubresultback" width="15px" height="15px" fill="#333333" /></Flexbutton>
@@ -122,10 +99,12 @@ const Club_PrPostBoard_Section = () => {
                         <Flexbutton id="clubresultfront" backgroundColor="#f0f0f0"><Svgright id="clubresultfront" width="15px" height="15px" fill="#333333" /></Flexbutton>
                     </Flexdiv>
                 </Flexdiv>
-            </Section>
-
+                <Flexdiv width="825px" height="180px" margin="0 0 10px 0" flex="0_0_auto_row_flex-start_flex-start_wrap">
+                    {data.map((elem) => <Club_Members_MemberInfo elem={elem} />)}
+                </Flexdiv>
+            </Flexdiv>
         </React.Fragment>
     )
 }
 
-export default Club_PrPostBoard_Section
+export default Club_Members_Members

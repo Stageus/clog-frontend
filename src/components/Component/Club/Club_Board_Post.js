@@ -25,13 +25,13 @@ const Club_Board_Post = (props) => {
     const club = useRecoilState(clubInfoAtom)
 
     // event 선언하는 곳
-
+    console.log(elem)
     let comment = 0
     if (elem.commentCount > 10000) {
-        comment =  "9999+"
+        comment = "9999+"
     }
     else {
-        comment =  elem.commentCount
+        comment = elem.commentCount
     }
 
     return (

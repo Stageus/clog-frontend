@@ -4,10 +4,7 @@ const fetchPut = async (url, body) => {
         "headers": {
             "Content-Type": "application/json"
         },
-        "body": JSON.stringify({
-            // ...word,
-            // id : document.getElementById("pw_value").value
-        })
+        "body": JSON.stringify(body)
     });
     const result = await response.json()//왠지는 몰겠으나 .json이 비동기함수여서 동기함수로 바꿔주기
     console.log(result)//이렇게 하고 실행하면 console 창에 뜬다

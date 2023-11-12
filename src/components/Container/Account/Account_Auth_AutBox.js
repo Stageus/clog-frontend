@@ -69,9 +69,34 @@ const Account_Auth_AuthBox = () => {
         else { setEmailCheck(0) }
     }
 
+    // const checkauthEvent = () => {
+    //     fetchPost
+    // }
+
+    const checkauthEvent = async (body) => {
+        const url = "http://192.168.0.98:8000/auth/send-code";
+        const response = await fetch(url, {
+            "method": "POST",
+            "headers": {
+                "Content-Type": "application/json"
+            },
+            "body": JSON.stringify({
+                "email": "hyuna527@inha.edu"
+            })
+        });
+        console.log(response)
+        const result = await response.json()//왠지는 몰겠으나 .json이 비동기함수여서 동기함수로 바꿔주기
+        console.log(result)//이렇게 하고 실행하면 console 창에 뜬다
+        if (response.status == 200) {
+            alert("통신성공")
+        } else {
+            alert("에러")
+        }
+    }
     React.useEffect(() => {
         setResendAuth(false)
     }, [])
+
     return (
         <React.Fragment>
             <Flexdiv onClick={clickEvent} width="100%" flex="0_1_auto_row_center_center">
@@ -93,7 +118,7 @@ const Account_Auth_AuthBox = () => {
                             : <Account_LockedInput svg={svgmessage} id="emailinput" flex="0_1_auto_row_center_center" placeholder={emailValue} />
                         }
                         {/* 인증번호 발송 버튼 */}
-                        <Account_Button id={(emailCheck != 1) ? "authsend" : ""} flex="0_1_auto_row_center_center" height="50px" font="16px_600" backgroundColor={(emailCheck != 1) ? "#333333" : "#c4c4c4"} margin="5px 0" inner="인증번호 발송" />
+                        <Account_Button clickEvent={checkauthEvent} id={(emailCheck != 1) ? "authsend" : ""} flex="0_1_auto_row_center_center" height="50px" font="16px_600" backgroundColor={(emailCheck != 1) ? "#333333" : "#c4c4c4"} margin="5px 0" inner="인증번호 발송" />
 
                         {/* 이메일, 인증번호 확인 문구 */}
                         {(emailCheck == -1) && <Flexdiv flex="0_1_auto_row_flex-start_center" width="460px" font="14px" color="#EB5149" margin="5px 0">이메일을 입력해주세요</Flexdiv>}

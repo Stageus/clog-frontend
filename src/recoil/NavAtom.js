@@ -884,3 +884,8 @@ export const memberPageAtom = atom({
     "key": "memberPageAtom",
     "default": 1
 })
+
+export const searchresultpageAtom = atom({
+    "key": "searchresultpageAtom",
+    "default": 1
+})

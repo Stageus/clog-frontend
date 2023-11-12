@@ -5,10 +5,12 @@ import Account_Input from "../../Component/Account/Account_Input"
 import Account_Button from "../../Component/Account/Account_Button"
 import Account_LockedInput from "../../Component/Account/Account_LockedInput"
 import Account_Auth_Timer from "../../Component/Account/\bAccount_Auth_Timer"
+import { FetchPost } from "../../../module/fetch"
 
 //styled-components
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
 import styled from "styled-components"
+
 //svg
 import { ReactComponent as Svgclog } from "../../../image/Clog_logo.svg"
 import { ReactComponent as Svgcheck } from "../../../image/check-circle.svg"
@@ -32,13 +34,13 @@ const Account_Auth_AuthBox = () => {
     const [authCheck, setAuthCheck] = React.useState("#c4c4c4")//인증약관 체크여부
     const [emailCheck, setEmailCheck] = React.useState(0)//이메일 입력여부
     const [emailValue, setEmailValue] = React.useState("이메일 입력")
-    // const [afterRequireTime, setAfterRequireTime] = React.useState("")//인증번호 요청 후 3초
     const [resendAuth, setResendAuth] = useRecoilState(resendAuthAtom)
     const [authOrfind, setAuthOrfind] = useRecoilState(authOrfindPageAtom)//true이면 auth, false이면 findPW
 
     const svgpassword = <Svgpassword flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     const svgmessage = <Svgmessage flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     // event ============================================================
+
     const navigate = useNavigate()
     const clickEvent = (e) => {
         let id = e.target.id
@@ -69,29 +71,11 @@ const Account_Auth_AuthBox = () => {
         else { setEmailCheck(0) }
     }
 
-    // const checkauthEvent = () => {
-    //     fetchPost
-    // }
-
-    const checkauthEvent = async (body) => {
-        const url = "http://192.168.0.98:8000/auth/send-code";
-        const response = await fetch(url, {
-            "method": "POST",
-            "headers": {
-                "Content-Type": "application/json"
-            },
-            "body": JSON.stringify({
-                "email": "hyuna527@inha.edu"
-            })
-        });
-        console.log(response)
-        const result = await response.json()//왠지는 몰겠으나 .json이 비동기함수여서 동기함수로 바꿔주기
-        console.log(result)//이렇게 하고 실행하면 console 창에 뜬다
-        if (response.status == 200) {
-            alert("통신성공")
-        } else {
-            alert("에러")
-        }
+    const checkauthEvent = () => {
+        console.log("실행")
+        FetchPost("auth/send-code", {
+            "email": "hyuna527@inha.edu"
+        })
     }
     React.useEffect(() => {
         setResendAuth(false)

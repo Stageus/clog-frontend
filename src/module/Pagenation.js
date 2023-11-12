@@ -9,7 +9,6 @@ const usePagenation = (allData, perPage, onePage, page) => {
     // // props ============================================================
     // // state ============================================================
     let temppage = null
-    // const page = useRecoilValue(pageAtom)
     let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수
     const [pagebtnList, setPagebtnList] = React.useState([])//현재 뜰 페이지네이션 리스트
     const [lastNumber, setLastNumber] = React.useState(onePage)//페이지네이션 마지막 페이지

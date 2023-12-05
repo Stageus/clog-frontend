@@ -67,7 +67,7 @@ const Club_PostWriting_Section = () => {
     const closeEvent = (e) => {
         let id = e.target.id
         if (id == "boardOption") {
-            setBoardState(true)
+            setBoardState(false)
         }
     }
 
@@ -95,11 +95,11 @@ const Club_PostWriting_Section = () => {
                         { boardState == true &&
                             <Flexdiv width="1040px" border="2px solid #000000" radius="10px" position="absolute" backgroundColor="#FFFFFF">
                                 <Flexdiv width="1040px" height="50px" radius="10px 10px 0 0" customBorder="0_0_1px_0_solid_#C4C4C4" flex="0_0_auto_raw_space-between_center" onClick={closeEvent}>
-                                { board.current === "" ?
-                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">게시판을 선택해 주세요.</Span>
-                                    :
-                                    <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#000000">{board.current}</Span>
-                                }
+                                    { board.current === "" ?
+                                        <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#757575">게시판을 선택해 주세요.</Span>
+                                        :
+                                        <Span margin="10px" font="16px_400_'Nanum Gothic', sans-serif" color="#000000">{board.current}</Span>
+                                    }
                                     <Flexbutton id="boardOption" width="50px" height="50px" flex="0_0_auto_raw_center_center" radius="10px">
                                         <Up id="boardOption" width="24px" height="24px" fill="#C4C4C4" cursor="pointer"/>
                                     </Flexbutton>

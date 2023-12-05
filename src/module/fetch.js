@@ -13,7 +13,7 @@ async function FetchGet(u) {
         alert("통신실패")
     }
 }
-
+//commit이 있는데 왜 안보내짐?
 async function FetchPost(u, body) {
     const url = urlatom + u
     console.log(url)

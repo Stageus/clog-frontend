@@ -1,4 +1,4 @@
-const urlatom = "http://192.168.0.98:8000/"
+const urlatom = "https://3a71-61-255-24-4.ngrok-free.app/"
 
 async function FetchGet(u) {
     const url = urlatom + u
@@ -13,7 +13,7 @@ async function FetchGet(u) {
         alert("통신실패")
     }
 }
-
+//commit이 있는데 왜 안보내짐?
 async function FetchPost(u, body) {
     const url = urlatom + u
     console.log(url)

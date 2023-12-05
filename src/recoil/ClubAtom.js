@@ -285,6 +285,7 @@ export const memberListAtom = atom({
     ]
 })
 
+// 동아리 신청자 목록
 export const requestListAtom = atom({
     "key" : "requestListAtom",
     "default" : [
@@ -352,4 +353,30 @@ export const requestListAtom = atom({
             "createdAt": "2023.10.27 19:34"
         },
     ]
+})
+
+// 동아리의 일반 게시물
+export const postViewAtom = atom({
+    "key": "postViewAtom",
+    "default": {
+        "authorId" : 10213,  // 글 작성자 pk
+        "authorMajor" : "컴퓨터공학과", // 글 작성자 전공
+        "authorName" : "김영제",
+        "authorPcolor" : "35f71f",
+        "authorEntryYear" : 19,
+        "boardName" : "즐거운 게시판",
+        "postTitle" : "신라면",
+        "postContent" : "너네 신라면은 있는데 백제면, 고구려면은 왜 없는지 아냐?\n\
+                        바로...\n\
+                        .\n\
+                        .\n\
+                        .\n\
+                        .\n\
+                        .\n\
+                        당면이 들어와서 다 망해버렸기 때문이다\n\
+                        포항항 포하하항 포항항",
+        "postImages" : [require("../image/치타.jpeg"), require("../image/늑대.jpeg"), require("../image/치타2.jpeg")],
+        "createdAt" : "2023.10.23. 07:13",
+        "manageState": true,
+    }
 })

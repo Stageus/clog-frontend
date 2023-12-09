@@ -32,6 +32,7 @@ const FetchPost = async (path, body) => {
         headers: {
             'Content-Type': "application/json"
         },
+        "credentials": "include",
         body: JSON.stringify(body)
     });
     const result = await response.json()//.json이 비동기함수여서 동기함수로 바꿔주기

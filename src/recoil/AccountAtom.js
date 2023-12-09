@@ -11,3 +11,8 @@ export const resendAuthAtom = atom({
     "key": "resendAuthAtom",
     "default": false
 })
+
+export const clickDropDownAtom = atom({
+    "key": "clickDropDownAtom",
+    "default": null
+})

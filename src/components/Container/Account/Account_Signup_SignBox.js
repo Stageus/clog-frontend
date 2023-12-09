@@ -5,6 +5,7 @@ import Account_Input from "../../Component/Account/Account_Input"
 import Account_DropDown from "../../Component/Account/Account_DropDown"
 import Account_PwInput from "../../Component/Account/Account_PwInput"
 import Account_Button from "../../Component/Account/Account_Button"
+import { FetchPost } from "../../../module/fetch"
 
 //styled-components
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -33,6 +34,10 @@ const Account_Signup_SignBox = () => {
     const [entryYeardrop, setEntryYeardrop] = React.useState(false)//학번 선택시 true
     const [majordrop, setMajordrop] = React.useState(false)//학과 선택시 true
     const [exception, setException] = React.useState("")
+    const [enteredname, setEnteredname] = React.useState("")
+    const [pickedmajor, setPickedmajor] = React.useState("")
+    const [pickedentryyear, setPickedentryyear] = React.useState(0)
+
     const major = useRecoilValue(majorAtom)
     const majorlist = ["학과"]
     const entryYear = ["학번", 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
@@ -72,11 +77,11 @@ const Account_Signup_SignBox = () => {
     }
 
     const checkException = () => {
-        let name = document.getElementById("nameinput").value
+        setEnteredname(document.getElementById("nameinput").value)
         let pw = document.getElementById("pwinput").value
         let repw = document.getElementById("repwinput").value
 
-        if (name.length == 0) {
+        if (enteredname.length == 0) {
             setException("이름을 입력해 주세요")
             return false
         }
@@ -96,12 +101,20 @@ const Account_Signup_SignBox = () => {
             setException("재입력 비밀번호를 확인해 주세요")
             return false
         }
+
+
         return true
     }
 
-    // const postAccountInfo = async() => {
-
-    // }
+    const postAccountInfo = async () => {
+        let communication = FetchPost("/account", {
+            "email": "string", // 이메일
+            "pw": "string", // 비밀번호
+            "name": "string", // 이름
+            "major": "number", // 학과 코드
+            "entryYear": "number" // 학번 (2자리)
+        })
+    }
 
     return (
         <React.Fragment>

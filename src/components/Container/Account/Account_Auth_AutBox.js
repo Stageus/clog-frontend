@@ -4,7 +4,7 @@ import React from "react"
 import Account_Input from "../../Component/Account/Account_Input"
 import Account_Button from "../../Component/Account/Account_Button"
 import Account_LockedInput from "../../Component/Account/Account_LockedInput"
-import Account_Auth_Timer from "../../Component/Account/\bAccount_Auth_Timer"
+import Account_Auth_Timer from "../../Component/Account/Account_Auth_Timer"
 import { FetchPost } from "../../../module/fetch"
 
 //styled-components
@@ -32,11 +32,11 @@ const Account_Auth_AuthBox = () => {
 
     // state ============================================================
     const [authCheck, setAuthCheck] = React.useState("#c4c4c4")//인증약관 체크여부
-    const [emailCheck, setEmailCheck] = React.useState(0)//이메일 입력여부
+    const [emailCheck, setEmailCheck] = React.useState(0)//이메일 입력여부, -1 = 입력 x
     const [emailValue, setEmailValue] = React.useState("이메일 입력")
     const [resendAuth, setResendAuth] = useRecoilState(resendAuthAtom)
-    const [authOrfind, setAuthOrfind] = useRecoilState(authOrfindPageAtom)//true이면 auth, false이면 findPW
-
+    const authOrfind = useRecoilValue(authOrfindPageAtom)//true이면 auth, false이면 findPW
+    const [enteredemail, setEnteredemail] = React.useState(null)//입력받은 이메일 저장
     const svgpassword = <Svgpassword flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     const svgmessage = <Svgmessage flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     // event ============================================================
@@ -45,38 +45,82 @@ const Account_Auth_AuthBox = () => {
     const clickEvent = (e) => {
         let id = e.target.id
         if (id == "gosignup") {
-            //인증번호 일치여부 함수
-            navigate("/account/signup")
+            checkEnteredCode()
+            return;
         }
-        else if (id == "authcheck") {
+
+        if (id == "authcheck") {
             setAuthCheck((authCheck == "#4B7BE5") ? "#c4c4c4" : "#4B7BE5")//체크함
+            return;
         }
-        else if (id == "authsend") {
+
+        if (id == "authsend" && authOrfind == true) {
             setAuthCheck((authCheck == "#4B7BE5") ? "#4B7BE5" : "#EB5149")//체크안함
             checkEmail()
+            return;
+        }
+
+        if (id === "authsend" && authOrfind == false) {
+            checkEmail()
+            return;
+        }
+
+        if (id === "resendauth") {
+            resendCode()
+            return;
         }
     }
 
+    //이메일 확인
     const checkEmail = () => {
-        let value = document.getElementById("emailinput").value
-        if (authCheck == "#4B7BE5") {
-            if (value.length == 0) {
+        let leng = document.getElementById("emailinput").value.length
+        if (authCheck == "#4B7BE5" || authOrfind === false) {
+            if (leng == 0) {
                 setEmailCheck(-1)
             }
             else {
-                setEmailCheck(1)//약관,이메일 인증 완료
-                setEmailValue(value)
+                sendCode()//서버 post 통신
             }
         }
         else { setEmailCheck(0) }
     }
 
-    const checkauthEvent = () => {
-        console.log("실행")
-        FetchPost("auth/send-code", {
-            "email": "hyuna527@inha.edu"
+    //인증번호 발송
+    const sendCode = async () => {
+        console.log("인증번호 발송?")
+        let email = document.getElementById("emailinput").value
+        let communication = await FetchPost("/auth/send-code", {
+            "email": email
+        })
+        if (communication === 200) {
+            setEmailCheck(1)
+            setEnteredemail(email)
+        }
+    }
+
+    //인증번호 재발송
+    const resendCode = async () => {
+        let communication = await FetchPost("/auth/send-code", {
+            "email": enteredemail
         })
     }
+
+    //인증번호 확인
+    const checkEnteredCode = async () => {
+        let communication = await FetchPost("/auth/signup/verify-email", {
+            email: enteredemail,
+            code: document.getElementById("authtimer").value
+        })
+        if (communication === 200) {
+            if (authOrfind === true) {
+                navigate("/account/signup")
+            }
+            else {
+                navigate("/account/reset-pw")//비밀번호 변경 페이지 이동
+            }
+        }
+    }
+
     React.useEffect(() => {
         setResendAuth(false)
     }, [])
@@ -102,7 +146,7 @@ const Account_Auth_AuthBox = () => {
                             : <Account_LockedInput svg={svgmessage} id="emailinput" flex="0_1_auto_row_center_center" placeholder={emailValue} />
                         }
                         {/* 인증번호 발송 버튼 */}
-                        <Account_Button clickEvent={checkauthEvent} id={(emailCheck != 1) ? "authsend" : ""} flex="0_1_auto_row_center_center" height="50px" font="16px_600" backgroundColor={(emailCheck != 1) ? "#333333" : "#c4c4c4"} margin="5px 0" inner="인증번호 발송" />
+                        <Account_Button id={(emailCheck != 1) ? "authsend" : ""} flex="0_1_auto_row_center_center" height="50px" font="16px_600" backgroundColor={(emailCheck != 1) ? "#333333" : "#c4c4c4"} margin="5px 0" inner="인증번호 발송" />
 
                         {/* 이메일, 인증번호 확인 문구 */}
                         {(emailCheck == -1) && <Flexdiv flex="0_1_auto_row_flex-start_center" width="460px" font="14px" color="#EB5149" margin="5px 0">이메일을 입력해주세요</Flexdiv>}
@@ -112,12 +156,12 @@ const Account_Auth_AuthBox = () => {
                         {(emailCheck == 1) ? <Account_Auth_Timer id="authtimer" svg={svgpassword} flex="0_1_auto_row_center_center" placeholder="인증번호 입력" />
                             : <Account_LockedInput svg={svgpassword} flex="0_1_auto_row_center_center" placeholder="인증번호 입력" />}
                         {/* 인증번호 재발송 */}
-                        {resendAuth && <Account_Button flex="0_1_auto_row_center_center" height="50px" backgroundColor="#333333" font="16px_600" inner="인증번호 재발송" margin="5px 0" />}
+                        {resendAuth && <Account_Button id="resendauth" flex="0_1_auto_row_center_center" height="50px" backgroundColor="#333333" font="16px_600" inner="인증번호 재발송" margin="5px 0" />}
 
                     </Flexdiv>
 
                     {/* 이메일 인증 버튼  or 비밀번호 찾기 버튼*/}
-                    <Account_Button id="gosignup" flex="0_1_auto_row_center_center" height="55px" backgroundColor="#333333" font="24px_700" inner={authOrfind ? "이메일 인증" : "비밀번호 찾기"} margin="90px 0 0 0" />
+                    {(emailCheck == 1) && <Account_Button id="gosignup" flex="0_1_auto_row_center_center" height="55px" backgroundColor="#333333" font="24px_700" inner={authOrfind ? "이메일 인증" : "비밀번호 찾기"} margin="90px 0 0 0" />}
                 </Flexdiv>
             </Flexdiv>
         </React.Fragment>

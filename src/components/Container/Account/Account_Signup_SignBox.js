@@ -49,17 +49,20 @@ const Account_Signup_SignBox = () => {
         let id = e.target.id
         if (id == "goprmain") {
             if (checkException()) {
+                //fetchPost
                 navigate("/promote/main")
             }
         }
-        else if (id.includes("entryyear")) {
+
+        if (id.includes("entryyear")) {
             let num = id.split("_")[1]
             if (num != 0) {
                 setEntryYeardrop(true)
             }
             else { setEntryYeardrop(false) }
         }
-        else if (id.includes("major")) {
+
+        if (id.includes("major")) {
             let num = id.split("_")[1]
             if (num != 0) {
                 setMajordrop(true)
@@ -67,6 +70,7 @@ const Account_Signup_SignBox = () => {
             else { setMajordrop(false) }
         }
     }
+
     const checkException = () => {
         let name = document.getElementById("nameinput").value
         let pw = document.getElementById("pwinput").value
@@ -94,6 +98,11 @@ const Account_Signup_SignBox = () => {
         }
         return true
     }
+
+    // const postAccountInfo = async() => {
+
+    // }
+
     return (
         <React.Fragment>
             <Flexdiv onClick={clickEvent} width="100%" flex="0_1_auto_row_center_center">

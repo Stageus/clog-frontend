@@ -69,7 +69,7 @@ const Promote_PrPostView_Section = () => {
                     <PostView_Image prPostView={prPostView} />
 
                     {/* 홍보물 댓글 */}
-                    <PostView_Comment />
+                    <PostView_Comment where={"promote"}/>
 
                 </Flexdiv>
             </Flexdiv>

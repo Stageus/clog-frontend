@@ -16,7 +16,7 @@ const CommentDiv = styled(Flexdiv)`
 `
 const Postview_Comment_Reply = (props) => {
     // props ======================================================
-    const { elem } = props
+    const { elem, where } = props
     // state ======================================================
 
     // event ======================================================
@@ -25,11 +25,11 @@ const Postview_Comment_Reply = (props) => {
 
     return (
         <React.Fragment>
-            <CommentDiv flex="0_1_auto_row_center_flex-start" width="810px" margin="10px 0" padding="10px 0">
+            <CommentDiv flex="0_1_auto_row_center_flex-start" width={(where == "promote") ? "800px" : "740px"} margin="10px 0" padding="10px 0">
                 <Flexdiv flex="0_1_auto_row_center_center" width="50px">
                     <Img width="40px" radius="50%" src={require("../../../image/user.png")} />
                 </Flexdiv>
-                <Flexdiv flex="0_1_auto_column_center_flex-start" width="810px">
+                <Flexdiv flex="0_1_auto_column_center_flex-start" width="800px">
                     <Flexdiv flex="0_1_auto_row_space-between_center" width="100%" height="20px" margin="0 5px">
                         <Flexdiv flex="0_1_auto" fontSize="14px" margin="0 0 0 5px">익명</Flexdiv>
                         <Flexdiv flex="0_1_auto" fontSize="12px" color="#aaaaaa">{elem.createdAt}</Flexdiv>

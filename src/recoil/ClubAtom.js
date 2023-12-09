@@ -22,7 +22,10 @@ export const userClubProfileAtom = atom({
     "key": "userClubProfileAtom",
     "default": {
         "name" : "김영제", 
-        "position" : "PRESIDENT"
+        "personalColor": "0088FF",
+        "position" : "PRESIDENT",
+        "entryYear" : 19,
+        "major" : "컴퓨터공학과"
     }
 })
 
@@ -362,7 +365,7 @@ export const postViewAtom = atom({
         "authorId" : 10213,  // 글 작성자 pk
         "authorMajor" : "컴퓨터공학과", // 글 작성자 전공
         "authorName" : "김영제",
-        "authorPcolor" : "35f71f",
+        "authorPcolor" : "0088FF",
         "authorEntryYear" : 19,
         "boardName" : "즐거운 게시판",
         "postTitle" : "신라면",
@@ -378,5 +381,79 @@ export const postViewAtom = atom({
         "postImages" : [require("../image/치타.jpeg"), require("../image/늑대.jpeg"), require("../image/치타2.jpeg")],
         "createdAt" : "2023.10.23. 07:13",
         "manageState": true,
+    }
+})
+
+// 게시물의 댓글 목록
+export const clubCommentAtom = atom({
+    "key" : "clubCommentAtom",
+    "default" : {
+        "count" : 28,
+        "comments" : [
+            {
+                "id" : 10213,
+                "entryYear" : 19,
+                "content" : "글 작성자가 적은 댓글은 이름의 색깔이 다릅니다",
+                "createdAt" : "2023.05.15 02:23",
+                "replyCount" : 0,
+                "authorId" : 8620463,
+                "authorName" : "김영제",
+                "authorPersonalColor" : "0088FF", 
+                "manageState" : true
+            },
+            {
+                "id" : 123734,
+                "entryYear" : 19,
+                "content" : "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항",
+                "createdAt" : "2023.05.15 02:23",
+                "replyCount" : 0,
+                "authorId" : 8620463,
+                "authorName" : "김땡땡",
+                "authorPersonalColor" : "294739", 
+                "manageState" : false
+            },
+            {
+                "id" : 122534,
+                "entryYear" : 19,
+                "content" : "포항항 포항항 포항항항\n정말 재밌다~\n포항항 포항항",
+                "createdAt" : "2023.05.15 02:23",
+                "replyCount" : 0,
+                "authorId" : 8620463,
+                "authorName" : "김땡땡",
+                "authorPersonalColor" : "294739", 
+                "manageState" : false
+            },
+        ]
+    }
+})
+
+// 게시물 댓글의 답글 목록
+export const clubReplyAtom = atom({
+    "key" : "clubReplyAtom",
+    "default" : {
+        "replys" : [
+            {
+                "id" : 9635,
+                "content" : "ㅖ ?",
+                "createdAt" : "2023.05.15 02:23",
+                "authorId" : 2834723,
+                "entryYear" : 19,
+                "authorName" : "김영제",
+                "authorMajor" : "컴퓨터공학과",
+                "authorPcolor" : "0088FF",
+                "manageState" : true
+            },
+            {
+                "id" : 9636,
+                "content" : "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ\n아닙니다...포항항",
+                "createdAt" : "2023.05.15 02:23",
+                "authorId" : 283473,
+                "entryYear" : 21,
+                "authorName" : "이현아",
+                "authorMajor" : "인공지능공학과",
+                "authorPcolor" : "FFAA22",
+                "manageState" : false
+            }
+        ]
     }
 })

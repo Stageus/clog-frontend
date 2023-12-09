@@ -7,6 +7,7 @@ import useIntersect from "../../../module/InfiniteScroll"
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState, useResetRecoilState } from "recoil"
 import { prPostViewAtom, prPostCommentAtom, prPostReplyAtom } from "../../../recoil/PromoteAtom"
+import { clubCommentAtom, clubReplyAtom } from "../../../recoil/ClubAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -24,18 +25,22 @@ const CommentDiv = styled(Flexdiv)`
 const OverflowDiv = styled(Flexdiv)`
     overflow-y: auto;
 `
-const PostView_Comment = () => {
+const PostView_Comment = (props) => {
     // props ======================================================
+    const { where, manage, user, post, club } = props
 
     // state ======================================================
-    const [allData, setAllData] = useRecoilState(prPostCommentAtom)//모든 데이터
-    const prPostReply = useRecoilValue(prPostReplyAtom)
 
+    const [allData, setAllData] = useRecoilState(prPostCommentAtom)//모든 데이터
+    const prPostReply = useRecoilValue(prPostReplyAtom)//답글
+    // const [allData, setAllData] = useRecoilState(clubCommentAtom)//모든 데이터 (동아리 댓글데이터 atom)
+    // const prPostReply = useRecoilValue(clubReplyAtom)//답글 (동아리 댓글데이터 atom)
 
     const [data, setData] = React.useState([]);//현재 데이터
     const [isLoaded, setIsLoaded] = React.useState(false);//true이면 loading중임
     const page = React.useRef(0);//page count
     const perPage = 10;//한 페지당 불러올 prpost 개수
+
     let last = allData.comments.length % perPage// 마지막 페이지의 컴포넌트 개수
     let pageMax = parseInt(allData.comments.length / perPage)//총 페이지 수
 
@@ -125,19 +130,28 @@ const PostView_Comment = () => {
 
     return (
         <React.Fragment>
-            {/* 홍보물 댓글 */}
-            <CommentDiv onClick={clickEvent} width="860px" padding="10px 0 100px 0">
+
+            <CommentDiv onClick={clickEvent} width={(where == "promote") ? "860px" : "800px"} padding={(where == "promote") && "0 0 100px 0"}>
+
                 {/* 댓글 개수 */}
-                <Flexdiv flex="0_1_auto_column_center_flex-start" margin="0 0 0 10px">
-                    <Flexdiv flex="0_1_auto" height="60px" fontSize="20px">댓글 {allData.count}</Flexdiv>
+                <Flexdiv flex="0_1_auto_column_center_flex-start" margin="15px 0 15px 0">
+                    <Span flex="0_1_auto"  font="20px_600_'Noto Sans KR', sans-serif">댓글 [{allData.count}]</Span>
                 </Flexdiv>
+
                 {/* 댓글 입력란 */}
-                <Postview_Comment_Input width={"860px"} />
-                <OverflowDiv id="promotemain" flex="0_1_auto_column_flex-start_flex-start" width="1330px">
-                    {data.map((elem) => <PostView_Comment_Comment elem={elem} reply={prPostReply} />)}
+                { where == "promote" ?
+                    <Postview_Comment_Input where={"promote"}/>
+                    :
+                    <Postview_Comment_Input where={"club"} manage={manage} user={user} club={club}/>
+                }
+
+                {/* 댓글 출력 & 무한스크롤 */}
+                <OverflowDiv id="promotemain" flex="0_1_auto_column_flex-start_flex-start" width={(where == "promote") ? "1330px" : "800px"}>
+                    {data.map((elem) => <PostView_Comment_Comment elem={elem} reply={prPostReply} where={(where == "promote") ? "promote" : "club"}/>)}
                 </OverflowDiv>
                 {isLoaded && <Flexdiv flex="0_1_auto" ref={setRef} backgroundColor="blue"> Loading!</Flexdiv>}
             </CommentDiv>
+            
         </React.Fragment>
     )
 }

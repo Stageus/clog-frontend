@@ -19,7 +19,7 @@ const CommentDiv = styled(Flexdiv)`
 
 const PostView_Comment_Comment = (props) => {
     // props ======================================================
-    const { elem, reply, where } = props
+    const { elem, reply, post, club } = props
 
     // state ======================================================
     const [replyInput, setReplyInput] = React.useState(false)//답글 input창 뜨는 여부
@@ -40,25 +40,42 @@ const PostView_Comment_Comment = (props) => {
 
     let contentList = elem.content.split("\n")
 
+    //프로필이미지 색깔
+    const setTextColorByBackgroundColor = (hexColor) => {
+        // const c = hexColor.substring(1)      // 색상 앞의 # 제거
+        const rgb = parseInt(hexColor, 16)   // rrggbb를 10진수로 변환
+        const r = (rgb >> 16) & 0xff  // red 추출
+        const g = (rgb >> 8) & 0xff  // green 추출
+        const b = (rgb >> 0) & 0xff  // blue 추출
+        const luma = 0.2126 * r + 0.7152 * g + 0.0722 * b // per ITU-R BT.709
+        // 색상 선택
+        return luma < 127.5 ? "#ffffff" : "#000000" // 글자색이
+    }
+    const imgColor = setTextColorByBackgroundColor(elem.authorPersonalColor)
+
+    let authorNameColor
+    if(elem.authorId == post.authorId) {
+        authorNameColor = club.themeColor
+    }
+    else {
+        authorNameColor = "000000"
+    }
+
+    console.log("댓글색" + authorNameColor)
+
     return (
         <React.Fragment>
-            <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_flex-start" width={(where == "promote") ? "860px" : "800px"} margin="10px 0" padding="10px 0">
-
-                {/* 댓글칸에서 왼쪽 부분 : 작성자 프로필 */}
-                <Flexdiv flex="0_1_auto_row_center_center" width="50px">
-                    <Img width="40px" radius="50%" src={require("../../../image/user.png")} />
+            <CommentDiv onClick={clickEvent} flex="0_1_auto_row_center_flex-start" width="800px" margin="10px 0" padding="10px 0">
+                {/* 작성자 프로필 */}
+                <Flexdiv flex="0_1_auto_row_flex-start_flex-start" width="50px">
+                    <Flexdiv flex="0_0_auto_raw_center_center" width="40px" height="40px" radius="20px" backgroundColor={"#" + elem.authorPersonalColor} color={imgColor} font="12px_400_'Noto Sans KR', sans-serif" margin="0 10px 0 0">{elem.authorName}</Flexdiv>
                 </Flexdiv>
-
-                {/* 댓글칸에서 오른쪽 부분 : 댓글 내용*/}
-                <Flexdiv flex="0_1_auto_column_center_flex-start" width="100%">
-
-                    {/* 위쪽 : 작성자 이름, 작성시간, 답글/수정/삭제 */}
+                <Flexdiv flex="0_1_auto_column_center_flex-start" width="810px">
                     <Flexdiv flex="0_1_auto_row_space-between_center" width="100%" height="20px">
                         <Flexdiv flex="0_1_auto_row_center_center">
-                            <Flexdiv flex="0_1_auto" fontSize="14px" margin="0 5px">익명</Flexdiv>
+                            <Flexdiv flex="0_1_auto" font="14px_600_'Noto Sans KR', sans-serif" margin="0 10px 0 0" color={"#" + authorNameColor}>{elem.authorName}</Flexdiv>
                             <Flexdiv flex="0_1_auto" fontSize="12px" color="#aaaaaa">{elem.createdAt}</Flexdiv>
                         </Flexdiv>
-
                         {/* 답글/수정/삭제 */}
                         <Flexdiv flex="0_1_auto" >
                             <Flexbutton flex="0_1_auto_row_center_center" id="replyinput" backgroundColor="#ffffff" color="#aaaaaa">답글</Flexbutton>
@@ -70,13 +87,10 @@ const PostView_Comment_Comment = (props) => {
                                 </Flexdiv>}
                         </Flexdiv>
                     </Flexdiv>
-                    
-                    {/* 댓글 내용 */}
                     <Flexdiv flex="0_1_30px_column_center_flex-start" width="95%" fontSize="14px" padding="5px 5px">
                         {contentList.map((elem) => <P margin="0px">{elem}</P>)}
                     </Flexdiv>
-
-                    {/* 답글 버튼 : 답글이 있으면 버튼 보임 */}
+                    {/* 답글이 있으면 버튼 보임 */}
                     {(elem.replyCount != 0) &&
                         <Flexdiv id="replyview" flex="0_1_auto_row_center_center" width="80px" hight="20px" fontSize="14px" color="#aaaaaa" radius="10px" outline="1px solid #dadada" margin="0 0 10px 0">
                             <Flexdiv id="replyview" flex="0_1_auto">답글 {elem.replyCount}개</Flexdiv>
@@ -87,9 +101,9 @@ const PostView_Comment_Comment = (props) => {
                         </Flexdiv>}
 
                     {/* 답글 보는 버튼이 눌리면 답글 보임 */}
-                    {replyView && reply.replys.map((elem) => < Postview_Comment_Reply elem={elem} where={(where == "promote") ? "promote" : "club"}/>)}
+                    {replyView && reply.replys.map((elem) => < Postview_Comment_Reply elem={elem} />)}
                     {/* 답글 입력창 */}
-                    {replyInput && <Postview_Comment_Input width={"810px"} />}
+                    {replyInput && <Postview_Comment_Input width={"800px"} />}
 
                 </Flexdiv>
 

@@ -7,7 +7,7 @@ import PostView_Comment from "../../Component/PostView/PostView_Comment"
 
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { clubInfoAtom, postViewAtom } from "../../../recoil/ClubAtom"
+import { clubInfoAtom, postViewAtom, userClubProfileAtom } from "../../../recoil/ClubAtom"
 
 // import styled
 import styled from "styled-components"
@@ -55,6 +55,7 @@ const Club_PostView_Section = () => {
     // state ============================================================
     const club = useRecoilState(clubInfoAtom)
     const post = useRecoilState(postViewAtom)
+    const user = useRecoilState(userClubProfileAtom)
 
     // event ============================================================
     const setTextColorByBackgroundColor = (hexColor) => {
@@ -70,6 +71,8 @@ const Club_PostView_Section = () => {
     const nameColor = setTextColorByBackgroundColor(post[0].authorPcolor)
 
     let contentList = post[0].postContent.split("\n")
+
+    console.log(post[0].manageState)
 
     return(
         <React.Fragment>
@@ -119,7 +122,7 @@ const Club_PostView_Section = () => {
                 
                 {/* 하단부 : 게시글에 달린 댓글 */}
                 <Flexdiv>
-                    <PostView_Comment />
+                    <PostView_Comment where={"club"} manage={post[0].manageState} user={user[0]} post={post[0]} club={club[0]}/>
                 </Flexdiv>
 
             </Section>

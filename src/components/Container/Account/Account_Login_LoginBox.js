@@ -32,34 +32,45 @@ const Account_Login_LoginBox = () => {
     const clickEvent = (e) => {
         let id = e.target.id
         if (id == "gopromotemain") {
-            // navigate("/promote/main")
-            loginEvent()
+            return loginEvent();
         }
-        else if (id == "goauth") {
+
+        if (id == "goauth") {
             setAuthOrfind(true)
             navigate("/account/auth")
+            return;
         }
-        else if (id == "gofindPW") {
+
+        if (id == "gofindPW") {
             setAuthOrfind(false)
             navigate("/account/auth")
+            return;
         }
-        else if (id == "entryyear" || id == "entryinput") {
+
+        if (id == "entryyear" || id == "entryinput") {
             setFocus(0)
             document.getElementById("entryinput").focus();
+            return;
         }
-        else if (id == "password" || id == "pwinput") {
+
+        if (id == "password" || id == "pwinput") {
             setFocus(1)
             document.getElementById("pwinput").focus();
+            return;
         }
-        else {
-            setFocus(-1)
-        }
+
+        setFocus(-1)
     }
+
     const loginEvent = async () => {
-        FetchPost("auth/login", {
-            "email": "test123@inha.edu",
-            "pw": "1234Asd.."
+        let communication = await FetchPost("/auth/login", {
+            email: document.getElementById("entryinput").value,
+            pw: document.getElementById("pwinput").value
         })
+
+        if (communication === 200) {
+            navigate("/promote/main")
+        }
     }
     return (
         <React.Fragment>
@@ -75,7 +86,7 @@ const Account_Login_LoginBox = () => {
                         <Flexdiv flex="0_1_auto_column_center_center" width="400px" height="100px" radius="10px" >
                             <Flexdiv id="entryyear" flex="0_1_auto_row_center_center" width="400px" height="48px" customBorder={"1px_1px_1px_1px_solid_" + ((focus == 0) ? "#333333" : "#c4c4c4")} radius="10px 10px 0px 0px">
                                 <Flexdiv id="entryyear" flex="0_1_auto_row_center_center" margin="0px 5px 0px 8px"><Svgidcard id="entryyear" flex="0_1_auto" width="28px" height="28px" fill={(focus == 0) ? "#333333" : "#c4c4c4"} /></Flexdiv>
-                                <Span id="entryyear" flex="0_1_auto_row_flex-start_center" width="60px" height="100%" color="#c4c4c4" margin="0 5px">학번</Span>
+                                <Span id="entryyear" flex="0_1_auto_row_flex-start_center" width="60px" height="100%" color="#c4c4c4" margin="0 5px">이메일</Span>
                                 <Flexinput id="entryinput" flex="1_1_auto" height="30px" margin="1px 2px" />
                             </Flexdiv>
                             <Flexdiv id="password" flex="0_1_auto_row_center_center" width="400px" height="48px" customBorder={"1px_1px_1px_1px_solid_" + ((focus == 1) ? "#333333" : "#c4c4c4")} radius="0px 0px 10px 10px">

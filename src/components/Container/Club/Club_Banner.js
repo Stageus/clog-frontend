@@ -10,6 +10,9 @@ import { clubInfoAtom } from "../../../recoil/ClubAtom"
 import styled from "styled-components"
 import { Flexdiv, Img } from "../../../style/common"
 
+// import module
+import { FetchGet } from "../../../module/fetch"
+
 // import image
 
 const Club_Banner = () => {
@@ -18,7 +21,9 @@ const Club_Banner = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)   // 동아리에 대한 정보 가져오는 Atom
+        // 동아리에 대한 정보
+        const club = FetchGet("/club/33/profile")       // API
+        // const club = useRecoilState(clubInfoAtom)    // Atom
 
     // event ============================================================
 

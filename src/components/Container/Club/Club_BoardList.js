@@ -18,6 +18,7 @@ import { ReactComponent as Cake } from "../../../image/cake-birthday.svg"
 import { ReactComponent as Users } from "../../../image/users.svg"
 import { ReactComponent as Up } from "../../../image/caret-up.svg"
 import { ReactComponent as Down } from "../../../image/caret-down.svg"
+import { FetchGet } from "../../../module/fetch"
 
 
 const Club_BoardList = () => {
@@ -39,9 +40,19 @@ const Club_BoardList = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)
-    const user = useRecoilState(userClubProfileAtom)
-    const boardList = useRecoilState(boardListAtom)
+
+        // 동아리에 대한 정보
+        const club = FetchGet("/club/33/profile")           // API
+        // const club = useRecoilState(clubInfoAtom)        // Atom
+        
+        // 동아리 내부 나에 대한 프로필
+        const user = FetchGet("/club/member/28/profile")    // API
+        // const user = useRecoilState(userClubProfileAtom) // Atom
+        
+        // 동아리 게시판 목록
+        const boardList = FetchGet("/board/list/club/:clubid")  // API
+        // const boardList = useRecoilState(boardListAtom)      // Atom
+
     const [optionState, setOptionState] = React.useState(false)
 
     let level

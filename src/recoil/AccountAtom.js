@@ -12,7 +12,11 @@ export const resendAuthAtom = atom({
     "default": false
 })
 
-export const clickDropDownAtom = atom({
-    "key": "clickDropDownAtom",
-    "default": null
+export const pickedMajorAtom = atom({
+    "key": "pickedMajorAtom",
+    "default": "학과"
+})
+export const pickedEntryYearAtom = atom({
+    "key": "pickedEntryYearAtom",
+    "default": "학번"
 })

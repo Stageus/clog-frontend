@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 //recoil
 import { useRecoilSnapshot, useRecoilState } from "recoil"
-import { clickDropDownAtom, entryYeardropAtom } from "../../../recoil/AccountAtom"
+import { entryYeardropAtom } from "../../../recoil/AccountAtom"
 
 
 
@@ -43,7 +43,7 @@ const Account_DropDown = (props) => {
 
     // state ======================================================
     const [dropBoxOpen, setDropBoxOpen] = React.useState(false)
-    const [clickDropDown, setClickDropDown] = useRecoilState(clickDropDownAtom)
+    const [clickDropDown, setClickDropDown] = React.useState(list[0])
 
     const allData = list;//모든 데이터
     const [data, setData] = React.useState([]);//현재 데이터
@@ -104,8 +104,6 @@ const Account_DropDown = (props) => {
 
     //마운트시 fetch
     React.useEffect(() => {
-        console.log(list[0])
-        setClickDropDown(list[0])
         fetchData();
     }, []);//
 

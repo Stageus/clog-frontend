@@ -1,3 +1,4 @@
+import https from 'https'
 const urlatom = "https://3.36.85.153:8443"
 
 const FetchGet = async (path) => {
@@ -24,11 +25,15 @@ const FetchGet = async (path) => {
 
 
 const FetchPost = async (path, body) => {
+    // const https =
     const url = urlatom + path
     console.log(url)
     //GET ip주소  변수처리해서 유지보수 좋게 해주는 건 기본이자 센스
     const response = await fetch(url, {
         method: "POST",
+        agent: https.Agent({
+            rejectUnauthorized: false
+        }),
         headers: {
             'Content-Type': "application/json"
         },

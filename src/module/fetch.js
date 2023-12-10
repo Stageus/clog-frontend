@@ -1,4 +1,4 @@
-const urlatom = "https://2dde-61-255-24-4.ngrok-free.app"
+const urlatom = "https://3.36.85.153:8443"
 
 const FetchGet = async (path) => {
     const url = urlatom + path
@@ -34,6 +34,27 @@ const FetchPost = async (path, body) => {
         },
         "credentials": "include",
         body: JSON.stringify(body)
+    });
+    const result = await response.json()//.json이 비동기함수여서 동기함수로 바꿔주기
+    if (response.status == 200) {
+        alert("통신성공")
+    } else {
+        alert(`ERR: ${result.message}`)
+    }
+    return response.status
+}
+
+const FetchPostNot = async (path) => {
+    const url = urlatom + path
+    console.log(url)
+    //GET ip주소  변수처리해서 유지보수 좋게 해주는 건 기본이자 센스
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            'Content-Type': "application/json",
+            'ngrok-skip-browser-warning': '69420'
+        },
+        "credentials": "include"
     });
     const result = await response.json()//.json이 비동기함수여서 동기함수로 바꿔주기
     if (response.status == 200) {
@@ -81,4 +102,4 @@ const FetchDelete = async (path) => {
     return result.success
 }
 
-export { FetchGet, FetchPost, FetchPut, FetchDelete }
+export { FetchGet, FetchPost, FetchPut, FetchDelete, FetchPostNot }

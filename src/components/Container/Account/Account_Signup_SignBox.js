@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 
 // Container,Component
 import Account_Input from "../../Component/Account/Account_Input"
@@ -23,6 +23,7 @@ import { majorAtom } from "../../../recoil/PromoteAtom"
 
 //recoil
 import { useRecoilState, useRecoilValue } from "recoil"
+import { authEnteredEmailAtom, pickedEntryYearAtom, pickedMajorAtom } from "../../../recoil/AccountAtom"
 
 
 
@@ -31,12 +32,15 @@ const Account_Signup_SignBox = () => {
     // props ============================================================
 
     // state ============================================================
+    const authEnteredEmail = useRecoilValue(authEnteredEmailAtom)//auth에서 입력받은 이메일
     const [entryYeardrop, setEntryYeardrop] = React.useState(false)//학번 선택시 true
     const [majordrop, setMajordrop] = React.useState(false)//학과 선택시 true
-    const [exception, setException] = React.useState("")
-    const [enteredname, setEnteredname] = React.useState("")
-    const [pickedmajor, setPickedmajor] = React.useState("")
-    const [pickedentryyear, setPickedentryyear] = React.useState(0)
+    const [exception, setException] = React.useState("대소문자, 특수문자 포함 및 8글자 이상 입력해주세요.")//예외문구
+    const [enteredname, setEnteredname] = React.useState("")//입력한 이름
+    const [pickedmajor, setPickedmajor] = useRecoilState(pickedMajorAtom)
+    const [pickedentryyear, setPickedentryyear] = useRecoilState(pickedEntryYearAtom)
+    const [enteredpw, setEnteredpw] = React.useState("")//처음 입력 비밀번호
+    const [reenteredpw, setReenteredpw] = React.useState("")//두번째 입력 비밀번호
 
     const major = useRecoilValue(majorAtom)
     const majorlist = ["학과"]
@@ -55,7 +59,9 @@ const Account_Signup_SignBox = () => {
         if (id == "goprmain") {
             if (checkException()) {
                 //fetchPost
+                signup()
                 navigate("/promote/main")
+                reset()
             }
         }
 
@@ -77,11 +83,14 @@ const Account_Signup_SignBox = () => {
     }
 
     const checkException = () => {
+        let inputname = document.getElementById("nameinput").value
+        let inputpw = document.getElementById("pwinput").value
+        let inputrepw = document.getElementById("repwinput").value
         setEnteredname(document.getElementById("nameinput").value)
-        let pw = document.getElementById("pwinput").value
-        let repw = document.getElementById("repwinput").value
+        setEnteredpw(document.getElementById("pwinput").value)
+        setReenteredpw(document.getElementById("repwinput").value)
 
-        if (enteredname.length == 0) {
+        if (inputname === 0) {
             setException("이름을 입력해 주세요")
             return false
         }
@@ -93,27 +102,35 @@ const Account_Signup_SignBox = () => {
             setException("학번을 선택해 주세요")
             return false
         }
-        else if (pw.length == 0) {
+        else if (inputpw.length == 0) {
             setException("비밀번호를 입력해 주세요")
             return false
         }
-        else if (pw != repw) {
-            setException("재입력 비밀번호를 확인해 주세요")
+        else if (!(inputpw === inputrepw)) {
+            setException("재입력 비밀번호가 일치하지 않습니다.")
             return false
         }
-
-
         return true
     }
 
-    const postAccountInfo = async () => {
-        let communication = FetchPost("/account", {
-            "email": "string", // 이메일
-            "pw": "string", // 비밀번호
-            "name": "string", // 이름
-            "major": "number", // 학과 코드
-            "entryYear": "number" // 학번 (2자리)
+    //회원가입
+    const signup = async () => {
+        let communication = await FetchPost("/account", {
+            "email": authEnteredEmail, // 이메일
+            "pw": reenteredpw, // 비밀번호
+            "name": enteredname, // 이름
+            "major": pickedmajor, // 학과 코드
+            "entryYear": pickedentryyear // 학번 (2자리)
         })
+    }
+
+    //state 초기화(not recoil)
+    const reset = () => {
+        setEnteredname("")
+        setEnteredpw("")
+        setReenteredpw("")
+        setPickedentryyear("학번")
+        setPickedmajor("학과")
     }
 
     return (
@@ -129,11 +146,11 @@ const Account_Signup_SignBox = () => {
                     <Flexdiv flex="0_1_auto_column_center_center" width="460px" height="120px">
                         {/* 학번 */}
                         <Flexdiv flex="0_1_auto" width="460px" position="relative_10px">
-                            <Account_DropDown svg={svggraduation} dropboxname="entryyear" list={entryYear} width={"460px"} height={"50px"} />
+                            <Account_DropDown sortation="entryyear" svg={svggraduation} dropboxname="entryyear" list={entryYear} width={"460px"} height={"50px"} />
                         </Flexdiv>
                         {/* 학과 */}
                         <Flexdiv flex="0_1_auto" width="460px" position="relative_-55px" margin="5px 0">
-                            <Account_DropDown svg={svgmajor} dropboxname="major" list={majorlist} width={"460px"} height={"50px"} />
+                            <Account_DropDown sortation="major" svg={svgmajor} dropboxname="major" list={majorlist} width={"460px"} height={"50px"} />
                         </Flexdiv>
                     </Flexdiv>
                     {/* 비밀번호 입력,재입력 */}

@@ -13,7 +13,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 //recoil
 import { useRecoilSnapshot, useRecoilState } from "recoil"
-import { entryYeardropAtom } from "../../../recoil/AccountAtom"
+import { entryYeardropAtom, pickedEntryYearAtom, pickedMajorAtom } from "../../../recoil/AccountAtom"
 
 
 
@@ -39,11 +39,12 @@ const DropdownBox = styled(Flexdiv)`
 `
 const Account_DropDown = (props) => {
     // props ======================================================
-    const { svg, dropboxname, list, width, height } = props
+    const { sortation, svg, dropboxname, list, width, height } = props
 
     // state ======================================================
-    const [dropBoxOpen, setDropBoxOpen] = React.useState(false)
-    const [clickDropDown, setClickDropDown] = React.useState(list[0])
+    const [dropBoxOpen, setDropBoxOpen] = React.useState(false)//드롭박스 오픈 여부
+    const [pickedmajor, setPickedmajor] = useRecoilState(pickedMajorAtom)//선택된 학과 저장
+    const [pickedentryyear, setPickedentryyear] = useRecoilState(pickedEntryYearAtom)//선택된 학번 저장
 
     const allData = list;//모든 데이터
     const [data, setData] = React.useState([]);//현재 데이터
@@ -62,7 +63,12 @@ const Account_DropDown = (props) => {
         }
         else if (id.includes(dropboxname)) {
             let num = id.split("_")[1]
-            setClickDropDown(list[num])
+            if (sortation == "major") {
+                setPickedmajor(list[num])
+            }
+            else if (sortation == "entryyear") {
+                setPickedentryyear(list[num])
+            }
             setDropBoxOpen(false)
         }
     }
@@ -147,7 +153,7 @@ const Account_DropDown = (props) => {
                     <Flexdiv flex="0_1_auto" width={width} backgroundColor="#ffffff" >
                         <Flexdiv flex="0_1_auto_row_space-between_center" width={width} height={height} outline="1px solid #c4c4c4" radius="10px">
                             <Flexdiv flex="0_1_auto_row_center_center" width="50px" height="50px">{svg}</Flexdiv>
-                            <Span flex=" 1_1_auto" color="#aaaaaa" margin="0 0 0 10px">{clickDropDown}</Span>
+                            <Span flex=" 1_1_auto" color="#aaaaaa" margin="0 0 0 10px">{(sortation === "major") ? pickedmajor : pickedentryyear}</Span>
                             <Flexbutton id="opendropbox" flex="0_1_auto_row_center_center" width="36px" height="36px" backgroundColor="#ffffff" margin="0 10px 0 0" padding="0px">
                                 <Svgdown id="opendropbox" fill="#c4c4c4" width="16px" height="16px" />
                             </Flexbutton>

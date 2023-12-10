@@ -22,7 +22,7 @@ import { useNavigate } from "react-router-dom"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { authOrfindPageAtom, resendAuthAtom } from "../../../recoil/AccountAtom"
+import { authOrfindPageAtom, resendAuthAtom, authEnteredEmailAtom } from "../../../recoil/AccountAtom"
 
 const UnderlineSpan = styled(Span)`
     text-decoration: underline;
@@ -33,10 +33,9 @@ const Account_Auth_AuthBox = () => {
     // state ============================================================
     const [authCheck, setAuthCheck] = React.useState("#c4c4c4")//인증약관 체크여부
     const [emailCheck, setEmailCheck] = React.useState(0)//이메일 입력여부, -1 = 입력 x
-    const [emailValue, setEmailValue] = React.useState("이메일 입력")
     const [resendAuth, setResendAuth] = useRecoilState(resendAuthAtom)
     const authOrfind = useRecoilValue(authOrfindPageAtom)//true이면 auth, false이면 findPW
-    const [enteredemail, setEnteredemail] = React.useState(null)//입력받은 이메일 저장
+    const [enteredemail, setEnteredemail] = useRecoilState(authEnteredEmailAtom)//입력받은 이메일
     const svgpassword = <Svgpassword flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     const svgmessage = <Svgmessage flex="0_1_auto" width="26px" height="26px" fill="#c4c4c4" />
     // event ============================================================
@@ -121,8 +120,10 @@ const Account_Auth_AuthBox = () => {
         }
     }
 
+    //recoil 초기화 목적
     React.useEffect(() => {
         setResendAuth(false)
+        setEnteredemail("")
     }, [])
 
     return (
@@ -143,7 +144,7 @@ const Account_Auth_AuthBox = () => {
 
                         {/* 이메일 입력 */}
                         {(emailCheck != 1) ? <Account_Input id="emailinput" svg={svgmessage} flex="0_1_auto_row_center_center" placeholder="이메일 입력" />
-                            : <Account_LockedInput svg={svgmessage} id="emailinput" flex="0_1_auto_row_center_center" placeholder={emailValue} />
+                            : <Account_LockedInput svg={svgmessage} id="emailinput" flex="0_1_auto_row_center_center" placeholder="이메일 입력" />
                         }
                         {/* 인증번호 발송 버튼 */}
                         <Account_Button id={(emailCheck != 1) ? "authsend" : ""} flex="0_1_auto_row_center_center" height="50px" font="16px_600" backgroundColor={(emailCheck != 1) ? "#333333" : "#c4c4c4"} margin="5px 0" inner="인증번호 발송" />

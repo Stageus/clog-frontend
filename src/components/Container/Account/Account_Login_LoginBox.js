@@ -68,9 +68,10 @@ const Account_Login_LoginBox = () => {
             pw: document.getElementById("pwinput").value
         })
 
-        // if (communication === 200) {
-        //     navigate("/promote/main")
-        // }
+        if (communication === 200) {
+            navigate("/promote/main")
+            // navigate("/club/main")
+        }
     }
     return (
         <React.Fragment>

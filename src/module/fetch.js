@@ -1,4 +1,4 @@
-const urlatom = "https://7703-61-255-24-4.ngrok-free.app"
+const urlatom = "https://2dde-61-255-24-4.ngrok-free.app"
 
 const FetchGet = async (path) => {
     const url = urlatom + path

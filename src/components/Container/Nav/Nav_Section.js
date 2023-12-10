@@ -5,6 +5,7 @@ import Nav_Header from "../../Component/Nav/Nav_Header"
 import Nav_NotificationBox from "../../Container/Nav/Nav_NotificaitionBox"
 import Nav_Section_Club from "../../Component/Nav/Nav_Section_Club"
 import Nav_ProfileEdit from "./Nav_ProfileEdit"
+import { FetchPostNot } from "../../../module/fetch"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
@@ -77,6 +78,8 @@ const Nav_Section = () => {
         }
         //로그인 페이지로 이동
         else if (id == "logoutBtn") {
+            //로그아웃 fetch
+            post()
             navigate("/account/login")
         }
         else if (id == "navEmptySpot") {
@@ -93,6 +96,17 @@ const Nav_Section = () => {
         }
         setUncheckAlarmNum(count)
     }
+
+    const post = async () => {
+        console.log("시도")
+        let com = await FetchPostNot("/auth/logout")
+
+        if (com === 200) {
+            console.log("성공")
+        }
+
+    }
+
 
     React.useEffect(() => {
         settingUncheckAlarmNum()

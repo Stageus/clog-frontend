@@ -12,6 +12,11 @@ export const resendAuthAtom = atom({
     "default": false
 })
 
+export const authEnteredEmailAtom = atom({
+    "key": "authEnteredEmailAtom",
+    "default": ""
+})
+
 export const pickedMajorAtom = atom({
     "key": "pickedMajorAtom",
     "default": "학과"

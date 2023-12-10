@@ -13,6 +13,7 @@ import { managerPageAtom, memberPageAtom, clubMemberListAtom } from "../../../re
 import styled from "styled-components"
 import { Flexbutton, Flexdiv, Span } from "../../../style/common"
 import { StyleSheetContext } from "styled-components"
+import { FetchGet } from "../../../module/fetch"
 
 const Section = styled.section`
     width: 860px;
@@ -44,8 +45,15 @@ const Club_Members_Section = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)
-    const clubMemberList = useRecoilState(clubMemberListAtom)
+        // 동아리에 대한 정보
+        const club = FetchGet("/club/33/profile")       // API
+        // const club = useRecoilState(clubInfoAtom)    // Atom
+
+        // 동아리 회원 정보
+        const clubMemberList = FetchGet("/club/member/33/list")         // API
+        // const clubMemberList = useRecoilState(clubMemberListAtom)    // Atom
+
+    // 동아리 직급별 재분류
     const presidentList = clubMemberList[0].filter(member => member.position == "PRESIDENT")
     const managerList = clubMemberList[0].filter(member => member.position == "MANAGER")
     const memberList = clubMemberList[0].filter(member => member.position == "MEMBER")

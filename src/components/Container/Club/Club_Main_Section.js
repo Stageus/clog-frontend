@@ -20,6 +20,7 @@ import { StyleSheetContext } from "styled-components"
 import { ReactComponent as Svgleft } from "../../../image/angle-left.svg"
 import { ReactComponent as Svgright } from "../../../image/angle-right.svg"
 import { ReactComponent as Svgempty } from "../../../image/box-open.svg"
+import { FetchGet } from "../../../module/fetch"
 
 const Section = styled.section`
     width: 860px;
@@ -42,12 +43,21 @@ const Club_Main_Section = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)
-    const noticeList = useRecoilState(noticeListAtom)
+
+        // 동아리에 대한 정보
+        const club = FetchGet("/club/33/profile")      // API
+        // const club = useRecoilState(clubInfoAtom)   // Atom
+
+        // 동아리의 동아리 주요 공지 게시물 목록
+        const noticeList = FetchGet("notice/fixed/club/24")     // API
+        // const noticeList = useRecoilState(noticeListAtom)    // Atom
+
 
     const [data, setData] = React.useState([])//현재페이지에 뜰 데이터 리스트
     const [page, setPage] = useRecoilState(clubPostPageAtom)
-    const allData = useRecoilValue(clubPostListAtom)//모든 데이터
+        // 동아리의 전체 게시물 목록
+        const allData = FetchGet("/general/post/list/club/33?page=1")   // API
+        // const allData = useRecoilValue(clubPostListAtom)//모든 데이터   // Atom
     const perPage = 15//한 페이지당 불러올 prpost 개수
     const onePage = 10 //화면에 나타날 페이지 개수
     let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수

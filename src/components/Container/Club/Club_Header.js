@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom"
 import Club_Search from "./Club_Search"
 import Nav_Section from "../Nav/Nav_Section"
 
+// import modules
+import { FetchGet } from "../../../module/fetch"
+
 // import recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
 import { clubInfoAtom } from "../../../recoil/ClubAtom"
@@ -54,8 +57,12 @@ const Club_Header = (props) => {
     const { exit } = props
 
     // state ============================================================
-    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);
-    const club = useRecoilState(clubInfoAtom)   // 동아리에 대한 정보 가져오는 Atom
+    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);  // nav 열림&닫힘 state
+
+        // 동아리에 대한 정보
+        const club = FetchGet("/club/33/profile")       // API
+        // const club = useRecoilState(clubInfoAtom)    // Atom
+
     const [searchState, setSearchState] = React.useState(true)    // 검색창의 검색 필터에 대한 State
     
     // event ============================================================

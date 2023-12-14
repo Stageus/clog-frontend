@@ -2,10 +2,11 @@ import React from "react"
 
 // Container,Component
 import Nav_Header from "../../Component/Nav/Nav_Header"
-//recoil
+import { FetchGet } from "../../../module/fetch"
 
+//recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
-import { navOpenAtom } from "../../../recoil/NavAtom"
+import { clubListAtom, navOpenAtom } from "../../../recoil/NavAtom"
 
 //styled-components 
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
@@ -33,15 +34,18 @@ const Promote_Header = () => {
     // props ======================================================
     const navigate = useNavigate()
     // state ======================================================
+    // let mount = false
     const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);
+    const [clubList, setClubList] = useRecoilState(clubListAtom)
 
     // event ======================================================
     const clickEvent = (e) => {
         let id = e.target.id
         console.log(id)
-        if (id == "navbutton") {
+        //nav열고닫기
+        if (id === "navbutton") {
+            console.log("navopen 변경")
             setNavOpen(!navOpen)
-            console.log(navOpen)
         }
         //클로그 로고 클릭시 promote/main페이지로 이동
         else if (id == "navClogLogo") {
@@ -56,11 +60,30 @@ const Promote_Header = () => {
         }
     }
 
+    //nav 열면 가입된 동아리 목록 불러오기
+    const getJoinedClub = async () => {
+        console.log("실행?")
+        // let communication = await FetchGet("/account/club/list")
+        // if (communication.success) {
+        //     clubList = communication
+        //     console.log(clubList)
+        // }
+    }
+
+    React.useEffect(() => {
+        console.log(navOpen)
+        getJoinedClub()
+        if (navOpen === true) {
+            // getJoinedClub()
+            console.log("nav 열림")
+        }
+    }, [navOpen])
+
     return (
         <React.Fragment>
             <PromoteHeaderdiv onClick={clickEvent} flex="0_1_auto_row_space-between_center" position="fixed_0px_0_0_0px" width="100%" height="56px" backgroundColor="#ffffff">
                 {/* 왼쪽 헤더 */}
-                <Nav_Header navOpen={navOpen} />
+                <Nav_Header />
 
                 {/* 헤더 중앙 */}
                 <Flexdiv flex="0_0_auto_row_center_center" width="770px">

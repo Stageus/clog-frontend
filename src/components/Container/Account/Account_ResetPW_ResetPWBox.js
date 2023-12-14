@@ -43,8 +43,6 @@ const Account_ResetPW_ResetPWBox = () => {
                 navigate("/account/login")
             }
         }
-
-        // let get = await FetchGet("/club/33/profile")
     }
 
     return (

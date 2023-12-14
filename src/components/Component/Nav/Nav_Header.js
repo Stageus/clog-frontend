@@ -2,13 +2,18 @@ import React from "react"
 // import styled from "styled-components"
 import { Flexdiv, Flexinput, Flexbutton, Img, Span } from "../../../style/common"
 
+//recoil
+import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
+import { navOpenAtom } from "../../../recoil/NavAtom"
+
 import Nav_Section from "../../Container/Nav/Nav_Section"
 
-const Nav_Header = (props) => {
+const Nav_Header = () => {
     // props ======================================================
-    const { navOpen } = props
-    // state ======================================================
+    // const { navOpen } = props
 
+    // state ======================================================
+    const navOpen = useRecoilValue(navOpenAtom);
     // event ======================================================
 
     return (

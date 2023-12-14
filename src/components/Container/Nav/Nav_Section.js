@@ -5,7 +5,7 @@ import Nav_Header from "../../Component/Nav/Nav_Header"
 import Nav_NotificationBox from "../../Container/Nav/Nav_NotificaitionBox"
 import Nav_Section_Club from "../../Component/Nav/Nav_Section_Club"
 import Nav_ProfileEdit from "./Nav_ProfileEdit"
-import { FetchPostNot } from "../../../module/fetch"
+import { FetchPostNot, FetchGet } from "../../../module/fetch"
 
 //recoil
 import { useRecoilValue, useSetRecoilState, useRecoilState } from "recoil"
@@ -49,7 +49,7 @@ const Nav_Section = () => {
     const clubList = useRecoilValue(clubListAtom);//가입한 동아리정보(동아리넘버,이름,프로필로고)
     const [profileBtn, setProfileBtn] = React.useState(false);//프로필 설정 열고닫기
     const [alarmBtn, setAlarmBtn] = React.useState(false);//알람창 열고닫기
-    const setNavOpen = useSetRecoilState(navOpenAtom);//nav 여닫기
+    const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);//nav 여닫기
     // event ======================================================
     const navigate = useNavigate();
 
@@ -79,13 +79,14 @@ const Nav_Section = () => {
         //로그인 페이지로 이동
         else if (id == "logoutBtn") {
             //로그아웃 fetch
-            post()
+            logout()
             navigate("/account/login")
         }
         else if (id == "navEmptySpot") {
             setNavOpen(false)
         }
     }
+
     const settingUncheckAlarmNum = () => {
         let count = 0
         for (let index0 = 0; index0 < alarm.length; index0++) {
@@ -97,20 +98,21 @@ const Nav_Section = () => {
         setUncheckAlarmNum(count)
     }
 
-    const post = async () => {
+    const logout = async () => {
         console.log("시도")
         let com = await FetchPostNot("/auth/logout")
 
         if (com === 200) {
-            console.log("성공")
+            console.log("로그아웃 성공")
         }
-
     }
 
 
     React.useEffect(() => {
         settingUncheckAlarmNum()
     }, [alarm])
+
+
 
 
     return (

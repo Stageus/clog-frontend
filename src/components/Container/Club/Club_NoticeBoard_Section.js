@@ -36,9 +36,18 @@ const Club_NoticeBoard_Section = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)
-    const noticeList = useRecoilState(noticeListAtom)
-    const postList = useRecoilState(postListAtom)
+    
+        // 동아리에 대한 정보
+        // const club = FetchGet("/club/33/profile")       // API
+        const club = useRecoilState(clubInfoAtom)    // Atom
+
+        // 동아리 주요 공지 게시물 목록
+        // const noticeList = FetchGet("notice/fixed/club/24")     // API
+        const noticeList = useRecoilState(noticeListAtom)    // Atom
+
+        // 동아리의 게시물 목록
+        // const postList = FetchGet("/general/post/list/board/70")    // API
+        const postList = useRecoilState(postListAtom)            // Atom
 
     // event ============================================================
 

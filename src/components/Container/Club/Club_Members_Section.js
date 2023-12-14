@@ -46,12 +46,12 @@ const Club_Members_Section = () => {
 
     // state ============================================================
         // 동아리에 대한 정보
-        const club = FetchGet("/club/33/profile")       // API
-        // const club = useRecoilState(clubInfoAtom)    // Atom
+        // const club = FetchGet("/club/33/profile")       // API
+        const club = useRecoilState(clubInfoAtom)    // Atom
 
         // 동아리 회원 정보
-        const clubMemberList = FetchGet("/club/member/33/list")         // API
-        // const clubMemberList = useRecoilState(clubMemberListAtom)    // Atom
+        // const clubMemberList = FetchGet("/club/member/33/list")         // API
+        const clubMemberList = useRecoilState(clubMemberListAtom)    // Atom
 
     // 동아리 직급별 재분류
     const presidentList = clubMemberList[0].filter(member => member.position == "PRESIDENT")

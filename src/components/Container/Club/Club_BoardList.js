@@ -42,16 +42,16 @@ const Club_BoardList = () => {
     // state ============================================================
 
         // 동아리에 대한 정보
-        const club = FetchGet("/club/33/profile")           // API
-        // const club = useRecoilState(clubInfoAtom)        // Atom
+        // const club = FetchGet("/club/33/profile")           // API
+        const club = useRecoilState(clubInfoAtom)        // Atom
         
         // 동아리 내부 나에 대한 프로필
-        const user = FetchGet("/club/member/28/profile")    // API
-        // const user = useRecoilState(userClubProfileAtom) // Atom
+        // const user = FetchGet("/club/member/28/profile")    // API
+        const user = useRecoilState(userClubProfileAtom) // Atom
         
         // 동아리 게시판 목록
-        const boardList = FetchGet("/board/list/club/:clubid")  // API
-        // const boardList = useRecoilState(boardListAtom)      // Atom
+        // const boardList = FetchGet("/board/list/club/:clubid")  // API
+        const boardList = useRecoilState(boardListAtom)      // Atom
 
     const [optionState, setOptionState] = React.useState(false)
 

@@ -22,8 +22,8 @@ const Club_Banner = () => {
 
     // state ============================================================
         // 동아리에 대한 정보
-        const club = FetchGet("/club/33/profile")       // API
-        // const club = useRecoilState(clubInfoAtom)    // Atom
+        // const club = FetchGet("/club/33/profile")       // API
+        const club = useRecoilState(clubInfoAtom)    // Atom
 
     // event ============================================================
 

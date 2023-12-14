@@ -1,5 +1,5 @@
-import https from 'https'
-const urlatom = "https://3.36.85.153:8443"
+// import https from 'https'
+const urlatom = "http://13.125.24.196:8000"
 
 const FetchGet = async (path) => {
     const url = urlatom + path
@@ -26,18 +26,21 @@ const FetchGet = async (path) => {
 
 const FetchPost = async (path, body) => {
     // const https =
+    let token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzAyNTY5NDY4LCJleHAiOjE3MDMxNzQyNjgsImlzcyI6Imh5b3Nlb2sifQ.4D5wxtqjNffknftDIg-g6wM5SD3n7kc2UwXr9xTtw4Y"
     const url = urlatom + path
     console.log(url)
     //GET ip주소  변수처리해서 유지보수 좋게 해주는 건 기본이자 센스
     const response = await fetch(url, {
         method: "POST",
-        agent: https.Agent({
-            rejectUnauthorized: false
-        }),
+        // agent: https.Agent({
+        //     rejectUnauthorized: false
+        // }),
+        mode: "cors",
         headers: {
-            'Content-Type': "application/json"
+            'Content-Type': "application/json",
+            'Authorization': token,
         },
-        "credentials": "include",
+        credentials: "include",
         body: JSON.stringify(body)
     });
     const result = await response.json()//.json이 비동기함수여서 동기함수로 바꿔주기

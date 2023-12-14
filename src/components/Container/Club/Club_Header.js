@@ -60,8 +60,8 @@ const Club_Header = (props) => {
     const [navOpen, setNavOpen] = useRecoilState(navOpenAtom);  // nav 열림&닫힘 state
 
         // 동아리에 대한 정보
-        const club = FetchGet("/club/33/profile")       // API
-        // const club = useRecoilState(clubInfoAtom)    // Atom
+        // const club = FetchGet("/club/33/profile")       // API
+        const club = useRecoilState(clubInfoAtom)    // Atom
 
     const [searchState, setSearchState] = React.useState(true)    // 검색창의 검색 필터에 대한 State
     

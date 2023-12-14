@@ -40,16 +40,18 @@ const Club_PrPostBoard_Section = () => {
     // props ============================================================
 
     // state ============================================================
-    const club = useRecoilState(clubInfoAtom)
-    const noticeList = useRecoilState(noticeListAtom)
 
-    const [data, setData] = React.useState([])//현재페이지에 뜰 데이터 리스트
+        // 동아리에 대한 정보
+        // const club = FetchGet("/club/33/profile")       // API
+        const club = useRecoilState(clubInfoAtom)    // Atom
+
+    const [data, setData] = React.useState([]) //현재페이지에 뜰 데이터 리스트
     const [page, setPage] = useRecoilState(prPostBoardPageAtom)
-    const allData = useRecoilValue(clubPostListAtom)//모든 데이터
-    const perPage = 15//한 페이지당 불러올 prpost 개수
+    const allData = useRecoilValue(clubPostListAtom) //모든 데이터
+    const perPage = 15 //한 페이지당 불러올 prpost 개수
     const onePage = 10 //화면에 나타날 페이지 개수
-    let pageMax = Math.ceil(allData.length / perPage)//총 페이지 수
-    const last = allData.length - (perPage * (pageMax - 1))//마지막 페이지의 데이터 개수
+    let pageMax = Math.ceil(allData.length / perPage) //총 페이지 수
+    const last = allData.length - (perPage * (pageMax - 1)) //마지막 페이지의 데이터 개수
 
 
 

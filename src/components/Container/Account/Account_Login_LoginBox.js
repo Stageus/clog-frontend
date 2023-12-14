@@ -91,8 +91,8 @@ const Account_Login_LoginBox = () => {
                                 <Flexinput id="entryinput" flex="1_1_auto" height="30px" margin="1px 2px" />
                             </Flexdiv>
                             <Flexdiv id="password" flex="0_1_auto_row_center_center" width="400px" height="48px" customBorder={"1px_1px_1px_1px_solid_" + ((focus == 1) ? "#333333" : "#c4c4c4")} radius="0px 0px 10px 10px">
-                                <Flexdiv id="password" margin="0px 3px 0px 8px" flex="0_1_auto_row_center_center"><Svglock id="password" flex="0_1_auto" width="28px" height="28px" fill={(focus == 1) ? "#333333" : "#c4c4c4"} /></Flexdiv>
-                                <Span id="password" flex="0_1_auto_row_center_center" width="60px" height="100%" color="#c4c4c4" margin="0 5px">비밀번호</Span>
+                                <Flexdiv id="password" margin="0px 5px 0px 8px" flex="0_1_auto_row_center_center"><Svglock id="password" flex="0_1_auto" width="28px" height="28px" fill={(focus == 1) ? "#333333" : "#c4c4c4"} /></Flexdiv>
+                                <Span id="password" flex="0_1_auto_row_flex-start_center" width="60px" height="100%" color="#c4c4c4" margin="0 5px">비밀번호</Span>
                                 <Flexinput id="pwinput" flex="1_1_auto" height="30px" margin="1px 2px" />
                             </Flexdiv>
                         </Flexdiv>
